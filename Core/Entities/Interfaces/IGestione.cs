@@ -18,5 +18,4 @@ namespace UNIBO.Entities.Interfaces
 
        
     }
-    Console.WriteLine("CIAO");
 }
