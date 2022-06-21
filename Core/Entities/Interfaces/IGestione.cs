@@ -36,4 +36,10 @@ namespace UNIBO.SET.Interfaces
         public void VerificaFile(CodiceVerifica codVerifica, File file);
         public void GeneraCodice(File file);
     }
+
+    public interface IUSBSelectorController : IController
+    {
+        public bool SelezionaUSB(USB usb);
+        public USB[] ElencaDispositiviEsterni();
+    }
 }
