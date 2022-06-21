@@ -9,6 +9,11 @@ namespace UNIBO.SET.Model
 {
     public class Cartella : FileSystemElement
     {
+        private System.IO.DirectoryInfo _directory;
+        public Cartella(string path) : base(path)
+        {
+            _directory = new System.IO.DirectoryInfo(path);
+        }
 
 
         public override IList<string> OttieniPaths()
