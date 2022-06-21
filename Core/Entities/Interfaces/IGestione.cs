@@ -16,6 +16,6 @@ namespace UNIBO.Entities.Interfaces
     {
         public bool CambiaImpostazione(Impostazione impostazione);
 
-
+       
     }
 }
