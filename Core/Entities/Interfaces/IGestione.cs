@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UNIBO.Entities.Interfaces
+
+using UNIBO.SET.Model;
+
+namespace UNIBO.SET.Interfaces
 {
     public interface IController
     {

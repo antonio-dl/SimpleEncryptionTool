@@ -17,7 +17,7 @@ namespace Core.Entities.Model
 
     }
 
-    public class KeyChain : ISerializable
+    public class KeyChain
     {
         private Key[] _keychain;
 
