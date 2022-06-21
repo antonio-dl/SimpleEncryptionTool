@@ -29,9 +29,9 @@ namespace UNIBO.SET.Model
     {
 
 
-        public FileDecifrato(string path)
+        public FileDecifrato(string path) : base (path)
         {
-            fs = System.IO.File.Open(path, FileMode.Open, FileAccess.Read); // readOnly
+            
 
         }
 
@@ -40,9 +40,10 @@ namespace UNIBO.SET.Model
 
     public class FileCifrato : File
     {
-        public FileCifrato(string path)
+        private Key _key;
+
+        public FileCifrato(string path) : base(path)
         {
-            fs = System.IO.File.Open(path, FileMode.Open, FileAccess.ReadWrite); // readWrite
 
         }
 
