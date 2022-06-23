@@ -21,7 +21,7 @@ namespace UNIBO.SET.Model
 
         public override IList<string> OttieniPaths()
         {
-            throw new NotImplementedException();
+            return new List<string>() { _file.FullName };
         }
     }
 
@@ -40,7 +40,7 @@ namespace UNIBO.SET.Model
 
     public class FileCifrato : File
     {
-        private Key _key;
+        // private Key _key;
 
         public FileCifrato(string path) : base(path)
         {

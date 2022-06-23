@@ -15,11 +15,6 @@ namespace UNIBO.SET.Model
             
         }
 
-        public abstract IList<string> OttieniPaths()
-        {
-            throw new NotImplementedException();
-        }
-        
-
+        public abstract IList<string> OttieniPaths();
     }
 }
