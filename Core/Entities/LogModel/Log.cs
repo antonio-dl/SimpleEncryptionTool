@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.ModelLog
 {
+    // TODO: Completare il modello
     public class Log
     {
         
     }
 
-    public enum LogType { }
+    public enum EntryType { }
 
 
     public class Entry { }

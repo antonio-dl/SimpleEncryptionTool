@@ -10,14 +10,14 @@ namespace UNIBO.SET.Model
     public class File : FileSystemElement
     {
         private readonly System.IO.FileInfo _file;
-        protected FileStream fs;
+
+        protected FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
 
         public File(string path) : base(path)
         {
             _file = new System.IO.FileInfo(path);
         }
 
-        public FileStream GetFileStream { get { return fs; } }
 
         public override IList<string> OttieniPaths()
         {

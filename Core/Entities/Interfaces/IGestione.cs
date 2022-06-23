@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 
 using UNIBO.SET.Model;
+using Core.Entities.ModelLog;
 
 namespace UNIBO.SET.Interfaces
 {
