@@ -49,8 +49,8 @@ namespace UNIBO.SET.Interfaces
         public bool SelezionaDestinazione();
         public void Cifra();
         public string GeneraPassword();
-        public bool Aggiungi(SystemElement sysElement);
-        public bool Rimuovi(SystemElement sysElement);
+        public bool Aggiungi(FileSystemElement sysElement);
+        public bool Rimuovi(FileSystemElement sysElement);
 
     }
 
