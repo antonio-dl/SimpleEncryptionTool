@@ -49,8 +49,8 @@ namespace UNIBO.SET.Interfaces
         public bool SelezionaDestinazione();
         public void Cifra();
         public string GeneraPassword();
-        public bool Aggiungi(SystemElement syselement);
-        public bool Rimuovi(SystemElement syselement);
+        public bool Aggiungi(SystemElement sysElement);
+        public bool Rimuovi(SystemElement sysElement);
 
     }
 
@@ -60,5 +60,16 @@ namespace UNIBO.SET.Interfaces
         public void ScansionaUSB();
         public void SelezionaKey();
         public void Decifra();
+    }
+
+    public interface IGestioneLog
+    {
+        public void GetEntry(DateTime time1, DateTime time2);
+        public void GetEntry(Date date);
+        public void GetAnomalie(Date dateAnom);
+        public void AnalisiAnomalieOperazioni(Date dateOp );
+        public void AnalisiAnomalieMessaggi(Date dateMes);
+        public void PrintLogOperazione(Entry[] operazioni);
+        public void PrintLogMessaggio(Entry[] messaggi);
     }
 }
