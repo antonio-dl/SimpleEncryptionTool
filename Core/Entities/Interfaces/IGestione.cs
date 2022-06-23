@@ -42,4 +42,23 @@ namespace UNIBO.SET.Interfaces
         public bool SelezionaUSB(USB usb);
         public USB[] ElencaDispositiviEsterni();
     }
+
+    public interface IGestioneCifratura : IUSBSelectorController
+    {
+        public bool SelezionaUSB();
+        public bool SelezionaDestinazione();
+        public void Cifra();
+        public string GeneraPassword();
+        public bool Aggiungi(SystemElement syselement);
+        public bool Rimuovi(SystemElement syselement);
+
+    }
+
+    public interface IGestioneDecifratura : IUSBSelectorController
+    {
+        public bool SelezionaUSB();
+        public void ScansionaUSB();
+        public void SelezionaKey();
+        public void Decifra();
+    }
 }
