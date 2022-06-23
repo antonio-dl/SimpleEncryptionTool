@@ -23,6 +23,18 @@ namespace UNIBO.SET.Model
         {
             return new List<string>() { _file.FullName };
         }
+
+        public string CalcolaMD5()
+        {
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                using (var stream = this.FileStream)
+                {
+                    var hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
+                }
+            }
+        }
     }
 
     public class FileDecifrato : File
