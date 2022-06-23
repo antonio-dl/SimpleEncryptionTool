@@ -13,4 +13,6 @@ namespace Core.Entities.ModelLog
 
     public enum LogType { }
 
+
+    public class Entry { }
 }
