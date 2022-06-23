@@ -42,4 +42,34 @@ namespace UNIBO.SET.Interfaces
         public bool SelezionaUSB(USB usb);
         public USB[] ElencaDispositiviEsterni();
     }
+
+    public interface IGestioneCifratura : IUSBSelectorController
+    {
+        public bool SelezionaUSB();
+        public bool SelezionaDestinazione();
+        public void Cifra();
+        public string GeneraPassword();
+        public bool Aggiungi(SystemElement sysElement);
+        public bool Rimuovi(SystemElement sysElement);
+
+    }
+
+    public interface IGestioneDecifratura : IUSBSelectorController
+    {
+        public bool SelezionaUSB();
+        public void ScansionaUSB();
+        public void SelezionaKey();
+        public void Decifra();
+    }
+
+    public interface IGestioneLog
+    {
+        public void GetEntry(DateTime time1, DateTime time2);
+        public void GetEntry(Date date);
+        public void GetAnomalie(Date dateAnom);
+        public void AnalisiAnomalieOperazioni(Date dateOp );
+        public void AnalisiAnomalieMessaggi(Date dateMes);
+        public void PrintLogOperazione(Entry[] operazioni);
+        public void PrintLogMessaggio(Entry[] messaggi);
+    }
 }
