@@ -17,7 +17,7 @@ namespace UNIBO.SET.Model
         }
 
 
-        public override IList<string> OttieniPaths() // TODO: Test del metodo
+        public override IList<string> OttieniPaths() 
         {
             var result = new List<string>();
             foreach(var dir in _directory.EnumerateDirectories())
