@@ -9,9 +9,17 @@ namespace Core.Entities.LogModel
 {
     public class FileLog : Log
     {
-        public override void Save()
+        public string PathCartella { get; init; }
+        public FileLog (string pathCartella)
         {
-            throw new NotImplementedException();
+            PathCartella = pathCartella;
+        }
+        public override void Save() // Questo metodo va eliminato
+        {
+            var file = File.AppendText(Path.Combine(PathCartella,DateTime.Now.ToString("yMdd")));
+            
+
+
         }
     }
 }
