@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.ModelLog
+namespace UNIBO.SET.ModelLog
 {
     // TODO: Completare il modello
     public abstract class Log : IEnumerable<Entry>

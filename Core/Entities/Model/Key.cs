@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.Model
+namespace UNIBO.SET.Model
 {
     public class Key 
     {
@@ -17,10 +17,12 @@ namespace Core.Entities.Model
 
     }
 
-    public class KeyChain
+    public abstract class KeyChain
     {
         private Key[] _keychain;
 
 
     }
+
+    public class FileKeyChain : KeyChain { }
 }

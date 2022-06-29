@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities.LogModel
+namespace UNIBO.SET.LogModel
 {
     public class FileLog : Log
     {
