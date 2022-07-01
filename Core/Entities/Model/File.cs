@@ -14,12 +14,15 @@ namespace UNIBO.SET.Model
         public string Name { get => _file.Name; }
 
         private CodiceVerifica? _codice = null;
-        public CodiceVerifica CodiceVerifica { get
+        public CodiceVerifica CodiceVerifica
+        {
+            get
             {
-                if(_codice == null)
+                if (_codice == null)
                     _codice = new CodiceVerifica(this.CalcolaMD5());
                 return _codice;
-            } }
+            }
+        }
 
         protected FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
 
@@ -64,8 +67,9 @@ namespace UNIBO.SET.Model
     {
         private Key _key;
 
-        public FileCifrato(string path) : base(path)
+        public FileCifrato(string path, Key key) : base(path)
         {
+            _key = key;
 
         }
 

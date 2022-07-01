@@ -8,8 +8,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{CC38D665-8452-4DF4-B3E1-E88E2DBFA16C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{EAC387C5-4D76-49A2-8ADA-4A1792A607E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC38D665-8452-4DF4-B3E1-E88E2DBFA16C} = {CC38D665-8452-4DF4-B3E1-E88E2DBFA16C}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreTests", "CoreTests\CoreTests.csproj", "{708014DF-1E41-4D69-8DE3-EFDF7AEE9026}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTests", "CoreTests\CoreTests.csproj", "{708014DF-1E41-4D69-8DE3-EFDF7AEE9026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
+using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Interfaces
 {
