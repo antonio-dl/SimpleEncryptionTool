@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
-using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Interfaces
 {
@@ -66,6 +65,8 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneLog
     {
+
+
         public void GetEntry(DateTime time1, DateTime time2);
         public void GetEntry(Date date);
         public void GetAnomalie(Date dateAnom);
