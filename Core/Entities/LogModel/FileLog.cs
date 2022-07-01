@@ -1,4 +1,4 @@
-﻿using Core.Entities.ModelLog;
+﻿using UNIBO.SET.ModelLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
