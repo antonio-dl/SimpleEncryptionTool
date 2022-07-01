@@ -3,8 +3,8 @@ namespace UNIBO.SET.Model
     public class Utente
     {
         private string Nome { get; set; }
-        private Impostazioni impost;
-        private Credenziali cred;
+        public Impostazioni impost;
+        public Credenziali cred;
     }
 
     public abstract class Credenziali
