@@ -8,7 +8,7 @@ using UNIBO.SET.ModelLog;
 
 namespace Services.Presenters
 {
-    public class GesioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog
+    public class GestioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog
     {
     }
 }
