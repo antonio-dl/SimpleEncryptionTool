@@ -17,6 +17,10 @@ namespace UNIBO.SET.ModelLog
             return ((IEnumerable<Entry>)Entries).GetEnumerator();
         }
 
+        public virtual void AddEntry(Entry entry)
+        {
+             Entries.Append(entry);
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
