@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
+using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Interfaces
 {
     public interface IController
     {
-        public void LogIt(EntryType type, Entry entry);
+        public void LogIt(EntryType type, string messaggio);
 
     }
 
@@ -66,13 +67,13 @@ namespace UNIBO.SET.Interfaces
     public interface IGestioneLog
     {
 
-
-        public void GetEntry(DateTime time1, DateTime time2);
-        public void GetEntry(Date date);
-        public void GetAnomalie(Date dateAnom);
-        public void AnalisiAnomalieOperazioni(Date dateOp);
-        public void AnalisiAnomalieMessaggi(Date dateMes);
-        public void PrintLogOperazione(Entry[] operazioni);
-        public void PrintLogMessaggio(Entry[] messaggi);
+        public void WriteLog(EntryType type, string fonte, string messaggio);
+        //public void GetEntry(DateTime time1, DateTime time2);
+        //public void GetEntry(Date date);
+        //public void GetAnomalie(Date dateAnom);
+        //public void AnalisiAnomalieOperazioni(Date dateOp);
+        //public void AnalisiAnomalieMessaggi(Date dateMes);
+        //public void PrintLogOperazione(Entry[] operazioni);
+        //public void PrintLogMessaggio(Entry[] messaggi);
     }
 }

@@ -10,5 +10,17 @@ namespace Services.Presenters
 {
     public class GestioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog
     {
+        private Log _log;
+
+        public GestioneLogPresenter(Log log)
+        {
+            _log = log;
+        }
+
+        public void WriteLog(EntryType type, string fonte, string messaggio)
+        {
+            _log.AddEntry(new Entry(type, fonte, messaggio));
+
+        }
     }
 }
