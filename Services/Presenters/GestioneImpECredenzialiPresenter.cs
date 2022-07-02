@@ -1,6 +1,7 @@
 ﻿using System;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
+using UNIBO.SET.ModelLog;
 
 namespace UNIBO.SET.Services.Presenters
 {
@@ -11,6 +12,11 @@ namespace UNIBO.SET.Services.Presenters
 
         }
 
+        public void LogIt(EntryType type, string messaggio)
+        {
+            throw new NotImplementedException();
+        }
+
         public Impostazioni OttieniImpostazioni()
         {
 
@@ -19,6 +25,11 @@ namespace UNIBO.SET.Services.Presenters
         public void SalvaNuoveCredenziali(Credenziali cred)
         {
 
+        }
+
+        bool IGestioneImpostazioni.CambiaImpostazione(Impostazione impostazione)
+        {
+            throw new NotImplementedException();
         }
     }
 }

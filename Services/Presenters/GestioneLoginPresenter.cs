@@ -1,6 +1,7 @@
 ﻿using System;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
+using UNIBO.SET.ModelLog;
 
 namespace UNIBO.SET.Services.Presenters
 {
@@ -9,6 +10,16 @@ namespace UNIBO.SET.Services.Presenters
         public bool Login(Credenziali cred)
         {
 
+        }
+
+        public bool LogIn(Credenziali credenziali)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogIt(EntryType type, string messaggio)
+        {
+            throw new NotImplementedException();
         }
     }
 }
