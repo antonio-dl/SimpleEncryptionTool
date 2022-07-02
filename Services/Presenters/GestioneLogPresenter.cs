@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using UNIBO.SET.ModelLog;
 
-namespace Services.Presenters
+namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog
     {
@@ -22,5 +22,9 @@ namespace Services.Presenters
             _log.AddEntry(new Entry(type, fonte, messaggio));
 
         }
+
+
+
+
     }
 }
