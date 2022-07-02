@@ -8,24 +8,16 @@ using System.Threading.Tasks;
 namespace UNIBO.SET.ModelLog
 {
     // TODO: Completare il modello
-    public abstract class Log : IEnumerable<Entry>
+    public abstract class Log
     {
         protected Entry[] Entries { get; set; } = new Entry[0];
 
-        public IEnumerator<Entry> GetEnumerator()
-        {
-            return ((IEnumerable<Entry>)Entries).GetEnumerator();
-        }
 
         public virtual void AddEntry(Entry entry)
         {
-             Entries.Append(entry);
+            Entries.Append(entry);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Entries.GetEnumerator();
-        }
     }
 
     public enum EntryType
@@ -38,7 +30,8 @@ namespace UNIBO.SET.ModelLog
     }
 
 
-    public class Entry {
+    public class Entry
+    {
         DateTime Timestamp { get; }
         EntryType Type { get; }
         string Fonte { get; }
