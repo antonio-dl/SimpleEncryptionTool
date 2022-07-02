@@ -19,6 +19,12 @@ namespace UNIBO.SET.Services.Presenters
 
         public Impostazioni OttieniImpostazioni()
         {
+            Impostazioni tutti;
+            Impostazione[] imp = new Impostazione[20];
+            for (int i = 0; i < imp.Length; i++)
+            {
+                imp[i] = 
+            }
 
         }
 

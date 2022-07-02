@@ -19,8 +19,8 @@ namespace UNIBO.SET.Model
 
     public class Impostazione
     {
-        public string Nome;
-        public string[] Opzioni;
-        public string Selezionato;
+        public string Nome { get; set; }
+        public string[] Opzioni { get; set; }
+        public string Selezionato { get; set; }
     }
 }
