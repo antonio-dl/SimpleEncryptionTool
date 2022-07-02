@@ -1,5 +1,6 @@
 ﻿using System;
-using UNIBO.SET.Core.Entities.Interfaces;
+using UNIBO.SET.Interfaces;
+using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Presenters
 {
