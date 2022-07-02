@@ -47,10 +47,8 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneCifratura : IUSBSelectorController
     {
-        public bool SelezionaUSB();
-        public bool SelezionaDestinazione();
-        public void Cifra();
-        public string GeneraPassword();
+        public bool SelezionaDestinazione(string path);
+        public FileCifrato Cifra(File file);
         public bool Aggiungi(FileSystemElement sysElement);
         public bool Rimuovi(FileSystemElement sysElement);
 
@@ -64,10 +62,13 @@ namespace UNIBO.SET.Interfaces
         public void Decifra();
     }
 
-    public interface IGestioneLog
+    public interface ILogger
+    {
+        public void WriteLog(EntryType type, string fonte, string messaggio);
+    }
+    public interface IGestioneLog : ILogger
     {
 
-        public void WriteLog(EntryType type, string fonte, string messaggio);
         //public void GetEntry(DateTime time1, DateTime time2);
         //public void GetEntry(Date date);
         //public void GetAnomalie(Date dateAnom);
