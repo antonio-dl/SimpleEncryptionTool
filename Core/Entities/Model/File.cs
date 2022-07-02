@@ -11,7 +11,7 @@ namespace UNIBO.SET.Model
     {
         private readonly System.IO.FileInfo _file;
 
-        public string Name { get => _file.Name; }
+        public new string Name { get => _file.Name; }
 
         private CodiceVerifica? _codice = null;
         public CodiceVerifica CodiceVerifica

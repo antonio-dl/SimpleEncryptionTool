@@ -15,12 +15,18 @@ namespace UNIBO.SET.ModelLog
         {
             PathCartella = pathCartella;
         }
-        public override void Save() // Questo metodo va eliminato
+
+
+        public override void AddEntry(Entry entry) // Da controllare la chiusura del file
         {
-            var file = File.AppendText(Path.Combine(PathCartella, DateTime.Now.ToString("yMdd")));
+            string path = Path.Combine(PathCartella, DateTime.Now.ToString("yMMdd") + ".log");
+            StreamWriter logFile = File.AppendText(path) ;
 
-
+            string stringEntry = entry.ToString();
+            
+            logFile.WriteLineAsync(stringEntry).Start();
 
         }
+
     }
 }

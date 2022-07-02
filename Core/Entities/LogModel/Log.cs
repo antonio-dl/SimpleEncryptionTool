@@ -10,7 +10,7 @@ namespace UNIBO.SET.ModelLog
     // TODO: Completare il modello
     public abstract class Log : IEnumerable<Entry>
     {
-        protected Entry[] Entries { get; set; }
+        protected Entry[] Entries { get; set; } = new Entry[0];
 
         public IEnumerator<Entry> GetEnumerator()
         {
@@ -26,7 +26,6 @@ namespace UNIBO.SET.ModelLog
         {
             return Entries.GetEnumerator();
         }
-        public abstract void Save();
     }
 
     public enum EntryType
@@ -52,6 +51,24 @@ namespace UNIBO.SET.ModelLog
             Type = type;
             Fonte = fonte;
             Message = message;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.Append(this.Timestamp.ToString("MM/dd/yyyy HH:mm:ss:ff"));
+            result.Append(" | ");
+
+            result.Append(this.Type.ToString());
+            result.Append(" | ");
+
+            result.Append(this.Fonte.ToString());
+            result.Append(" | ");
+
+            result.Append(this.Message.ToString());
+
+            return result.ToString();
         }
     }
 }
