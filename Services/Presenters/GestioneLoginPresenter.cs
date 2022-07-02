@@ -17,5 +17,15 @@ namespace UNIBO.SET.Services.Presenters
         {
             throw new NotImplementedException();
         }
+
+        public bool LogIn(Credenziali credenziali)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogIt(EntryType type, string messaggio)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
