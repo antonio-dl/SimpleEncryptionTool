@@ -24,7 +24,7 @@ namespace UNIBO.SET.Services.Presenters
         {
             CodiceVerifica cvFile = file.CodiceVerifica;
 
-            return cvFile.Codice.Equals(cv.Codice);
+            return cvFile.Equals(cv);
         }
     }
 }
