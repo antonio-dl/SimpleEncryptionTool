@@ -24,6 +24,13 @@ namespace UNIBO.SET.Model
             }
         }
 
+        public bool Equals(CodiceVerifica cv)
+        {
+            CodiceVerifica questo = this.CodiceVerifica;
+
+            return questo.Codice.Equals(cv.Codice);
+        }
+
         protected FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
 
         public File(string path) : base(path)
