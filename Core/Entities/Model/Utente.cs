@@ -12,10 +12,23 @@ namespace UNIBO.SET.Model
             Impostazioni = impostazioni;
             Credenziali = credenziali;
         }
+        /*
+        public void CambiaCredenziali(Credenziali credenziali)
+        {
+            this.Credenziali = credenziali;
+        }
+        */
     }
 
     public abstract class Credenziali
     {
+        public string Passwd { get; }
+
+        public Credenziali(string password)
+        {
+            Passwd = password;
+        }
+
         public abstract bool Confronta(Credenziali credenziali);
     }
 

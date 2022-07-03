@@ -8,16 +8,16 @@ namespace UNIBO.SET.Model
 {
     public class CredenzialiPassword : Credenziali
     {
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        public CredenzialiPassword(string psw)
+        public CredenzialiPassword(string password) : base(password)
         {
-            this.password = psw;
+            Password = password;
         }
 
         public override bool Confronta(Credenziali cred)
         {
-            return this.password.Equals(cred);
+            return this.Password.Equals(cred.Passwd);
         }
     }
 }

@@ -36,7 +36,13 @@ namespace UNIBO.SET.Services.Presenters
 
         public void SalvaNuoveCredenziali(Credenziali cred)
         {
-
+            /*
+            Utente questo;
+            questo.CambiaCredenziali(cred);
+            */
+            /*
+            CredenzialiPassword Password = new CredenzialiPassword(cred.Passwd);
+            */
         }
 
         bool IGestioneImpostazioni.CambiaImpostazione(Impostazione impostazione)
