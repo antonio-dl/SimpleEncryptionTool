@@ -7,15 +7,15 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneImpECrededenzialiPresenter : IGestioneCredenziali, IGestioneImpostazioni
     {
-        public void CambiaImpostazione(Impostazione impost)
+        public void CambiaImpostazione(Impostazione impostazione)
         {
             Impostazioni opt = this.OttieniImpostazioni();
             Impostazione[] tutte = opt.OttieniSettaggi();
             
             for(int i=0; i < opt.NumSettaggi(); i++)
             {
-                if (tutte[i].Nome.Equals(impost.Nome))
-                    tutte[i].Selezionato = impost.Selezionato;
+                if (tutte[i].Nome.Equals(impostazione.Nome))
+                    tutte[i].Selezionato = impostazione.Selezionato;
             }
         }
 
@@ -48,6 +48,10 @@ namespace UNIBO.SET.Services.Presenters
         bool IGestioneImpostazioni.CambiaImpostazione(Impostazione impostazione)
         {
             throw new NotImplementedException();
+            /*
+            Questo metodo è stato implementato già sopra ma con il tipo void e non bool ma nell'interfaccia IGestioneImpostazioni
+            ma nei diagrammi risulta sempre void, quale preferisci mantenere?
+            */
         }
     }
 }
