@@ -23,9 +23,8 @@ namespace UNIBO.SET.Services.Presenters
             Impostazione[] imp = new Impostazione[20];
             for (int i = 0; i < imp.Length; i++)
             {
-                imp[i] = 
+                imp[i]. = 
             }
-
         }
 
         public void SalvaNuoveCredenziali(Credenziali cred)
