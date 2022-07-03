@@ -9,9 +9,10 @@ namespace UNIBO.SET.Services.Presenters
     {
          public void LogIt(EntryType type, string messaggio)
         {
-            throw new NotImplementedException();
-            // Per fare questo, probabilmente va usato il costruttore Entry della classe Log
-            // dove, in base al risultato del metodo (qui VerificaFile), gli passa un messaggio, un tipo e la fonte
+            Entry Nuova;
+            string fonte = "GestioneVerificaPresenter";
+            Nuova = new Entry(type, fonte, messaggio);
+            /* Per il metodo AddEntry non so come reperire un istanza FileLog esistente su cui eseguirla */
         }
         
         public CodiceVerifica GeneraCodice(File file)
@@ -23,6 +24,19 @@ namespace UNIBO.SET.Services.Presenters
         public bool VerificaFile(CodiceVerifica cv, File file)
         {
             CodiceVerifica cvFile = file.CodiceVerifica;
+
+            if(cvFile.Equals(cv))
+            {
+                EntryType tipo = EntryType.Info;
+                string msg = "L'operazione di verifica ha avuto successo, il codice verifica combacia con quello del file";
+                LogIt(tipo, msg);
+            }
+            else
+            {
+                EntryType tipo = EntryType.Avvertimento;
+                string msg = "L'operazione di verifica ha avuto esito negativo, il codice verifica non è lo stesso di quello del file";
+                LogIt(tipo, msg);
+            }
 
             return cvFile.Equals(cv);
         }
