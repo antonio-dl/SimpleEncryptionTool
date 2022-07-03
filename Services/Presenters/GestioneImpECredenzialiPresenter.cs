@@ -9,7 +9,14 @@ namespace UNIBO.SET.Services.Presenters
     {
         public void CambiaImpostazione(Impostazione impost)
         {
-
+            Impostazioni opt = this.OttieniImpostazioni();
+            Impostazione[] tutte = opt.OttieniSettaggi();
+            
+            for(int i=0; i < opt.NumSettaggi(); i++)
+            {
+                if (tutte[i].Nome.Equals(impost.Nome))
+                    tutte[i].Selezionato = impost.Selezionato;
+            }
         }
 
         public void LogIt(EntryType type, string messaggio)
@@ -19,12 +26,12 @@ namespace UNIBO.SET.Services.Presenters
 
         public Impostazioni OttieniImpostazioni()
         {
-            Impostazioni tutti;
-            Impostazione[] imp = new Impostazione[20];
-            for (int i = 0; i < imp.Length; i++)
-            {
-                imp[i]. = 
-            }
+            Impostazioni result;
+            Impostazione[] tutte;
+
+            //return result;
+            throw new NotImplementedException();
+
         }
 
         public void SalvaNuoveCredenziali(Credenziali cred)

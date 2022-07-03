@@ -10,6 +10,8 @@ namespace UNIBO.SET.Services.Presenters
          public void LogIt(EntryType type, string messaggio)
         {
             throw new NotImplementedException();
+            // Per fare questo, probabilmente va usato il costruttore Entry della classe Log
+            // dove, in base al risultato del metodo (qui VerificaFile), gli passa un messaggio, un tipo e la fonte
         }
         
         public CodiceVerifica GeneraCodice(File file)
