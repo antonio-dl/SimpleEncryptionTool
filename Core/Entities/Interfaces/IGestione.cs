@@ -35,8 +35,8 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneVerifica : IController
     {
-        public void VerificaFile(CodiceVerifica codVerifica, File file);
-        public void GeneraCodice(File file);
+        public bool VerificaFile(CodiceVerifica codVerifica, File file);
+        public CodiceVerifica GeneraCodice(File file);
     }
 
     public interface IUSBSelectorController : IController
