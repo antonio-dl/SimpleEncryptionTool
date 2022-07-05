@@ -12,12 +12,6 @@ namespace UNIBO.SET.Model
             Impostazioni = impostazioni;
             Credenziali = credenziali;
         }
-        /*
-        public void CambiaCredenziali(Credenziali credenziali)
-        {
-            this.Credenziali = credenziali;
-        }
-        */
     }
 
     public abstract class Credenziali
@@ -51,6 +45,7 @@ namespace UNIBO.SET.Model
             _ = settaggi.Append(imp);
         }
         */
+
         public int NumSettaggi()
         {
             return settaggi.Length;

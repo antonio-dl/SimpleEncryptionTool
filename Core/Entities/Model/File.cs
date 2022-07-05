@@ -94,6 +94,11 @@ namespace UNIBO.SET.Model
         {
             return cv is not null && this.Codice.Equals(cv.Codice);
         }
-        
+
+        public override int GetHashCode()
+        {
+            return this.Codice.GetHashCode() * 17;
+            // dimmi se può andare bene così
+        }
     }
 }

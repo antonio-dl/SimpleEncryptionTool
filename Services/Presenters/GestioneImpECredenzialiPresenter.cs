@@ -7,51 +7,46 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneImpECrededenzialiPresenter : IGestioneCredenziali, IGestioneImpostazioni
     {
-        public void CambiaImpostazione(Impostazione impostazione)
+        private Utente _utente;
+        private ILogger _logger;
+
+        public GestioneImpECrededenzialiPresenter(Utente utente, ILogger logger)
         {
-            Impostazioni opt = this.OttieniImpostazioni();
+            _utente = utente;
+            _logger = logger;
+        }
+
+        public bool CambiaImpostazione(Impostazione impostazione)
+        {
+            Impostazioni opt = _utente.Impostazioni;
             Impostazione[] tutte = opt.OttieniSettaggi();
             
             for(int i=0; i < opt.NumSettaggi(); i++)
             {
                 if (tutte[i].Nome.Equals(impostazione.Nome))
+                {
                     tutte[i].Selezionato = impostazione.Selezionato;
+                    return true;
+                }
             }
+            return false;
+            // Va loggato il caso in cui l'impostazione passata come parametro non esista o sia sbagliata?
+            // perché non so che altro possa dare un errore imprevisto
         }
 
         public void LogIt(EntryType type, string messaggio)
         {
-            throw new NotImplementedException();
+            _logger.WriteLog(type, this.GetType().Name, messaggio);
         }
 
         public Impostazioni OttieniImpostazioni()
         {
-            Impostazioni result;
-            Impostazione[] tutte;
-
-            //return result;
-            throw new NotImplementedException();
-
+            return _utente.Impostazioni;
         }
 
         public void SalvaNuoveCredenziali(Credenziali cred)
         {
-            /*
-            Utente questo;
-            questo.CambiaCredenziali(cred);
-            */
-            /*
-            CredenzialiPassword Password = new CredenzialiPassword(cred.Passwd);
-            */
-        }
-
-        bool IGestioneImpostazioni.CambiaImpostazione(Impostazione impostazione)
-        {
-            throw new NotImplementedException();
-            /*
-            Questo metodo è stato implementato già sopra ma con il tipo void e non bool ma nell'interfaccia IGestioneImpostazioni
-            ma nei diagrammi risulta sempre void, quale preferisci mantenere?
-            */
+            _utente.Credenziali = cred;
         }
     }
 }

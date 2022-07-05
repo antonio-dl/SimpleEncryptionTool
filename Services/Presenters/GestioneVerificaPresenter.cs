@@ -7,12 +7,16 @@ namespace UNIBO.SET.Services.Presenters
 {
 	public class GestioneVerificaPresenter : IGestioneVerifica
     {
-         public void LogIt(EntryType type, string messaggio)
+        private ILogger _logger;
+
+        public GestioneVerificaPresenter(ILogger logger)
         {
-            Entry Nuova;
-            string fonte = "GestioneVerificaPresenter";
-            Nuova = new Entry(type, fonte, messaggio);
-            /* Per il metodo AddEntry non so come reperire un istanza FileLog esistente su cui eseguirla */
+            _logger = logger;
+        }
+
+        public void LogIt(EntryType type, string messaggio)
+        {
+            _logger.WriteLog(type, this.GetType().Name, messaggio);
         }
         
         public CodiceVerifica GeneraCodice(File file)
@@ -23,22 +27,22 @@ namespace UNIBO.SET.Services.Presenters
 
         public bool VerificaFile(CodiceVerifica cv, File file)
         {
-            CodiceVerifica cvFile = file.CodiceVerifica;
-
-            if(cvFile.Equals(cv))
+            try
             {
-                EntryType tipo = EntryType.Info;
-                string msg = "L'operazione di verifica ha avuto successo, il codice verifica combacia con quello del file";
-                LogIt(tipo, msg);
-            }
-            else
-            {
-                EntryType tipo = EntryType.Avvertimento;
-                string msg = "L'operazione di verifica ha avuto esito negativo, il codice verifica non è lo stesso di quello del file";
-                LogIt(tipo, msg);
-            }
+                CodiceVerifica cvFile = file.CodiceVerifica;
 
-            return cvFile.Equals(cv);
+                if (!cvFile.Equals(cv))
+                {
+                    LogIt(EntryType.Avvertimento, $"Verifica del file {file.Path} fallita");
+                    return false;
+                }
+                return true;
+            }
+            catch(IOException e)
+            {
+                LogIt(EntryType.Errore, $"Errore nella verifica del file {file.Path}");
+                throw new IOException($"Errore nella verifica del file {file.Path}", e);
+            }
         }
     }
 }
