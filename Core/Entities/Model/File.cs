@@ -97,8 +97,7 @@ namespace UNIBO.SET.Model
 
         public override int GetHashCode()
         {
-            return this.Codice.GetHashCode() * 17;
-            // dimmi se può andare bene così
+            return HashCode.Combine(Codice);
         }
     }
 }
