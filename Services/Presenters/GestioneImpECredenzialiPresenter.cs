@@ -6,7 +6,7 @@ using UNIBO.SET.ModelLog;
 namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneImpECrededenzialiPresenter : IGestioneCredenziali, IGestioneImpostazioni
-    {
+    {   
         private Utente _utente;
         private ILogger _logger;
 
