@@ -19,5 +19,17 @@ namespace UNIBO.SET.Model
         {
             return this.Password.Equals(cred.Passwd);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is CredenzialiPassword password &&
+                   Password == password.Password;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Password);
+        }
     }
+
 }
