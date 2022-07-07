@@ -17,7 +17,8 @@ namespace UNIBO.SET.Model
 
         public override bool Confronta(Credenziali cred)
         {
-            return this.Password.Equals(cred.Passwd);
+            return cred is CredenzialiPassword credpass &&
+                   Password == credpass.Password;
         }
 
         public override bool Equals(object? obj)

@@ -24,7 +24,7 @@ namespace UNIBO.SET.Model
             }
         }
 
-        protected FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
+        public FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
 
         public File(string path) : base(path)
         {
