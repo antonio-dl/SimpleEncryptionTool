@@ -10,7 +10,7 @@ namespace UNIBO.SET.Model
     {
         public string Password { get; set; }
 
-        public CredenzialiPassword(string password) : base(password)
+        public CredenzialiPassword(string password)
         {
             Password = password;
         }
