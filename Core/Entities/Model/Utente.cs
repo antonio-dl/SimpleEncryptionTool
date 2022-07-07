@@ -16,12 +16,6 @@ namespace UNIBO.SET.Model
 
     public abstract class Credenziali
     {
-        public string Passwd { get; }
-
-        public Credenziali(string password)
-        {
-            Passwd = password;
-        }
 
         public abstract bool Confronta(Credenziali credenziali);
     }
