@@ -26,12 +26,12 @@ namespace UNIBO.SET.Services.Presenters
                 if (tutte[i].Nome.Equals(impostazione.Nome))
                 {
                     tutte[i].Selezionato = impostazione.Selezionato;
+                    LogIt(EntryType.Info, $"{impostazione.Nome}: l'impostazione è stata modificata in {impostazione.Selezionato}");
                     return true;
                 }
             }
+            LogIt(EntryType.Errore, $"Impossibile modificare l'impostazione {impostazione.Nome}");
             return false;
-            // Va loggato il caso in cui l'impostazione passata come parametro non esista o sia sbagliata?
-            // perché non so che altro possa dare un errore imprevisto
         }
 
         public void LogIt(EntryType type, string messaggio)
@@ -44,9 +44,9 @@ namespace UNIBO.SET.Services.Presenters
             return _utente.Impostazioni;
         }
 
-        public void SalvaNuoveCredenziali(Credenziali cred)
+        public void SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
         {
-            _utente.Credenziali = cred;
+            throw new NotImplementedException();
         }
     }
 }

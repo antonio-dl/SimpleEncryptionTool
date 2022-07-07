@@ -25,7 +25,7 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneCredenziali : IController
     {
-        public void SalvaNuoveCredenziali(Credenziali credenziali);
+        public void SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove);
     }
 
     public interface IGestioneLogin : IController
