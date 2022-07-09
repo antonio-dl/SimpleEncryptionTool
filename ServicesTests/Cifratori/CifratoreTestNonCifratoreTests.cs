@@ -16,7 +16,7 @@ namespace Services.Cifratori.Tests
         public void CifraFileTest()
         {
             File provaFile = new File("C:\\Users\\jackg\\Desktop\\prova.txt");
-            var cifratore = new CifratoreTestNonCifratore();
+            var cifratore = new CifratoreAEScbc();
             cifratore.CifraFile(provaFile);
         }
     }

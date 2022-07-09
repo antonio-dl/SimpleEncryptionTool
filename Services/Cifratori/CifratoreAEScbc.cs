@@ -20,7 +20,7 @@ namespace Services.Cifratori
             using var aes = Aes.Create();
             aes.Mode = CipherMode.CBC;// Modalita CBC (dal nome classe)
             
-            aes.Key = System.Convert.FromBase64String("banana"));
+            aes.Key = System.Convert.FromBase64String("banana");
 
             using var encryptor = aes.CreateEncryptor();
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
