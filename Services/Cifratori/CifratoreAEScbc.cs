@@ -18,8 +18,9 @@ namespace Services.Cifratori
             using var sourceStream = fileIn.FileStream;
             using var targetStream = fcout.FileStream;
             using var aes = Aes.Create();
-            aes.Mode = CipherMode.CBC; // Modalita CBC (dal nome classe)
-            //aes.Key = System.Convert.FromBase64String(key.GetPassword());
+            aes.Mode = CipherMode.CBC;// Modalita CBC (dal nome classe)
+            
+            aes.Key = System.Convert.FromBase64String("banana"));
 
             using var encryptor = aes.CreateEncryptor();
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
