@@ -9,10 +9,11 @@ namespace UNIBO.SET.Model
 {
     public class Key 
     {
-        private string _nomeOriginale;
-        private string _pathOriginale;
+
 
         private byte[] _password;
+        private string _algoritmo;
+
 
 
     }
