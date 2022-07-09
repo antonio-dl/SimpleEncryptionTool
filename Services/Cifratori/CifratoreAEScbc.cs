@@ -12,14 +12,14 @@ namespace Services.Cifratori
     {
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
         {
-            Key key = _kgen.generateKey();
+            Key key = new Key(); // TODO: da modificare
 
             FileCifrato fcout = new FileCifrato(fileIn.Path + ".sef", key);
             using var sourceStream = fileIn.FileStream;
             using var targetStream = fcout.FileStream;
             using var aes = Aes.Create();
             aes.Mode = CipherMode.CBC; // Modalita CBC (dal nome classe)
-            aes.Key = System.Convert.FromBase64String(key.GetPassword());
+            //aes.Key = System.Convert.FromBase64String(key.GetPassword());
 
             using var encryptor = aes.CreateEncryptor();
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
