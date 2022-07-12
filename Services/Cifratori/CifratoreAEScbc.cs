@@ -26,7 +26,7 @@ namespace Services.Cifratori
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
 
             targetStream.Write(aes.IV, 0, aes.Key.Length);
-            sourceStream.CopyToAsync(cryptoStream).Start(); //async start
+            sourceStream.CopyTo(cryptoStream); //async start
 
             return fcout;
 

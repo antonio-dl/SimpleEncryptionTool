@@ -16,6 +16,7 @@ namespace Services.Cifratori.Tests
         public void CifraFileTest()
         {
             string pathfile = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\prova.txt";
+            string test = System.IO.File.ReadAllText(pathfile);
             System.IO.File.Delete(pathfile + ".sef");
             File provaFile = new File(pathfile);
             var cifratore = new CifratoreTestNonCifratore();

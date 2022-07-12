@@ -16,7 +16,14 @@ namespace Services.Cifratori
 
             FileCifrato fc = new FileCifrato(fileIn.Path + ".sef", key);
 
+            
+            
             fileIn.FileStream.CopyTo(fc.FileStream);
+
+            fc.FileStream.Close();
+            fileIn.FileStream.Close();
+
+
 
             return fc;
 

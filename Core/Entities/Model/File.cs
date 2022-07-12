@@ -24,7 +24,13 @@ namespace UNIBO.SET.Model
             }
         }
 
-        public FileStream FileStream { get => _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
+        private FileStream? _fileStream = null;
+        public FileStream FileStream { get => this._fileStream ??= _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); } // TODO: da eliminare
+
+        public virtual FileStream Open()
+        {
+            return _file.Open(FileMode.Open, FileAccess.Read);
+        }
 
         public File(string path) : base(path)
         {
