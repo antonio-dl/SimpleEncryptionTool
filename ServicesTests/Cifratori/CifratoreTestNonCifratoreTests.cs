@@ -18,11 +18,14 @@ namespace Services.Cifratori.Tests
             string pathfile = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\prova.txt";
             string test = System.IO.File.ReadAllText(pathfile);
             System.IO.File.Delete(pathfile + ".sef");
+
+
             File provaFile = new File(pathfile);
-            var cifratore = new CifratoreTestNonCifratore();
+            var cifratore = new CifratoreAEScbc();
             cifratore.CifraFile(provaFile);
 
             Assert.IsTrue(System.IO.File.Exists(pathfile + ".sef"));
+            Assert.IsTrue(System.IO.File.ReadAllText(pathfile + ".sef").Length > 5);
         }
     }
 }

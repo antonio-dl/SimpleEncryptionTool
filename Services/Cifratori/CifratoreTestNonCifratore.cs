@@ -12,18 +12,13 @@ namespace Services.Cifratori
     {
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
         {
-            Key key = new Key();
 
-            FileCifrato fc = new FileCifrato(fileIn.Path + ".sef", key);
+            FileCifrato fc = new FileCifrato(fileIn.Path + ".sef", null);
 
-            
-            
-            fileIn.FileStream.CopyTo(fc.FileStream);
+            using var streamOut = fc.Create();
+            using var streamIn = fileIn.Open();
 
-            fc.FileStream.Close();
-            fileIn.FileStream.Close();
-
-
+            streamIn.CopyToAsync(streamOut).Start();
 
             return fc;
 

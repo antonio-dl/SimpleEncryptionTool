@@ -8,30 +8,29 @@ using System.Security.Cryptography;
 
 namespace Services.Cifratori
 {
-    public class CifratoreAEScbc : UNIBO.SET.Services.Presenters.ICifratore // Inserire qui la logica di cifrazione dei file
+    public class CifratoreAEScbc : UNIBO.SET.Services.Presenters.ICifratore // Logica di cifrazione dei file
     {
-        public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
+        public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn) // NOTE: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
         {
-            Key key = new Key(); // TODO: da modificare
 
-            FileCifrato fcout = new FileCifrato(fileIn.Path + ".sef", key);
-            using var sourceStream = fileIn.FileStream;
-            using var targetStream = fcout.FileStream;
             using var aes = Aes.Create();
             aes.Mode = CipherMode.CBC;// Modalita CBC (dal nome classe)
+            string pathFileCifrato = fileIn.Path + ".sef";
             
-            aes.Key = System.Convert.FromBase64String("banana");
+            Key key = new Key(fileIn.Path, pathFileCifrato, aes.Key, aes.Mode.ToString());
+            FileCifrato fcout = new FileCifrato(pathFileCifrato, key);
+            using var sourceStream = fileIn.Open();
+            using var targetStream = fcout.Create();
+
+
 
             using var encryptor = aes.CreateEncryptor();
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
 
-            targetStream.Write(aes.IV, 0, aes.Key.Length);
-            sourceStream.CopyTo(cryptoStream); //async start
+            targetStream.Write(aes.IV, 0, aes.IV.Length);
+            sourceStream.CopyTo(cryptoStream);
 
             return fcout;
-
-
-
         }
     }
 }
