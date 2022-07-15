@@ -12,13 +12,13 @@ using File = UNIBO.SET.Model.File;
 namespace Services.Cifratori.Tests
 {
     [TestClass()]
-    public class CifratoreTestNonCifratoreTests
+    public class CifratoreAEScbdTests
     {
         [TestMethod()]
         public void CifraFileTest()
         {
-            const string pathfile = Test.Constanti.CARTELLATEST + "\\prova.txt";
-            const string contenutoFile = Test.Constanti.TESTODIPROVA;
+            string pathfile = Test.Constanti.CARTELLATEST + "\\prova.txt";
+            string contenutoFile = Test.Constanti.TESTODIPROVA;
 
 
             CreaFileDiTest(pathfile,contenutoFile);
@@ -27,13 +27,15 @@ namespace Services.Cifratori.Tests
 
 
             File provaFile = new File(pathfile);
-            var cifratore = new TestNonCifratore();
+            var cifratore = new CifratoreAEScbc();
             var fc = cifratore.CifraFile(provaFile);
 
             Assert.IsTrue(System.IO.File.Exists(fc.Path));
-            string lettoDaFile = System.IO.File.ReadAllText(fc.Path);
-            Assert.IsTrue(lettoDaFile.Length == contenutoFile.Length );
-            Assert.AreEqual(lettoDaFile, contenutoFile);
+
+            string testoLetto = System.IO.File.ReadAllText(fc.Path);
+            Assert.IsTrue(testoLetto.Length > contenutoFile.Length ); // Maggiore per aggiunta del IV
+            Assert.AreNotEqual<string>(testoLetto, contenutoFile);
+
         }
 
         private static void CreaFileDiTest(string pathfile, string content)

@@ -18,7 +18,7 @@ namespace Services.Cifratori
             using var streamOut = fc.Create();
             using var streamIn = fileIn.Open();
 
-            streamIn.CopyToAsync(streamOut).Start();
+            streamIn.CopyTo(streamOut);
 
             return fc;
 

@@ -14,8 +14,8 @@ namespace UNIBO.SET.Model.Tests
         [TestMethod()]
         public void CalcolaMD5Test()
         {
-            const string TESTPATH0 = @"C:\Users\De Luca\Desktop\asd0.txt";
-            const string TESTPATH1 = @"C:\Users\De Luca\Desktop\asd2.txt";
+            const string TESTPATH0 = Test.Constanti.CARTELLATEST + "\\asd1.txt";
+            const string TESTPATH1 = Test.Constanti.CARTELLATEST + "\\asd2.txt";
 
             const string contenuto = "aaabbbccc";
 

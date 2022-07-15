@@ -14,8 +14,9 @@ namespace UNIBO.SET.Model.Tests
         [TestMethod()]
         public void OttieniPathsTest()
         {
-            const string TESTPATH = @"C:\Users\De Luca\Desktop\Reti di Calcolatori 2019";
+            const string TESTPATH = Test.Constanti.CARTELLATEST;
 
+            Assert.IsTrue(System.IO.Directory.Exists(TESTPATH));
             var cartella = new Cartella(TESTPATH);
             var lista = cartella.OttieniPaths().ToList();
             return;
