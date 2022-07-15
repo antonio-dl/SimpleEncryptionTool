@@ -30,9 +30,19 @@ namespace UNIBO.SET.Services.Presenters
            return ListaFileSelezionati.Add(sysElement);
         }
 
-        public FileCifrato Cifra(Model.File file)
+        public FileCifrato Cifra(Model.File file) // dA vedere altre eccezioni
         {
-            return this.Cifratore.CifraFile(file);
+            this.LogIt(EntryType.Operazione, $"Cifrato file nel path: {file.Path}");
+            try
+            {
+                return this.Cifratore.CifraFile(file);
+            }
+            catch(FileNotFoundException ex)
+            {
+                this.LogIt(EntryType.Errore, $"Il file non esiste: {file.Path}");
+                throw ex;
+            }
+
         }
 
         public USB[] ElencaDispositiviEsterni()

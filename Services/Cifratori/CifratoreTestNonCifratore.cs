@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace Services.Cifratori
 {
-    public class CifratoreTestNonCifratore : UNIBO.SET.Services.Presenters.ICifratore // Inserire qui la logica di cifrazione dei file
+    public class TestNonCifratore : UNIBO.SET.Services.Presenters.ICifratore // Inserire qui la logica di cifrazione dei file
     {
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
         {
