@@ -8,14 +8,14 @@ using System.Security.Cryptography;
 
 namespace Services.Cifratori
 {
-    public class CifratoreAEScbc : UNIBO.SET.Services.Presenters.ICifratore // Logica di cifrazione dei file
+    public class CifratoreAESecb : UNIBO.SET.Services.Presenters.ICifratore // Logica di cifrazione dei file
         //TODO: logging
     {
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn) // NOTE: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
         {
 
             using var aes = Aes.Create();
-            aes.Mode = CipherMode.CBC;// Modalita CBC (dal nome classe)
+            aes.Mode = CipherMode.ECB;// Modalita CBC (dal nome classe)
             string pathFileCifrato = fileIn.Path + ".sef";
             
             Key key = new Key(fileIn.Path, pathFileCifrato, aes.Key, aes.Mode.ToString());
