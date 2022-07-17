@@ -35,6 +35,9 @@
             _file = new System.IO.FileInfo(path);
         }
 
+        public bool Exists => _file.Exists;
+
+
         public CodiceVerifica CodiceVerifica
         {
             get

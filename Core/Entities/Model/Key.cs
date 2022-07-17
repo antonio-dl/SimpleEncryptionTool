@@ -9,25 +9,30 @@ namespace UNIBO.SET.Model
 {
     public class Key
     {
-        private string _sourceFilePath;
-        private string _targetFilePath;
+        public string Algoritmo { get; }
+        public string TargetFile { get; }
+        public string SourceFilePath { get; }
+        public byte[] Password { get; }
 
-        private byte[] _password;
-        private string _algoritmo;
+        public DateTime  { get; }
+
+
+
+
 
         public Key(string sourceFilePath, string targetFilePath, byte[]? password, string algoritmo)
         {
-            _sourceFilePath = sourceFilePath ?? throw new ArgumentNullException(nameof(sourceFilePath));
-            _targetFilePath = targetFilePath ?? throw new ArgumentNullException(nameof(targetFilePath));
-            _password = password ?? throw new ArgumentNullException(nameof(password));
-            _algoritmo = algoritmo ?? throw new ArgumentNullException(nameof(algoritmo));
+            SourceFilePath = sourceFilePath ?? throw new ArgumentNullException(nameof(sourceFilePath));
+            TargetFile = targetFilePath ?? throw new ArgumentNullException(nameof(targetFilePath));
+            Password = password ?? throw new ArgumentNullException(nameof(password));
+            Algoritmo = algoritmo ?? throw new ArgumentNullException(nameof(algoritmo));
         }
 
-        }
+    }
 
 
 
-    
+
 
     public abstract class KeyChain
     {
