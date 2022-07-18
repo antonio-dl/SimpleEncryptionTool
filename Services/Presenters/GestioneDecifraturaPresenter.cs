@@ -18,7 +18,8 @@ namespace UNIBO.SET.Services.Presenters
         private IDecifratore? _decifratore;
 
 
-        public USB? SelectedUSB { get; set; }
+        public USB? SelectedUSB { get; private set; }
+        public KeyChain? SelectedKeyChain { get; private set; }
 
         private readonly Dictionary<string, IDecifratore> _decifratoriDictonary;
 
