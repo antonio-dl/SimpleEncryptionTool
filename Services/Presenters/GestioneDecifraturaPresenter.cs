@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,17 @@ namespace UNIBO.SET.Services.Presenters
 
     public class GestioneDecifraturaPresenter : IGestioneDecifratura
     {
-        private ILogger _logger;
-        private IDecifratore _decifratore;
+        private readonly ILogger _logger;
+        private IDecifratore? _decifratore;
 
-        private Dictionary<string, IDecifratore> _decifratoriDictonary;
+        private readonly Dictionary<string, IDecifratore> _decifratoriDictonary;
+
+        public GestioneDecifraturaPresenter(ILogger logger, Dictionary<string, IDecifratore> decifratoriDictonary)
+        {
+            _logger = logger;
+            _decifratoriDictonary = decifratoriDictonary;
+
+        }
 
         public FileDecifrato Decifra(Key key)
         {
