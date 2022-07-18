@@ -41,7 +41,7 @@ namespace UNIBO.SET.Interfaces
 
     public interface IUSBSelectorController : IController
     {
-        public bool SelezionaUSB(USB usb);
+        public void SelezionaUSB(USB usb);
         public USB[] ElencaDispositiviEsterni();
     }
 

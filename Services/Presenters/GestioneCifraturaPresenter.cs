@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Shared;
+using System;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
@@ -47,7 +48,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public USB[] ElencaDispositiviEsterni()
         {
-            throw new NotImplementedException();
+            return SystemHelper.GetUsbs();
         }
 
 
@@ -66,10 +67,9 @@ namespace UNIBO.SET.Services.Presenters
             throw new NotImplementedException();
         }
 
-        public bool SelezionaUSB(USB usb)
+        public void SelezionaUSB(USB usb)
         {
             this.SelectedUSB = usb;
-            return true; // TODO: Da cambiare
         }
     }
 }

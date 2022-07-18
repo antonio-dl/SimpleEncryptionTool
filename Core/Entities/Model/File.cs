@@ -50,7 +50,6 @@
 
         public FileStream FileStream { get => this._fileStream ??= _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
         public new string Name { get => _file.Name; }
-        // TODO: da eliminare
 
         public string CalcolaMD5()
         {
