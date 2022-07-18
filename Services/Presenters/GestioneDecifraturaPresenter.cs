@@ -17,6 +17,9 @@ namespace UNIBO.SET.Services.Presenters
         private readonly ILogger _logger;
         private IDecifratore? _decifratore;
 
+
+        public USB? SelectedUSB { get; set; }
+
         private readonly Dictionary<string, IDecifratore> _decifratoriDictonary;
 
         public GestioneDecifraturaPresenter(ILogger logger, Dictionary<string, IDecifratore> decifratoriDictonary)
@@ -86,14 +89,14 @@ namespace UNIBO.SET.Services.Presenters
         }
 
 
-        public void SelezionaKey(Key key)
+        public void SelezionaKeyChain(KeyChain chain)
         {
             throw new NotImplementedException();
         }
 
-        public bool SelezionaUSB(USB usb)
+        public void SelezionaUSB(USB usb)
         {
-            throw new NotImplementedException();
+            this.SelectedUSB = usb;
         }
 
 
