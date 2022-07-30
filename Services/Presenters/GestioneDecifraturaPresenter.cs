@@ -1,4 +1,5 @@
-﻿using Services.Shared;
+﻿using Services.Decifratori;
+using Services.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,11 +103,5 @@ namespace UNIBO.SET.Services.Presenters
 
 
 
-    }
-
-    public interface IDecifratore
-    {
-        FileDecifrato Decifra(Key key);
-        string Algoritmo { get; }
     }
 }

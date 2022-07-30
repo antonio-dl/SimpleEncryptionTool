@@ -1,4 +1,5 @@
-﻿using Services.Shared;
+﻿using Services.Cifratori;
+using Services.Shared;
 using System;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
@@ -6,10 +7,6 @@ using UNIBO.SET.ModelLog;
 
 namespace UNIBO.SET.Services.Presenters
 {
-    public interface ICifratore
-    {
-        public FileCifrato CifraFile(Model.File file);
-    }
 
     public class GestioneCifraturaPresenter : IGestioneCifratura
     {
