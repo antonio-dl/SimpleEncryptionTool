@@ -4,6 +4,6 @@ namespace Services.Cifratori
 {
     public interface ICifratore
     {
-        public FileCifrato CifraFile(Model.File file);
+        public FileCifrato CifraFile(UNIBO.SET.Model.File file);
     }
 }
