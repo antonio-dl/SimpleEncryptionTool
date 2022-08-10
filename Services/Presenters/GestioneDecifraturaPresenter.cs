@@ -1,4 +1,5 @@
-﻿using Services.Shared;
+﻿using Services.Decifratori;
+using Services.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,11 +61,11 @@ namespace UNIBO.SET.Services.Presenters
                 this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
                 throw e;
             }
-            catch (DecifrazioneException e)
-            {
-                this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
-                throw e;
-            }
+            //catch (DecifrazioneException e)
+            //{
+            //    this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
+            //    throw e;
+            //}
 
 
         }
@@ -102,11 +103,5 @@ namespace UNIBO.SET.Services.Presenters
 
 
 
-    }
-
-    public interface IDecifratore
-    {
-        FileDecifrato Decifra(Key key);
-        string Algoritmo { get; }
     }
 }
