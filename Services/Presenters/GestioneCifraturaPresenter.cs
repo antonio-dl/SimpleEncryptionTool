@@ -12,20 +12,22 @@ namespace UNIBO.SET.Services.Presenters
     {
         private ILogger _logger;
         public USB? SelectedUSB { get; set; }
-        public HashSet<FileSystemElement> ListaFileSelezionati { get; set; }
+        public HashSet<string> ListaFileSelezionati { get; set; }
 
         ICifratore Cifratore { get; set; }
 
         public GestioneCifraturaPresenter(ICifratore cifratore, ILogger logger)
         {
             Cifratore = cifratore;
-            ListaFileSelezionati = new HashSet<FileSystemElement>();
+            ListaFileSelezionati = new HashSet<string>();
             _logger = logger;
         }
 
         public bool Aggiungi(FileSystemElement sysElement)
         {
-           return ListaFileSelezionati.Add(sysElement);
+            foreach(string path in sysElement.OttieniPaths())
+                ListaFileSelezionati.Add(path);
+            return true;
         }
 
         public FileCifrato Cifra(Model.File file) // dA vedere altre eccezioni

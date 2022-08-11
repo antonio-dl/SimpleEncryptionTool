@@ -10,17 +10,18 @@ namespace UNIBO.SET.ModelLog
 {
     public class FileLog : Log
     {
-        public string PathCartella { get; init; }
-        public FileLog(string pathCartella)
+        public string PathFile { get; init; }
+        public FileLog(string pathFile)
         {
-            PathCartella = pathCartella;
+            PathFile = pathFile;
         }
 
 
         public override void AddEntry(Entry entry) // Da controllare la chiusura del file
         {
-            string path = Path.Combine(PathCartella, DateTime.Now.ToString("yMMdd") + ".log");
-            using StreamWriter logFile = File.AppendText(path);
+            // usare questa stringa per l Inizializzatore
+            // string path = Path.Combine(PathFile, DateTime.Now.ToString("yMMdd") + ".log"); // es: 200403
+            using StreamWriter logFile = File.AppendText(PathFile);
 
             string stringEntry = entry.ToString();
             
