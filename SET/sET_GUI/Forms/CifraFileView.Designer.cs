@@ -84,7 +84,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Name = "CifraFileView";
-            this.Text = "FormCifra";
+            this.Text = "Cifra File";
             this.ResumeLayout(false);
 
         }

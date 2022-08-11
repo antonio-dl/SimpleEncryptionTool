@@ -1,10 +1,13 @@
+
+
 namespace sET_GUI
 {
     public partial class HomeSET : Form
     {
-        private Button currentButton;
-        private Random random;
-        private int tempIndex;
+        private RadioButton currentButton;
+       // private Random random;
+       // private int tempIndex;
+        private Form activeForm;
         public HomeSET()
         {
             InitializeComponent();
@@ -20,35 +23,50 @@ namespace sET_GUI
             string color = ThemeColor.ColorList[index];
             return ColorTranslator.FromHtml(color);
         }*/
-        private void ActivateButton(object sender)
+        private void ActivateRadioButton(object sender)
         {
             if (sender != null)
             {
-                if (currentButton != (Button)sender)
+                if (currentButton != (RadioButton)sender)
                 {
-                    currentButton = (Button)sender;
-                    currentButton.BackColor = Color.BurlyWood;
+                    DisableRadioButton();
+                    currentButton = (RadioButton)sender;
+                    currentButton.BackColor = Color.Crimson;
                     currentButton.ForeColor = Color.White;
                 }
             }
         }
 
-       /* private void OpenChildForm(Form childForm, object sender)
+        private void DisableRadioButton()
         {
-            if(activeForm!=null){
-                ActiveForm.close();
+            foreach(Control previousBtn in groupBox1.Controls)
+            {
+                if (previousBtn.GetType() == typeof(RadioButton))
+                {
+                    previousBtn.BackColor = Color.Coral;
+                }
             }
-            ActivateButton(sender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.panelDesktopPane.Controls.Add(childForm);
-            this.panelDesktopPane.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-            lblTitle.Text = childForm.Text;
-        }*/
+        }
+
+
+
+         private void OpenChildForm(Form childForm, object sender)
+         {
+             if(activeForm!=null)
+             {
+                 ActiveForm.Close();
+             }
+             ActivateRadioButton(sender);
+             activeForm = childForm;
+             childForm.TopLevel = false;
+             childForm.FormBorderStyle = FormBorderStyle.None;
+             childForm.Dock = DockStyle.Fill;
+             this.panel4.Controls.Add(childForm);
+             this.panel4.Tag = childForm;
+             childForm.BringToFront();
+             childForm.Show();
+             label1.Text = childForm.Text;
+         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -56,26 +74,30 @@ namespace sET_GUI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Forms.FormHome(), sender);
-            ActivateButton(sender);
+            //OpenChildForm(new HomeSET(), sender);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new Forms.CifraFileView(), sender);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new Forms.DecifraFileView(), sender);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-
+            OpenChildForm(new Forms.ImpostazioniView(), sender);
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.LogView(), sender);
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
