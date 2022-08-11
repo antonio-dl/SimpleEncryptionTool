@@ -20,7 +20,7 @@ namespace UNIBO.SET.ModelLog
         public override void AddEntry(Entry entry) // Da controllare la chiusura del file
         {
             string path = Path.Combine(PathCartella, DateTime.Now.ToString("yMMdd") + ".log");
-            StreamWriter logFile = File.AppendText(path) ;
+            using StreamWriter logFile = File.AppendText(path);
 
             string stringEntry = entry.ToString();
             

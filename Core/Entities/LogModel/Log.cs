@@ -12,7 +12,6 @@ namespace UNIBO.SET.ModelLog
     {
         protected Entry[] Entries { get; set; } = new Entry[0];
 
-
         public virtual void AddEntry(Entry entry)
         {
             Entries.Append(entry);
