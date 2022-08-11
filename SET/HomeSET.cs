@@ -52,10 +52,10 @@ namespace sET_GUI
 
          private void OpenChildForm(Form childForm, object sender)
          {
-             if(activeForm!=null)
+             /*if(activeForm!=null)
              {
                  ActiveForm.Close();
-             }
+             }*/
              ActivateRadioButton(sender);
              activeForm = childForm;
              childForm.TopLevel = false;
