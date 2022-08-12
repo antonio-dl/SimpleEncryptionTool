@@ -1,6 +1,6 @@
 
 
-namespace sET_GUI
+namespace UNIBO.SET.GUI
 {
     public partial class HomeSET : Form
     {

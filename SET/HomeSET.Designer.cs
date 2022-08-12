@@ -1,4 +1,5 @@
-﻿namespace sET_GUI
+﻿namespace UNIBO.SET.GUI
+
 {
     partial class HomeSET
     {

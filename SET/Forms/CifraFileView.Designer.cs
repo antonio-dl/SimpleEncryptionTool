@@ -1,4 +1,5 @@
-﻿namespace sET_GUI.Forms
+﻿namespace UNIBO.SET.GUI.Forms
+
 {
     partial class CifraFileView
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sET_GUI.Forms
+namespace SET.Forms
 {
     public partial class CifraFileView : Form
     {

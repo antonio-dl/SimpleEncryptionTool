@@ -1,6 +1,6 @@
-using sET_GUI;
 
-namespace SET
+
+namespace UNIBO.SET.GUI
 {
     internal static class Program
     {
