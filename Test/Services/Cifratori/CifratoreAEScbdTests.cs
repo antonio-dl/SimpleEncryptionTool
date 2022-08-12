@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Services.Cifratori;
+using UNIBO.SET.Services.Cifratori;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UNIBO.SET.Model;
 using File = UNIBO.SET.Model.File;
 
-namespace Services.Cifratori.Tests
+namespace UNIBO.SET.Services.Cifratori.Tests
 {
     [TestClass()]
     public class CifratoreAEScbdTests

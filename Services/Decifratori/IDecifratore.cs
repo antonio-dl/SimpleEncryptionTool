@@ -1,6 +1,6 @@
 ﻿using UNIBO.SET.Model;
 
-namespace Services.Decifratori
+namespace UNIBO.SET.Services.Decifratori
 {
     public interface IDecifratore
     {

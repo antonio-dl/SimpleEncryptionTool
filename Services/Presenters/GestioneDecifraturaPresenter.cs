@@ -1,5 +1,5 @@
-﻿using Services.Decifratori;
-using Services.Shared;
+﻿using UNIBO.SET.Services.Decifratori;
+using UNIBO.SET.Services.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;

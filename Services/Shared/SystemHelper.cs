@@ -1,6 +1,6 @@
 ﻿using UNIBO.SET.Model;
 
-namespace Services.Shared
+namespace UNIBO.SET.Services.Shared
 {
     internal class SystemHelper
     {

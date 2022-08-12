@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UNIBO.SET.Model;
 
-namespace Services.Decifratori
+namespace UNIBO.SET.Services.Decifratori
 {
     internal class DecifratoreAEScbc : IDecifratore
     {

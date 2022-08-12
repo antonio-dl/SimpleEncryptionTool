@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UNIBO.SET.Model;
 using System.Security.Cryptography;
 
-namespace Services.Cifratori
+namespace UNIBO.SET.Services.Cifratori
 {
     public class CifratoreAEScbc : ICifratore // Logica di cifrazione dei file
         //TODO: rilanciare eccezioni per errori gravi, niente logging qui ma al chiamante 

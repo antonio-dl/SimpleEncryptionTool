@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UNIBO.SET.Model;
 using System.Security.Cryptography;
 
-namespace Services.Cifratori
+namespace UNIBO.SET.Services.Cifratori
 {
     public class TestNonCifratore : ICifratore // Inserire qui la logica di cifrazione dei file
     {

@@ -1,6 +1,6 @@
 ﻿using UNIBO.SET.Model;
 
-namespace Services.Cifratori
+namespace UNIBO.SET.Services.Cifratori
 {
     public interface ICifratore
     {
