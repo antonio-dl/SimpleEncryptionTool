@@ -36,13 +36,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,6 +102,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(201, -17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(204, 58);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "HOME";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // radioButton4
             // 
@@ -177,16 +187,6 @@
             this.panel4.Size = new System.Drawing.Size(732, 396);
             this.panel4.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(201, -17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 58);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "HOME";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // HomeSET
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -199,7 +199,7 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "HomeSET";
-            this.Text = "FormHome";
+            this.Text = "Home";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
