@@ -1,28 +1,28 @@
 
-
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 namespace UNIBO.SET.GUI
 {
     public partial class HomeSET : Form
     {
         private RadioButton currentButton;
-       // private Random random;
-       // private int tempIndex;
         private Form activeForm;
+        /*[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+            (
+                int nLeft,
+                int nTop,
+                int nRight,
+                int nBottom,
+                int nWidthEllipse,
+                int nHeightEllipse
+            );*/
+
         public HomeSET()
         {
             InitializeComponent();
         }
 
-       /* private Color SelectThemeColor()
-        {
-            int index = random.Next(ThemeColor.ColorList.Count);
-            while (tempIndex == index)
-            {
-                random.Next(ThemeColor.ColorList.Count);
-            }
-            string color = ThemeColor.ColorList[index];
-            return ColorTranslator.FromHtml(color);
-        }*/
         private void ActivateRadioButton(object sender)
         {
             if (sender != null)
@@ -31,7 +31,7 @@ namespace UNIBO.SET.GUI
                 {
                     DisableRadioButton();
                     currentButton = (RadioButton)sender;
-                    currentButton.BackColor = Color.Crimson;
+                    currentButton.BackColor = Color.MediumSlateBlue;
                     currentButton.ForeColor = Color.White;
                 }
             }
@@ -43,7 +43,7 @@ namespace UNIBO.SET.GUI
             {
                 if (previousBtn.GetType() == typeof(RadioButton))
                 {
-                    previousBtn.BackColor = Color.Coral;
+                    previousBtn.BackColor = Color.MediumSlateBlue;
                 }
             }
         }
@@ -52,10 +52,6 @@ namespace UNIBO.SET.GUI
 
          private void OpenChildForm(Form childForm, object sender)
          {
-             /*if(activeForm!=null)
-             {
-                 ActiveForm.Close();
-             }*/
              ActivateRadioButton(sender);
              activeForm = childForm;
              childForm.TopLevel = false;
@@ -70,34 +66,47 @@ namespace UNIBO.SET.GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*radioButton1.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, radioButton1.Width, radioButton1.Height, 30, 30));
+            radioButton2.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, radioButton1.Width, radioButton1.Height, 30, 30));
+            radioButton3.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, radioButton1.Width, radioButton1.Height, 30, 30));
+            radioButton4.Region = Region.FromHrgn(CreateRoundRectRgn
+                (0, 0, radioButton1.Width, radioButton1.Height, 30, 30));*/
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HomeSET(), sender);
+            
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rjButton1_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.CifraFileView(), sender);
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void rjButton2_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.DecifraFileView(), sender);
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void rjButton3_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.ImpostazioniView(), sender);
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void rjButton4_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.LogView(), sender);
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
         }
