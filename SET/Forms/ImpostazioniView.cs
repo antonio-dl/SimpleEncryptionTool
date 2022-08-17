@@ -21,10 +21,5 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
-
-        private void rjButton21_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

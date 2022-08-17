@@ -67,7 +67,6 @@
             this.rjButton21.Text = "Cambio credenziali di accesso";
             this.rjButton21.TextColor = System.Drawing.Color.White;
             this.rjButton21.UseVisualStyleBackColor = false;
-            this.rjButton21.Click += new System.EventHandler(this.rjButton21_Click);
             // 
             // ImpostazioniView
             // 
