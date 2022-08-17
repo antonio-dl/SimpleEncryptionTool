@@ -11,7 +11,7 @@ using System.ComponentModel;
 
 namespace CustomControls.RJControls
 {
-    public class RJButton2 : Button
+    public class Radio_Button : RadioButton
     {
         //Fields
         private int borderSize = 0;
@@ -67,7 +67,7 @@ namespace CustomControls.RJControls
         }
 
         //Constructor
-        public RJButton2()
+        public Radio_Button()
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;

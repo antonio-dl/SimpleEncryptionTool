@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UNIBO.SET.GUI.Forms
+namespace SET.Forms
 {
-    public partial class ImpostazioniView : Form
+    public partial class CambioCredenziali : Form
     {
-        public ImpostazioniView()
+        public CambioCredenziali()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjButton21_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
