@@ -7,16 +7,6 @@ namespace UNIBO.SET.GUI
     {
         private RadioButton currentButton;
         private Form activeForm;
-        /*[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-            (
-                int nLeft,
-                int nTop,
-                int nRight,
-                int nBottom,
-                int nWidthEllipse,
-                int nHeightEllipse
-            );*/
 
         public HomeSET()
         {
@@ -100,6 +90,11 @@ namespace UNIBO.SET.GUI
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
