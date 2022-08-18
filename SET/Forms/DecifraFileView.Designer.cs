@@ -30,12 +30,12 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Seleziona = new CustomControls.RJControls.RJButton2();
             this.Scan = new CustomControls.RJControls.RJButton2();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -54,14 +54,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Path chiave";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(49, 212);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(279, 164);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
-            // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(491, 104);
@@ -73,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 394);
+            this.label2.Location = new System.Drawing.Point(45, 249);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 4;
@@ -117,7 +109,7 @@
             this.Scan.FlatAppearance.BorderSize = 0;
             this.Scan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Scan.ForeColor = System.Drawing.Color.White;
-            this.Scan.Location = new System.Drawing.Point(238, 394);
+            this.Scan.Location = new System.Drawing.Point(226, 208);
             this.Scan.Name = "Scan";
             this.Scan.Size = new System.Drawing.Size(90, 35);
             this.Scan.TabIndex = 7;
@@ -125,18 +117,26 @@
             this.Scan.TextColor = System.Drawing.Color.White;
             this.Scan.UseVisualStyleBackColor = false;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(49, 208);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.TabIndex = 8;
+            // 
             // DecifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Scan);
             this.Controls.Add(this.Seleziona);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "DecifraFileView";
@@ -150,11 +150,11 @@
 
         private TextBox textBox1;
         private Label label1;
-        private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
         private Label label2;
         private Label label3;
         private CustomControls.RJControls.RJButton2 Seleziona;
         private CustomControls.RJControls.RJButton2 Scan;
+        private ComboBox comboBox1;
     }
 }
