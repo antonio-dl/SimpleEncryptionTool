@@ -21,5 +21,20 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void Aggiungi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Rimuovi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cifra_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

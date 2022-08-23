@@ -11,7 +11,9 @@ namespace UNIBO.SET.GUI
         public HomeSET()
         {
             InitializeComponent();
+            
         }
+
 
         private void ActivateRadioButton(object sender)
         {
@@ -42,17 +44,29 @@ namespace UNIBO.SET.GUI
 
          private void OpenChildForm(Form childForm, object sender)
          {
-             ActivateRadioButton(sender);
-             activeForm = childForm;
-             childForm.TopLevel = false;
-             childForm.FormBorderStyle = FormBorderStyle.None;
-             childForm.Dock = DockStyle.Fill;
-             this.panel4.Controls.Add(childForm);
-             this.panel4.Tag = childForm;
-             childForm.BringToFront();
-             childForm.Show();
-             label1.Text = childForm.Text;
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            ActivateRadioButton(sender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panel4.Controls.Add(childForm);
+            this.panel4.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            label1.Text = childForm.Text;
          }
+
+        private void Reset()
+        {
+            DisableRadioButton();
+            label1.Text = "HOME";
+            currentButton = null;
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -61,7 +75,11 @@ namespace UNIBO.SET.GUI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            Reset();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -69,22 +87,22 @@ namespace UNIBO.SET.GUI
 
         }
 
-        private void rjButton1_CheckedChanged(object sender, EventArgs e)
+        private void CifraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.CifraFileView(), sender);
         }
 
-        private void rjButton2_CheckedChanged(object sender, EventArgs e)
+        private void DecifraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.DecifraFileView(), sender);
         }
 
-        private void rjButton3_CheckedChanged(object sender, EventArgs e)
+        private void ImpostazioniRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.ImpostazioniView(), sender);
         }
 
-        private void rjButton4_CheckedChanged(object sender, EventArgs e)
+        private void LogRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.LogView(), sender);
         }

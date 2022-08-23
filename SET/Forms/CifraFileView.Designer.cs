@@ -60,6 +60,7 @@
             this.Aggiungi.Text = "Aggiungi";
             this.Aggiungi.TextColor = System.Drawing.Color.White;
             this.Aggiungi.UseVisualStyleBackColor = false;
+            this.Aggiungi.Click += new System.EventHandler(this.Aggiungi_Click);
             // 
             // Rimuovi
             // 
@@ -78,6 +79,7 @@
             this.Rimuovi.Text = "Rimuovi";
             this.Rimuovi.TextColor = System.Drawing.Color.White;
             this.Rimuovi.UseVisualStyleBackColor = false;
+            this.Rimuovi.Click += new System.EventHandler(this.Rimuovi_Click);
             // 
             // Cifra
             // 
@@ -96,6 +98,7 @@
             this.Cifra.Text = "Cifra";
             this.Cifra.TextColor = System.Drawing.Color.White;
             this.Cifra.UseVisualStyleBackColor = false;
+            this.Cifra.Click += new System.EventHandler(this.Cifra_Click);
             // 
             // CifraFileView
             // 

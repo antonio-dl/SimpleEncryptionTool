@@ -26,5 +26,10 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

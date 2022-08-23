@@ -38,11 +38,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rjButton4 = new CustomControls.RJControls.RJButton();
-            this.rjButton3 = new CustomControls.RJControls.RJButton();
+            this.LogRadioButton = new CustomControls.RJControls.RJButton();
+            this.ImpostazioniRadioButton = new CustomControls.RJControls.RJButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.rjButton2 = new CustomControls.RJControls.RJButton();
-            this.rjButton1 = new CustomControls.RJControls.RJButton();
+            this.DecifraRadioButton = new CustomControls.RJControls.RJButton();
+            this.CifraRadioButton = new CustomControls.RJControls.RJButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -123,11 +123,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rjButton4);
-            this.groupBox1.Controls.Add(this.rjButton3);
+            this.groupBox1.Controls.Add(this.LogRadioButton);
+            this.groupBox1.Controls.Add(this.ImpostazioniRadioButton);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.rjButton2);
-            this.groupBox1.Controls.Add(this.rjButton1);
+            this.groupBox1.Controls.Add(this.DecifraRadioButton);
+            this.groupBox1.Controls.Add(this.CifraRadioButton);
             this.groupBox1.Location = new System.Drawing.Point(51, 23);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(655, 113);
@@ -135,51 +135,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Navigazione";
             // 
-            // rjButton4
+            // LogRadioButton
             // 
-            this.rjButton4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rjButton4.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton4.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton4.BorderColor = System.Drawing.Color.Black;
-            this.rjButton4.BorderRadius = 15;
-            this.rjButton4.BorderSize = 2;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rjButton4.ForeColor = System.Drawing.Color.White;
-            this.rjButton4.Location = new System.Drawing.Point(514, 41);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(140, 60);
-            this.rjButton4.TabIndex = 3;
-            this.rjButton4.TabStop = true;
-            this.rjButton4.Text = "Log";
-            this.rjButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rjButton4.TextColor = System.Drawing.Color.White;
-            this.rjButton4.UseVisualStyleBackColor = false;
-            this.rjButton4.CheckedChanged += new System.EventHandler(this.rjButton4_CheckedChanged);
+            this.LogRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.LogRadioButton.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.LogRadioButton.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.LogRadioButton.BorderColor = System.Drawing.Color.Black;
+            this.LogRadioButton.BorderRadius = 15;
+            this.LogRadioButton.BorderSize = 2;
+            this.LogRadioButton.FlatAppearance.BorderSize = 0;
+            this.LogRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogRadioButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LogRadioButton.ForeColor = System.Drawing.Color.White;
+            this.LogRadioButton.Location = new System.Drawing.Point(514, 41);
+            this.LogRadioButton.Name = "LogRadioButton";
+            this.LogRadioButton.Size = new System.Drawing.Size(140, 60);
+            this.LogRadioButton.TabIndex = 3;
+            this.LogRadioButton.Text = "Log";
+            this.LogRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LogRadioButton.TextColor = System.Drawing.Color.White;
+            this.LogRadioButton.UseVisualStyleBackColor = false;
+            this.LogRadioButton.CheckedChanged += new System.EventHandler(this.LogRadioButton_CheckedChanged);
             // 
-            // rjButton3
+            // ImpostazioniRadioButton
             // 
-            this.rjButton3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rjButton3.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton3.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton3.BorderColor = System.Drawing.Color.Black;
-            this.rjButton3.BorderRadius = 15;
-            this.rjButton3.BorderSize = 2;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Location = new System.Drawing.Point(349, 41);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(140, 60);
-            this.rjButton3.TabIndex = 2;
-            this.rjButton3.TabStop = true;
-            this.rjButton3.Text = "Impostazioni";
-            this.rjButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rjButton3.TextColor = System.Drawing.Color.White;
-            this.rjButton3.UseVisualStyleBackColor = false;
-            this.rjButton3.CheckedChanged += new System.EventHandler(this.rjButton3_CheckedChanged);
+            this.ImpostazioniRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ImpostazioniRadioButton.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.ImpostazioniRadioButton.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.ImpostazioniRadioButton.BorderColor = System.Drawing.Color.Black;
+            this.ImpostazioniRadioButton.BorderRadius = 15;
+            this.ImpostazioniRadioButton.BorderSize = 2;
+            this.ImpostazioniRadioButton.FlatAppearance.BorderSize = 0;
+            this.ImpostazioniRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImpostazioniRadioButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ImpostazioniRadioButton.ForeColor = System.Drawing.Color.White;
+            this.ImpostazioniRadioButton.Location = new System.Drawing.Point(345, 41);
+            this.ImpostazioniRadioButton.Name = "ImpostazioniRadioButton";
+            this.ImpostazioniRadioButton.Size = new System.Drawing.Size(140, 60);
+            this.ImpostazioniRadioButton.TabIndex = 2;
+            this.ImpostazioniRadioButton.Text = "Impostazioni";
+            this.ImpostazioniRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ImpostazioniRadioButton.TextColor = System.Drawing.Color.White;
+            this.ImpostazioniRadioButton.UseVisualStyleBackColor = false;
+            this.ImpostazioniRadioButton.CheckedChanged += new System.EventHandler(this.ImpostazioniRadioButton_CheckedChanged);
             // 
             // label1
             // 
@@ -191,51 +189,49 @@
             this.label1.Text = "HOME";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rjButton2
+            // DecifraRadioButton
             // 
-            this.rjButton2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rjButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton2.BorderColor = System.Drawing.Color.Black;
-            this.rjButton2.BorderRadius = 15;
-            this.rjButton2.BorderSize = 2;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Location = new System.Drawing.Point(182, 41);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(140, 60);
-            this.rjButton2.TabIndex = 1;
-            this.rjButton2.TabStop = true;
-            this.rjButton2.Text = "Decifra File";
-            this.rjButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rjButton2.TextColor = System.Drawing.Color.White;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            this.rjButton2.CheckedChanged += new System.EventHandler(this.rjButton2_CheckedChanged);
+            this.DecifraRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.DecifraRadioButton.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.DecifraRadioButton.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.DecifraRadioButton.BorderColor = System.Drawing.Color.Black;
+            this.DecifraRadioButton.BorderRadius = 15;
+            this.DecifraRadioButton.BorderSize = 2;
+            this.DecifraRadioButton.FlatAppearance.BorderSize = 0;
+            this.DecifraRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DecifraRadioButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DecifraRadioButton.ForeColor = System.Drawing.Color.White;
+            this.DecifraRadioButton.Location = new System.Drawing.Point(182, 41);
+            this.DecifraRadioButton.Name = "DecifraRadioButton";
+            this.DecifraRadioButton.Size = new System.Drawing.Size(140, 60);
+            this.DecifraRadioButton.TabIndex = 1;
+            this.DecifraRadioButton.Text = "Decifra File";
+            this.DecifraRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DecifraRadioButton.TextColor = System.Drawing.Color.White;
+            this.DecifraRadioButton.UseVisualStyleBackColor = false;
+            this.DecifraRadioButton.CheckedChanged += new System.EventHandler(this.DecifraRadioButton_CheckedChanged);
             // 
-            // rjButton1
+            // CifraRadioButton
             // 
-            this.rjButton1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BorderColor = System.Drawing.Color.Black;
-            this.rjButton1.BorderRadius = 15;
-            this.rjButton1.BorderSize = 2;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(20, 41);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(140, 60);
-            this.rjButton1.TabIndex = 0;
-            this.rjButton1.TabStop = true;
-            this.rjButton1.Text = "Cifra File";
-            this.rjButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            this.rjButton1.CheckedChanged += new System.EventHandler(this.rjButton1_CheckedChanged);
+            this.CifraRadioButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CifraRadioButton.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.CifraRadioButton.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.CifraRadioButton.BorderColor = System.Drawing.Color.Black;
+            this.CifraRadioButton.BorderRadius = 15;
+            this.CifraRadioButton.BorderSize = 2;
+            this.CifraRadioButton.FlatAppearance.BorderSize = 0;
+            this.CifraRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CifraRadioButton.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CifraRadioButton.ForeColor = System.Drawing.Color.White;
+            this.CifraRadioButton.Location = new System.Drawing.Point(20, 41);
+            this.CifraRadioButton.Name = "CifraRadioButton";
+            this.CifraRadioButton.Size = new System.Drawing.Size(140, 60);
+            this.CifraRadioButton.TabIndex = 0;
+            this.CifraRadioButton.Text = "Cifra File";
+            this.CifraRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CifraRadioButton.TextColor = System.Drawing.Color.White;
+            this.CifraRadioButton.UseVisualStyleBackColor = false;
+            this.CifraRadioButton.CheckedChanged += new System.EventHandler(this.CifraRadioButton_CheckedChanged);
             // 
             // panel4
             // 
@@ -280,10 +276,10 @@
         private PictureBox pictureBox1;
         private Panel panel4;
         private Label label1;
-        private CustomControls.RJControls.RJButton rjButton4;
-        private CustomControls.RJControls.RJButton rjButton3;
-        private CustomControls.RJControls.RJButton rjButton2;
-        private CustomControls.RJControls.RJButton rjButton1;
+        private CustomControls.RJControls.RJButton LogRadioButton;
+        private CustomControls.RJControls.RJButton ImpostazioniRadioButton;
+        private CustomControls.RJControls.RJButton DecifraRadioButton;
+        private CustomControls.RJControls.RJButton CifraRadioButton;
         private Label label4;
         private Label label3;
         private Label label2;
