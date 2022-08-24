@@ -45,9 +45,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(311, 49);
+            this.comboBox1.Location = new System.Drawing.Point(39, 72);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.Size = new System.Drawing.Size(286, 28);
             this.comboBox1.TabIndex = 1;
             // 
             // CambioCredenziali
@@ -59,10 +59,11 @@
             this.CambioCredenziali.BorderSize = 0;
             this.CambioCredenziali.FlatAppearance.BorderSize = 0;
             this.CambioCredenziali.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CambioCredenziali.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CambioCredenziali.ForeColor = System.Drawing.Color.White;
-            this.CambioCredenziali.Location = new System.Drawing.Point(39, 127);
+            this.CambioCredenziali.Location = new System.Drawing.Point(39, 168);
             this.CambioCredenziali.Name = "CambioCredenziali";
-            this.CambioCredenziali.Size = new System.Drawing.Size(150, 60);
+            this.CambioCredenziali.Size = new System.Drawing.Size(292, 60);
             this.CambioCredenziali.TabIndex = 2;
             this.CambioCredenziali.Text = "Cambio credenziali di accesso";
             this.CambioCredenziali.TextColor = System.Drawing.Color.White;

@@ -57,16 +57,16 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(184, 160);
+            this.textBox3.Location = new System.Drawing.Point(149, 158);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 27);
+            this.textBox3.Size = new System.Drawing.Size(170, 27);
             this.textBox3.TabIndex = 7;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 163);
+            this.label3.Location = new System.Drawing.Point(19, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 6;

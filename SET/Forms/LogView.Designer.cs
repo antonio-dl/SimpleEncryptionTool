@@ -37,26 +37,27 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(49, 130);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(639, 274);
+            this.richTextBox1.Size = new System.Drawing.Size(687, 274);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(49, 57);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.Size = new System.Drawing.Size(206, 28);
             this.comboBox1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(231, 60);
+            this.label1.Location = new System.Drawing.Point(49, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(34, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "FileLog";
+            this.label1.Text = "Log";
             // 
             // LogView
             // 

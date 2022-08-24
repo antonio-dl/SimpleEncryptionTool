@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace UNIBO.SET.GUI.Forms
 {
-    public partial class LogView : Form
+    public partial class ProgettazioneDeployment : Form
     {
-        public LogView()
+        public ProgettazioneDeployment()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ProgettazioneDeployment_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -33,15 +33,17 @@
             this.Aggiungi = new CustomControls.RJControls.RJButton2();
             this.Rimuovi = new CustomControls.RJControls.RJButton2();
             this.Cifra = new CustomControls.RJControls.RJButton2();
+            this.SelezionaUsb = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(41, 42);
+            this.richTextBox1.Location = new System.Drawing.Point(41, 50);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(654, 257);
+            this.richTextBox1.Size = new System.Drawing.Size(679, 257);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Aggiungi
             // 
@@ -53,7 +55,7 @@
             this.Aggiungi.FlatAppearance.BorderSize = 0;
             this.Aggiungi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Aggiungi.ForeColor = System.Drawing.Color.White;
-            this.Aggiungi.Location = new System.Drawing.Point(41, 360);
+            this.Aggiungi.Location = new System.Drawing.Point(41, 313);
             this.Aggiungi.Name = "Aggiungi";
             this.Aggiungi.Size = new System.Drawing.Size(90, 35);
             this.Aggiungi.TabIndex = 1;
@@ -72,7 +74,7 @@
             this.Rimuovi.FlatAppearance.BorderSize = 0;
             this.Rimuovi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Rimuovi.ForeColor = System.Drawing.Color.White;
-            this.Rimuovi.Location = new System.Drawing.Point(189, 360);
+            this.Rimuovi.Location = new System.Drawing.Point(137, 313);
             this.Rimuovi.Name = "Rimuovi";
             this.Rimuovi.Size = new System.Drawing.Size(90, 35);
             this.Rimuovi.TabIndex = 2;
@@ -90,15 +92,26 @@
             this.Cifra.BorderSize = 0;
             this.Cifra.FlatAppearance.BorderSize = 0;
             this.Cifra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cifra.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Cifra.ForeColor = System.Drawing.Color.White;
-            this.Cifra.Location = new System.Drawing.Point(605, 403);
+            this.Cifra.Location = new System.Drawing.Point(567, 396);
             this.Cifra.Name = "Cifra";
-            this.Cifra.Size = new System.Drawing.Size(90, 35);
+            this.Cifra.Size = new System.Drawing.Size(153, 48);
             this.Cifra.TabIndex = 3;
             this.Cifra.Text = "Cifra";
             this.Cifra.TextColor = System.Drawing.Color.White;
             this.Cifra.UseVisualStyleBackColor = false;
             this.Cifra.Click += new System.EventHandler(this.Cifra_Click);
+            // 
+            // SelezionaUsb
+            // 
+            this.SelezionaUsb.FormattingEnabled = true;
+            this.SelezionaUsb.Location = new System.Drawing.Point(41, 373);
+            this.SelezionaUsb.Name = "SelezionaUsb";
+            this.SelezionaUsb.Size = new System.Drawing.Size(186, 28);
+            this.SelezionaUsb.TabIndex = 4;
+            this.SelezionaUsb.Text = "Seleziona USB";
+            this.SelezionaUsb.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // CifraFileView
             // 
@@ -106,6 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.SelezionaUsb);
             this.Controls.Add(this.Cifra);
             this.Controls.Add(this.Rimuovi);
             this.Controls.Add(this.Aggiungi);
@@ -122,5 +136,6 @@
         private CustomControls.RJControls.RJButton2 Aggiungi;
         private CustomControls.RJControls.RJButton2 Rimuovi;
         private CustomControls.RJControls.RJButton2 Cifra;
+        private ComboBox SelezionaUsb;
     }
 }
