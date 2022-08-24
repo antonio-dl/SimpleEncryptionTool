@@ -34,6 +34,7 @@
             this.Rimuovi = new CustomControls.RJControls.RJButton2();
             this.Cifra = new CustomControls.RJControls.RJButton2();
             this.SelezionaUsb = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -94,9 +95,9 @@
             this.Cifra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cifra.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Cifra.ForeColor = System.Drawing.Color.White;
-            this.Cifra.Location = new System.Drawing.Point(567, 396);
+            this.Cifra.Location = new System.Drawing.Point(677, 410);
             this.Cifra.Name = "Cifra";
-            this.Cifra.Size = new System.Drawing.Size(153, 48);
+            this.Cifra.Size = new System.Drawing.Size(113, 44);
             this.Cifra.TabIndex = 3;
             this.Cifra.Text = "Cifra";
             this.Cifra.TextColor = System.Drawing.Color.White;
@@ -113,12 +114,22 @@
             this.SelezionaUsb.Text = "Seleziona USB";
             this.SelezionaUsb.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "File da cifrare";
+            // 
             // CifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SelezionaUsb);
             this.Controls.Add(this.Cifra);
             this.Controls.Add(this.Rimuovi);
@@ -127,6 +138,7 @@
             this.Name = "CifraFileView";
             this.Text = "Cifra File";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,5 +149,6 @@
         private CustomControls.RJControls.RJButton2 Rimuovi;
         private CustomControls.RJControls.RJButton2 Cifra;
         private ComboBox SelezionaUsb;
+        private Label label1;
     }
 }
