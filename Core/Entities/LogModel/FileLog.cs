@@ -20,7 +20,7 @@ namespace UNIBO.SET.ModelLog
         public override void AddEntry(Entry entry) // Da controllare la chiusura del file
         {
             // usare questa stringa per l Inizializzatore
-            // string path = Path.Combine(PathFile, DateTime.Now.ToString("yMMdd") + ".log"); // es: 200403
+            // string path = Path.Combine(PathFile,"SetLog" + DateTime.Now.ToString("yMMdd") + ".log"); // es: SetLog200403.log
             using StreamWriter logFile = File.AppendText(PathFile);
 
             string stringEntry = entry.ToString();

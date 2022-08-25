@@ -12,7 +12,7 @@ namespace UNIBO.SET.Services.Presenters
     {
         private ILogger _logger;
         public USB? SelectedUSB { get; set; }
-        public HashSet<string> ListaFileSelezionati { get; set; }
+        public ISet<string> ListaFileSelezionati { get; set; }
 
         ICifratore Cifratore { get; set; }
 
@@ -30,7 +30,7 @@ namespace UNIBO.SET.Services.Presenters
             return true;
         }
 
-        public FileCifrato Cifra(Model.File file) // dA vedere altre eccezioni
+        public FileCifrato Cifra(Model.File file) // da vedere altre eccezioni
         {
             this.LogIt(EntryType.Operazione, $"Cifrato file nel path: {file.Path}");
             try
@@ -58,7 +58,10 @@ namespace UNIBO.SET.Services.Presenters
 
         public bool Rimuovi(FileSystemElement sysElement)
         {
-            return ListaFileSelezionati.Remove(sysElement);
+            bool result = true;
+            foreach (string path in sysElement.OttieniPaths())
+                 result &= ListaFileSelezionati.Remove(path);
+            return result;
         }
 
         public bool SelezionaDestinazione(string path)

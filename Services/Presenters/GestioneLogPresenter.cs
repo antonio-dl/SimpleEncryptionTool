@@ -8,13 +8,18 @@ using UNIBO.SET.ModelLog;
 
 namespace UNIBO.SET.Services.Presenters
 {
-    public class GestioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog, UNIBO.SET.Interfaces.ILogger
+    public class GestioneLogPresenter : UNIBO.SET.Interfaces.IGestioneLog
     {
-        private Log _log;
 
-        public GestioneLogPresenter(Log log)
+        private Log _log;
+        public string CartellaLog { get; set; }
+        public GestioneLogPresenter(string pathCartellaLog)
         {
-            _log = log;
+
+            CartellaLog = pathCartellaLog;
+
+            _log = new FileLog(Path.Combine(CartellaLog, "SetLog" + DateTime.Now.ToString("yMMdd") + ".log"));
+
         }
 
         public void WriteLog(EntryType type, string fonte, string messaggio)
@@ -23,7 +28,10 @@ namespace UNIBO.SET.Services.Presenters
 
         }
 
-
+        public Log[] GetAllLog() // TODO: Da testare
+        {
+            return Directory.EnumerateFiles(CartellaLog, "*.log").Select(f => new FileLog(f)).ToArray();
+        }
 
 
     }
