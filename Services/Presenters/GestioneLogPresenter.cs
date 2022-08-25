@@ -33,7 +33,25 @@ namespace UNIBO.SET.Services.Presenters
             return Directory.EnumerateFiles(CartellaLog, "*.log").Select(f => new FileLog(f)).ToArray();
         }
 
+        public string ReadLog()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(var entry in _log.GetEntries())
+            {
+                sb.AppendLine(entry.ToString());
+            }
+            return sb.ToString();
+        }
 
+        public string ReadLog(EntryType filteredType)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var entry in _log.GetEntries(filteredType))
+            {
+                sb.AppendLine(entry.ToString());
+            }
+            return sb.ToString();
+        }
 
     }
 }
