@@ -2,12 +2,12 @@
 {
     public class CodiceVerifica
     {
+        public string Codice { get; }
         public CodiceVerifica(string codice)
         {
             Codice = codice;
         }
 
-        public string Codice { get; }
         public override bool Equals(object? obj)
         {
             return base.Equals(obj as CodiceVerifica);
