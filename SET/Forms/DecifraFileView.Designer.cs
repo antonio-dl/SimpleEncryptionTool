@@ -36,6 +36,7 @@
             this.Seleziona = new CustomControls.RJControls.RJButton2();
             this.Scan = new CustomControls.RJControls.RJButton2();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Decifra = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // textBox1
@@ -58,7 +59,7 @@
             // 
             this.richTextBox2.Location = new System.Drawing.Point(33, 215);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(691, 240);
+            this.richTextBox2.Size = new System.Drawing.Size(630, 240);
             this.richTextBox2.TabIndex = 3;
             this.richTextBox2.Text = "";
             // 
@@ -125,12 +126,32 @@
             this.comboBox1.Size = new System.Drawing.Size(191, 28);
             this.comboBox1.TabIndex = 8;
             // 
+            // Decifra
+            // 
+            this.Decifra.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Decifra.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.Decifra.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Decifra.BorderRadius = 15;
+            this.Decifra.BorderSize = 0;
+            this.Decifra.FlatAppearance.BorderSize = 0;
+            this.Decifra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Decifra.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Decifra.ForeColor = System.Drawing.Color.White;
+            this.Decifra.Location = new System.Drawing.Point(677, 410);
+            this.Decifra.Name = "Decifra";
+            this.Decifra.Size = new System.Drawing.Size(113, 44);
+            this.Decifra.TabIndex = 9;
+            this.Decifra.Text = "Decifra";
+            this.Decifra.TextColor = System.Drawing.Color.White;
+            this.Decifra.UseVisualStyleBackColor = false;
+            // 
             // DecifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.Decifra);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Scan);
             this.Controls.Add(this.Seleziona);
@@ -156,5 +177,6 @@
         private CustomControls.RJControls.RJButton2 Seleziona;
         private CustomControls.RJControls.RJButton2 Scan;
         private ComboBox comboBox1;
+        private CustomControls.RJControls.RJButton2 Decifra;
     }
 }
