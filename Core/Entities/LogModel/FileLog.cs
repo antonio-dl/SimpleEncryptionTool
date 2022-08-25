@@ -29,5 +29,19 @@ namespace UNIBO.SET.ModelLog
 
         }
 
+        private Entry[] ReadEntries(StreamReader logReader)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Entry[] GetEntries()
+        {
+            return ReadEntries(new StreamReader(PathFile));
+        }
+
+        public override Entry[] GetEntries(EntryType filteredType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

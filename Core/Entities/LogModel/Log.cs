@@ -10,12 +10,15 @@ namespace UNIBO.SET.ModelLog
     // TODO: Completare il modello
     public abstract class Log
     {
-        protected Entry[] Entries { get; set; } = new Entry[0];
+        protected Entry[] _entries = Array.Empty<Entry>();
 
         public virtual void AddEntry(Entry entry)
         {
-            Entries.Append(entry);
+            _entries.Append(entry);
         }
+        public abstract Entry[] GetEntries();
+
+        public abstract Entry[] GetEntries(EntryType filteredType);
 
     }
 
