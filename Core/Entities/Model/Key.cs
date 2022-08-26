@@ -11,7 +11,7 @@ namespace UNIBO.SET.Model
     public class Key
     {
         public string Algoritmo { get; }
-        public string TargetFile { get; }
+        public string TargetFilePath { get; }
         public string SourceFilePath { get; }
         public byte[] Password { get; }
 
@@ -25,7 +25,7 @@ namespace UNIBO.SET.Model
         public Key(string sourceFilePath, string targetFilePath, byte[]? password, string algoritmo)
         {
             SourceFilePath = sourceFilePath ?? throw new ArgumentNullException(nameof(sourceFilePath));
-            TargetFile = targetFilePath ?? throw new ArgumentNullException(nameof(targetFilePath));
+            TargetFilePath = targetFilePath ?? throw new ArgumentNullException(nameof(targetFilePath));
             Password = password ?? throw new ArgumentNullException(nameof(password));
             Algoritmo = algoritmo ?? throw new ArgumentNullException(nameof(algoritmo));
         }

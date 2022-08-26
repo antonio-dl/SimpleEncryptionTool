@@ -53,12 +53,12 @@ namespace UNIBO.SET.Services.Presenters
             }
             catch (FileNotFoundException e)
             {
-                this.LogIt(EntryType.Errore, $"Errore nel apertura del file {key.TargetFile}: path non esistente!");
+                this.LogIt(EntryType.Errore, $"Errore nel apertura del file {key.TargetFilePath}: path non esistente!");
                 throw e;
             }
             catch (IOException e)
             {
-                this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
+                this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFilePath}");
                 throw e;
             }
             //catch (DecifrazioneException e)
