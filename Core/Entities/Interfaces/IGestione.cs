@@ -71,13 +71,9 @@ namespace UNIBO.SET.Interfaces
     }
     public interface IGestioneLog : ILogger
     {
+        public Log[] GetAllLogs();
+        public string ReadLog(Log selectedLog);
+        public string ReadLog(Log selectedLog, EntryType filteredType);
 
-        //public void GetEntry(DateTime time1, DateTime time2);
-        //public void GetEntry(Date date);
-        //public void GetAnomalie(Date dateAnom);
-        //public void AnalisiAnomalieOperazioni(Date dateOp);
-        //public void AnalisiAnomalieMessaggi(Date dateMes);
-        //public void PrintLogOperazione(Entry[] operazioni);
-        //public void PrintLogMessaggio(Entry[] messaggi);
     }
 }

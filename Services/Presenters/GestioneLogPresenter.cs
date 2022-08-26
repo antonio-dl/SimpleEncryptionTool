@@ -28,25 +28,25 @@ namespace UNIBO.SET.Services.Presenters
 
         }
 
-        public Log[] GetAllLog() // TODO: Da testare
+        public Log[] GetAllLogs() // TODO: Da testare
         {
             return Directory.EnumerateFiles(CartellaLog, "*.log").Select(f => new FileLog(f)).ToArray();
         }
 
-        public string ReadLog()
+        public string ReadLog(Log selectedLog)
         {
             StringBuilder sb = new StringBuilder();
-            foreach(var entry in _log.GetEntries())
+            foreach(var entry in selectedLog.GetEntries())
             {
                 sb.AppendLine(entry.ToString());
             }
             return sb.ToString();
         }
 
-        public string ReadLog(EntryType filteredType)
+        public string ReadLog(Log selectedLog,EntryType filteredType)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var entry in _log.GetEntries(filteredType))
+            foreach (var entry in selectedLog.GetEntries(filteredType))
             {
                 sb.AppendLine(entry.ToString());
             }
