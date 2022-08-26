@@ -29,7 +29,6 @@
         protected readonly System.IO.FileInfo _file;
 
         private CodiceVerifica? _codice = null;
-        private FileStream? _fileStream = null;
         public File(string path) : base(path)
         {
             _file = new System.IO.FileInfo(path);
@@ -48,14 +47,13 @@
             }
         }
 
-        public FileStream FileStream { get => this._fileStream ??= _file.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite); }
         public new string Name { get => _file.Name; }
 
         public string CalcolaMD5()
         {
             using (var md5 = System.Security.Cryptography.MD5.Create())
             {
-                using (var stream = this.FileStream)
+                using (var stream = this.Open())
                 {
                     var hash = md5.ComputeHash(stream);
                     return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
@@ -75,7 +73,7 @@
 
     public class FileCifrato : File
     {
-        private Key _key;
+        public Key _key;
 
         public FileCifrato(string path, Key key) : base(path)
         {
