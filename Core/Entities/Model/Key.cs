@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -35,12 +36,31 @@ namespace UNIBO.SET.Model
 
 
 
-    public abstract class KeyChain
+    public abstract class KeyChain : IEnumerable<Key>
     {
-        private Key[] _keychain;
+        protected Key[] _keychain;
 
+        public IEnumerator<Key> GetEnumerator()
+        {
+            return ((IEnumerable<Key>)_keychain).GetEnumerator();
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _keychain.GetEnumerator();
+        }
     }
 
-    public class FileKeyChain : KeyChain { }
+    public class FileKeyChain : KeyChain {
+
+        private FileInfo _file;
+        public string Name { get => _file.Name; }
+        public string Path { get => _file.FullName; }
+
+        public FileKeyChain(string pathFile)
+        {
+                _file = new FileInfo(pathFile);
+        }
+        
+    }
 }
