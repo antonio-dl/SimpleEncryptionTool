@@ -73,11 +73,11 @@
 
     public class FileCifrato : File
     {
-        public Key _key;
+        public Key Key { get; private set; }
 
         public FileCifrato(string path, Key key) : base(path)
         {
-            _key = key;
+            Key = key;
         }
 
       public FileStream Create()
