@@ -36,16 +36,16 @@ namespace UNIBO.SET.Model
 
     public class Impostazioni
     {
-        private Impostazione[] settaggi;
+        private Impostazione[] impostazioni;
 
-        public Impostazioni(Impostazione[] settaggi)
+        public Impostazioni(Impostazione[] impostazioni)
         {
-            this.settaggi = settaggi;
+            this.impostazioni = impostazioni;
         }
 
         public Impostazione[] OttieniSettaggi()
         {
-            return settaggi;
+            return impostazioni;
         }
 
         /*public void AggiungiImpostazione(Impostazione imp)
@@ -56,7 +56,7 @@ namespace UNIBO.SET.Model
 
         public int NumSettaggi()
         {
-            return settaggi.Length;
+            return impostazioni.Length;
         }
     }
 
