@@ -1,7 +1,22 @@
 namespace UNIBO.SET.Model
 {
-    public class Utente
+    public class Utente // Applicare Pattern Singleton
     {
+        private static Utente _utente;
+
+        private Utente() {
+            _utente = LoadUserData();
+        }
+
+        private Utente LoadUserData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Utente GetInstance() { // TODO: CAMBIARE QUESTA COSA PER IL PATTERN SINGLETON
+            return _utente;
+        }
+
         public string Nome { get; set; }
         public Impostazioni Impostazioni { get; set; }
         public Credenziali Credenziali { get; set; }
