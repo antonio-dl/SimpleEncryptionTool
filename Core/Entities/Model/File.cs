@@ -73,14 +73,18 @@
 
     public class FileCifrato : File
     {
-        public Key Key { get; private set; }
+        public Key? Key { get; private set; }
 
         public FileCifrato(string path, Key key) : base(path)
         {
             Key = key;
         }
 
-      public FileStream Create()
+        public FileCifrato(string path) : base(path)
+        {
+        }
+
+        public FileStream Create()
         {
             return this._file.Open(FileMode.Create, FileAccess.Write);
         }
@@ -90,6 +94,11 @@
     {
         public FileDecifrato(string path) : base(path)
         {
+
+        }
+        public FileStream Create()
+        {
+            return this._file.Open(FileMode.Create, FileAccess.Write);
         }
     }
 }
