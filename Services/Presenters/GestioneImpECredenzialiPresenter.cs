@@ -46,7 +46,16 @@ namespace UNIBO.SET.Services.Presenters
 
         public void SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
         {
-            throw new NotImplementedException();
+            if(!_utente.Credenziali.Confronta(vecchie))
+            {
+                LogIt(EntryType.Avvertimento, "Tentativo di cambio credenziali fallito");
+                return;
+            }
+            else if(_utente.Credenziali.Confronta(vecchie))
+            {
+                _utente.Credenziali = nuove;
+                LogIt(EntryType.Operazione, "L'utente ha cambiato le credenziali");
+            }
         }
     }
 }
