@@ -18,7 +18,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public bool LogIn(Credenziali credenziali)
         {
-            Thread.Sleep(1000); // Per evitare brute force
+            Thread.Sleep(3000); // Per evitare brute force
             if(!_utente.Credenziali.Confronta(credenziali))
             {
                 LogIt(EntryType.Avvertimento, "Login fallito, credenziali errate");
