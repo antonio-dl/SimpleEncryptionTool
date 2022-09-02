@@ -10,7 +10,7 @@ namespace UNIBO.SET.Services.Decifratori
     internal class DecifratoreAESebc : IDecifratore
 
     {
-        public string Algoritmo => throw new NotImplementedException();
+        public string Algoritmo => "AES-EBC";
 
         public FileDecifrato Decifra(Key key)
         {

@@ -11,6 +11,7 @@ namespace UNIBO.SET.Services.Cifratori
     public class CifratoreAESecb : ICifratore // Logica di cifrazione dei file
         //TODO: Lancio eccezioni, niente logging qui
     {
+        public string Algoritmo => "AES-ECB";
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn) // NOTE: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
         {
 

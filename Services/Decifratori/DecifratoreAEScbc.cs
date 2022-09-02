@@ -7,9 +7,9 @@ using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Decifratori
 {
-    internal class DecifratoreAEScbc : IDecifratore
+    public class DecifratoreAEScbc : IDecifratore
     {
-        public string Algoritmo => throw new NotImplementedException();
+        public string Algoritmo => "AES-CBC";
 
         public FileDecifrato Decifra(Key key)
         {

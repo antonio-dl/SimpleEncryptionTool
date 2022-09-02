@@ -10,6 +10,8 @@ namespace UNIBO.SET.Services.Cifratori
 {
     public class TestNonCifratore : ICifratore // Inserire qui la logica di cifrazione dei file
     {
+        public string Algoritmo => throw new NotImplementedException();
+
         public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
         {
 
