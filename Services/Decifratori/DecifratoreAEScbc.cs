@@ -44,9 +44,9 @@ namespace UNIBO.SET.Services.Decifratori
             }
             using var decryptor = aes.CreateDecryptor(
                 key.Password, IV);
-            using var decryptoStream = new CryptoStream(targetStream, decryptor, CryptoStreamMode.Write);
+            using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
-            sourceStream.CopyTo(decryptoStream);
+            decryptoStream.CopyTo(targetStream);
 
             return fd;
         }
@@ -57,4 +57,4 @@ namespace UNIBO.SET.Services.Decifratori
         }
     }
 }
-}
+

@@ -29,7 +29,6 @@ namespace UNIBO.SET.Services.Cifratori
             using var encryptor = aes.CreateEncryptor();
             using var cryptoStream = new CryptoStream(targetStream, encryptor, CryptoStreamMode.Write);
 
-            targetStream.Write(aes.IV, 0, aes.IV.Length);
             sourceStream.CopyTo(cryptoStream);
 
             return fcout;
