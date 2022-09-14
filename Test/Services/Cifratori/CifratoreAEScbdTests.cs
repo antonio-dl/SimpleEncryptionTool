@@ -17,7 +17,7 @@ namespace UNIBO.SET.Services.Cifratori.Tests
         [TestMethod()]
         public void CifraFileTest()
         {
-            string pathfile = Test.Constanti.CARTELLATEST + "\\prova.txt";
+            string pathfile = Test.Constanti.CARTELLATEST + "prova.txt";
             string contenutoFile = Test.Constanti.TESTODIPROVA;
 
 
