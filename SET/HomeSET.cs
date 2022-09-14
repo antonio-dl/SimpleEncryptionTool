@@ -8,12 +8,12 @@ namespace UNIBO.SET.GUI
     {
         private RadioButton? currentButton;
         private Form activeForm;
-        private Inizializzatore init;
+        private Inizializzatore _init;
 
 
         public HomeSET(Inizializzatore init)
         {
-            this.init = init;
+            this._init = init;
             InitializeComponent();
 
         }
@@ -87,27 +87,27 @@ namespace UNIBO.SET.GUI
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
 
         private void CifraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.CifraFileView(), sender);
+            OpenChildForm(new Forms.CifraFileView(_init.GestioneCifraturaPresenter), sender);
         }
 
         private void DecifraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.DecifraFileView(), sender);
+            OpenChildForm(new Forms.DecifraFileView(_init.GestioneDecifraturaPresenter), sender);
         }
 
         private void ImpostazioniRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.ImpostazioniView(), sender);
+            OpenChildForm(new Forms.ImpostazioniView(_init.GestioneImpECrededenzialiPresenter), sender);
         }
 
         private void LogRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.LogView(), sender);
+            OpenChildForm(new Forms.LogView(_init.GestioneLogPresenter), sender);
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
