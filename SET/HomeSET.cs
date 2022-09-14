@@ -6,7 +6,7 @@ namespace UNIBO.SET.GUI
 {
     public partial class HomeSET : Form
     {
-        private RadioButton currentButton;
+        private RadioButton? currentButton;
         private Form activeForm;
         private Inizializzatore init;
 
