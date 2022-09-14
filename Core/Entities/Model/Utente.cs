@@ -29,8 +29,6 @@ namespace UNIBO.SET.Model
         }
     }
 
-
-
     public class Impostazioni
     {
         private Impostazione[] impostazioni;
