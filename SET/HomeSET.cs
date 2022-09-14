@@ -1,4 +1,5 @@
 
+using Services.Presenters;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 namespace UNIBO.SET.GUI
@@ -7,13 +8,15 @@ namespace UNIBO.SET.GUI
     {
         private RadioButton currentButton;
         private Form activeForm;
+        private Inizializzatore init;
 
-        public HomeSET()
+
+        public HomeSET(Inizializzatore init)
         {
+            this.init = init;
             InitializeComponent();
-            
-        }
 
+        }
 
         private void ActivateRadioButton(object sender)
         {

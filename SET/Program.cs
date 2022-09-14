@@ -1,5 +1,7 @@
 
 
+using Services.Presenters;
+
 namespace UNIBO.SET.GUI
 {
     internal static class Program
@@ -12,8 +14,14 @@ namespace UNIBO.SET.GUI
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
+            Inizializzatore init = InizializzaPresenters();
             ApplicationConfiguration.Initialize();
-            Application.Run(new HomeSET());
+            Application.Run(new HomeSET(init));
+        }
+
+        private static Inizializzatore InizializzaPresenters()
+        {
+            throw new NotImplementedException();
         }
     }
 }
