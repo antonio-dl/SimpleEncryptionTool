@@ -28,7 +28,7 @@ namespace UNIBO.SET.Model
         public bool HasKeyChain() // DA TESTARE
         {
             string pathToKeyChain = Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome, ".skc");
-            return System.IO.File.Exists(pathToKeyChain + Utente.GetInstance().Nome + ".skc");
+            return System.IO.File.Exists(pathToKeyChain);
         }
 
         public USB(string s)
