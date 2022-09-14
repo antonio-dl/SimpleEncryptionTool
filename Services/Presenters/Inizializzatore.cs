@@ -38,8 +38,8 @@ namespace Services.Presenters
             GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
             ILogger logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(logger); // Controllare che abbia effetivamente bisogno del logger
-            GestioneCifraturaPresenter = GeneraCifratorePresenter();
-            GestioneDecifraturaPresenter = GeneraDecifratorePresenter();
+            // GestioneCifraturaPresenter = new GestioneCifraturaPresenter(); // metodo prima della modifica: GeneraCifratorePresenter()
+            // GestioneDecifraturaPresenter = GeneraDecifratorePresenter();
 
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(logger);
 

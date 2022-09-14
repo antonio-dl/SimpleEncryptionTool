@@ -38,7 +38,10 @@ namespace UNIBO.SET.Model
             this.impostazioni = impostazioni;
         }
 
-  
+        public Impostazione[] OttieniTutteLeImpostazioniSingole()
+        {
+            return this.impostazioni;
+        }
 
         /*public void AggiungiImpostazione(Impostazione imp)
         {
