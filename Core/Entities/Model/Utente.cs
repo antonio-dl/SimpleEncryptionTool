@@ -29,10 +29,7 @@ namespace UNIBO.SET.Model
         }
     }
 
-    public abstract class Credenziali
-    {
-        public abstract bool Confronta(Credenziali credenziali);
-    }
+
 
     public class Impostazioni
     {
