@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.GUI.Forms
 {
     public partial class ImpostazioniView : Form
     {
-        public ImpostazioniView()
+        private GestioneImpECrededenzialiPresenter _presenter;
+
+        public ImpostazioniView(GestioneImpECrededenzialiPresenter _presenter)
         {
+            _presenter = _presenter;
             InitializeComponent();
         }
 

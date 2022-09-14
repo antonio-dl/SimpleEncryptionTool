@@ -14,9 +14,11 @@ namespace UNIBO.SET.GUI.Forms
     public partial class CifraFileView : Form
     {
         private GestioneCifraturaPresenter _presenter;
-        public CifraFileView()
+        public CifraFileView(GestioneCifraturaPresenter _presenter)
         {
+            _presenter = _presenter;    
             InitializeComponent();
+
         }
 
         private void button2_Click(object sender, EventArgs e)

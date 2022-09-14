@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.GUI.Forms
 {
     public partial class LogView : Form
     {
-        public LogView()
+        private GestioneLogPresenter _presenter;
+        public LogView(GestioneLogPresenter _presenter)
         {
+            _presenter = _presenter;    
             InitializeComponent();
         }
 
