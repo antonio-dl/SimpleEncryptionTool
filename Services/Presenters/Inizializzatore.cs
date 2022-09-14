@@ -26,7 +26,6 @@ namespace Services.Presenters
         {
             throw new NotImplementedException();
         }
-    }
         private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
         private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
         private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
