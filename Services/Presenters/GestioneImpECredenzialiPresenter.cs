@@ -10,9 +10,9 @@ namespace UNIBO.SET.Services.Presenters
         private Utente _utente;
         private ILogger _logger;
 
-        public GestioneImpECrededenzialiPresenter(Utente utente, ILogger logger)
+        public GestioneImpECrededenzialiPresenter(ILogger logger)
         {
-            _utente = utente;
+            _utente = Utente.GetInstance();
             _logger = logger;
         }
 

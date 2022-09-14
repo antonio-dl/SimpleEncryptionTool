@@ -5,10 +5,10 @@ namespace UNIBO.SET.Model
         private static Utente _utente;
 
         private Utente() {
-            _utente = LoadUserData();
+            _utente = LoadUserDataMock();
         }
 
-        private Utente LoadUserData()
+        private Utente LoadUserDataMock()
         {
             throw new NotImplementedException();
         }
@@ -40,10 +40,7 @@ namespace UNIBO.SET.Model
             this.impostazioni = impostazioni;
         }
 
-        public Impostazione[] OttieniSettaggi()
-        {
-            return impostazioni;
-        }
+  
 
         /*public void AggiungiImpostazione(Impostazione imp)
         {
