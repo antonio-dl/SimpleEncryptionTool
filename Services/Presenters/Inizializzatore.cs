@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using UNIBO.SET.Interfaces;
@@ -20,6 +21,8 @@ namespace Services.Presenters
         private GestioneLogPresenter _gestioneLogPresenter;
         private GestioneVerificaPresenter _gestioneVerificaPresenter;
 
+        private ILogger _logger;
+
         public Inizializzatore()
         {
             CreaUtenteSingleton();
@@ -34,6 +37,7 @@ namespace Services.Presenters
         public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
         public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
         public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
+        public ILogger Logger { get => _logger; private set => _logger = value; }
 
         private void CaricaComponenti()
         {
@@ -41,7 +45,7 @@ namespace Services.Presenters
             ILogger logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(logger); // Controllare che abbia effetivamente bisogno del logger
 
-            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
+            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter(logger);
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
 
@@ -49,13 +53,29 @@ namespace Services.Presenters
 
         }
 
-        private GestioneDecifraturaPresenter CreaGestioneDecifraturaPresenter()
+        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter(ILogger logger)
         {
-            ICifratore cifratore = CreaCifratore(Utente.GetInstance().Impostazioni.Ottieni);
-            var presenter = new GestioneCifraturaPresenter(logger);
+
+            Impostazione impostazione = Utente.GetInstance().Impostazioni.OttieniImpostazione("cifratore");
+
+            ICifratore cifratore = CreaCifratore(impostazione);
+            var presenter = new GestioneCifraturaPresenter(cifratore, logger);
+            return presenter;
         }
 
-        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter()
+        private ICifratore CreaCifratore(Impostazione impostazione)
+        {
+            string nomeCifratore = impostazione.Selezionato;
+            if (nomeCifratore == "AES-CBC")
+                return new CifratoreAEScbc();
+            else if (nomeCifratore == "AES-ECB")
+                return new CifratoreAESecb();
+            else
+                throw new CifratoreNotFoundExeption($"Il cifratore {nomeCifratore} non è stato trovato");
+
+        }
+
+        private GestioneDecifraturaPresenter CreaGestioneDecifraturaPresenter()
         {
             throw new NotImplementedException();
         }
@@ -63,6 +83,26 @@ namespace Services.Presenters
         private void CreaUtenteSingleton()
         {
             throw new NotImplementedException();
+        }
+    }
+
+    [Serializable]
+    internal class CifratoreNotFoundExeption : Exception
+    {
+        public CifratoreNotFoundExeption()
+        {
+        }
+
+        public CifratoreNotFoundExeption(string? message) : base(message)
+        {
+        }
+
+        public CifratoreNotFoundExeption(string? message, Exception? innerException) : base(message, innerException)
+        {
+        }
+
+        protected CifratoreNotFoundExeption(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
     }
 }
