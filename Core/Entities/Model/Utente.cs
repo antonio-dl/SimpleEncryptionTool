@@ -13,8 +13,9 @@ namespace UNIBO.SET.Model
             throw new NotImplementedException();
         }
 
-        public static Utente GetInstance() { // TODO: CAMBIARE QUESTA COSA PER IL PATTERN SINGLETON
-            return _utente;
+        public static Utente GetInstance() {
+            
+            return _utente ?? new Utente();
         }
 
         public string Nome { get; set; }
