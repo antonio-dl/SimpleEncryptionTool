@@ -10,7 +10,15 @@ namespace UNIBO.SET.Model
 
         private Utente LoadUserDataMock()
         {
-            throw new NotImplementedException();
+            IDictionary<string, Impostazione> basic = new Dictionary<string, Impostazione>();
+            string[] caso1 = { "rosso", "giallo", "verde" };
+            Impostazione imp1 = new Impostazione("Colore", caso1, "rosso");
+            basic.Add("aCaso1", imp1);
+            string[] caso2 = { "piccolo", "medio", "grande" };
+            Impostazione imp2 = new Impostazione("Dimensione", caso2, "piccolo");
+            basic.Add("aCaso2", imp2);
+            Credenziali cred = new CredenzialiPassword("Ciabatta");
+            return new Utente("Me", new Impostazioni(basic), cred);
         }
 
         public static Utente GetInstance() {

@@ -59,7 +59,7 @@ namespace UNIBO.SET.Model
 
         public FileKeyChain(string pathFile)
         {
-                _file = new FileInfo(pathFile);
+            _file = new FileInfo(pathFile);
         }
         
     }

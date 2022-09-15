@@ -15,15 +15,18 @@ namespace UNIBO.SET.Model.Tests
         {
             USB usb;
             FileKeyChain? keyChain;
+            Utente u1 = Utente.GetInstance();
 
-            const string nomeUsb = @"C:\";
+            const string nomeUsb = @"F:\";
             usb = new USB(nomeUsb);
             
             Assert.IsFalse(usb.HasKeyChain());
             
             keyChain = usb.KeyChain;
-
+            Console.WriteLine(keyChain);
+            
             Assert.IsTrue(usb.HasKeyChain());
+            Assert.IsNotNull(keyChain.ToString());
 
         }
     }

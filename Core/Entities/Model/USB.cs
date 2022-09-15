@@ -16,7 +16,7 @@ namespace UNIBO.SET.Model
             {
                 if (_keyChain == null) // da testare :D
                 {
-                    string pathToKeyChain = Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome, ".skc");
+                    string pathToKeyChain = Path.Combine(_driveInfo.Name, "FK.set", Utente.GetInstance().Nome, "fk.skc");
                     _keyChain = new FileKeyChain(pathToKeyChain);
                 }
                 return _keyChain;
@@ -27,13 +27,14 @@ namespace UNIBO.SET.Model
 
         public bool HasKeyChain() // DA TESTARE
         {
-            string pathToKeyChain = Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome, ".skc");
+            string pathToKeyChain = Path.Combine(_driveInfo.Name, "FK.set", Utente.GetInstance().Nome, "fk.skc");
             return System.IO.File.Exists(pathToKeyChain);
         }
 
         public USB(string s)
         {
             _driveInfo = new DriveInfo(s);
+            // _keyChain = this.KeyChain;
         }
 
     }
