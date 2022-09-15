@@ -31,5 +31,12 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void Accedi_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            HomeSET home = new HomeSET();
+            home.ShowDialog();
+        }
     }
 }

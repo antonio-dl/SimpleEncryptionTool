@@ -90,6 +90,7 @@
             this.Accedi.Text = "Accedi";
             this.Accedi.TextColor = System.Drawing.Color.White;
             this.Accedi.UseVisualStyleBackColor = false;
+            this.Accedi.Click += new System.EventHandler(this.Accedi_Click);
             // 
             // LoginView
             // 
