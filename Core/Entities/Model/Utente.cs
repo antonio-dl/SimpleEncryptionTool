@@ -31,16 +31,16 @@ namespace UNIBO.SET.Model
 
     public class Impostazioni
     {
-        private Impostazione[] impostazioni;
+        private IDictionary<string,Impostazione> impostazioni;
 
-        public Impostazioni(Impostazione[] impostazioni)
+        public Impostazioni(IDictionary<string, Impostazione> impostazioni)
         {
             this.impostazioni = impostazioni;
         }
 
-        public Impostazione[] OttieniTutteLeImpostazioniSingole()
+        public Impostazione[] OttieniTutteImpostazioni()
         {
-            return this.impostazioni;
+            return this.impostazioni.Values.ToArray();
         }
 
         /*public void AggiungiImpostazione(Impostazione imp)
@@ -49,9 +49,9 @@ namespace UNIBO.SET.Model
         }
         */
 
-        public int NumSettaggi()
+        public int LunghezzaImpostazioni()
         {
-            return impostazioni.Length;
+            return impostazioni.Count;
         }
     }
 

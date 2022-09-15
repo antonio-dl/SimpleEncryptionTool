@@ -19,9 +19,9 @@ namespace UNIBO.SET.Services.Presenters
         public bool CambiaImpostazione(Impostazione impostazione)
         {
             Impostazioni opt = _utente.Impostazioni;
-            Impostazione[] tutte = opt.OttieniTutteLeImpostazioniSingole();
+            Impostazione[] tutte = opt.OttieniTutteImpostazioni();
             
-            for(int i=0; i < opt.NumSettaggi(); i++)
+            for(int i=0; i < opt.LunghezzaImpostazioni(); i++)
             {
                 if (tutte[i].Nome.Equals(impostazione.Nome))
                 {
