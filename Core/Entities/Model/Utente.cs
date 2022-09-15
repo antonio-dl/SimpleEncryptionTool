@@ -22,7 +22,7 @@ namespace UNIBO.SET.Model
         public Impostazioni Impostazioni { get; set; }
         public Credenziali Credenziali { get; set; }
 
-        public Utente(string nome, Impostazioni impostazioni, Credenziali credenziali)
+        private Utente(string nome, Impostazioni impostazioni, Credenziali credenziali)
         {
             Nome = nome;
             Impostazioni = impostazioni;
