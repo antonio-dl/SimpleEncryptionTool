@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace UNIBO.SET.ModelLog
 {
-    // TODO: Completare il modello
     public abstract class Log
     {
         protected Entry[] _entries = Array.Empty<Entry>();

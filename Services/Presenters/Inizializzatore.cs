@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UNIBO.SET.Interfaces;
+using UNIBO.SET.Model;
+using UNIBO.SET.Services.Cifratori;
 using UNIBO.SET.Services.Presenters;
 
 namespace Services.Presenters
@@ -38,11 +40,24 @@ namespace Services.Presenters
             GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
             ILogger logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(logger); // Controllare che abbia effetivamente bisogno del logger
-            // GestioneCifraturaPresenter = new GestioneCifraturaPresenter(); // metodo prima della modifica: GeneraCifratorePresenter()
-            // GestioneDecifraturaPresenter = GeneraDecifratorePresenter();
+
+            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
+            GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
+
 
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(logger);
 
+        }
+
+        private GestioneDecifraturaPresenter CreaGestioneDecifraturaPresenter()
+        {
+            ICifratore cifratore = CreaCifratore(Utente.GetInstance().Impostazioni.Ottieni);
+            var presenter = new GestioneCifraturaPresenter(logger);
+        }
+
+        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter()
+        {
+            throw new NotImplementedException();
         }
 
         private void CreaUtenteSingleton()
