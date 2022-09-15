@@ -14,14 +14,14 @@ namespace UNIBO.SET.GUI
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            //Inizializzatore init = InizializzaPresenters();
+            Inizializzatore init = InizializzaPresenters();
             ApplicationConfiguration.Initialize();
             Application.Run(new Forms.LoginView());
         }
 
-        /*private static Inizializzatore InizializzaPresenters()
+        private static Inizializzatore InizializzaPresenters()
         {
             throw new NotImplementedException();
-        }*/
+        }
     }
 }
