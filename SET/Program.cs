@@ -16,7 +16,7 @@ namespace UNIBO.SET.GUI
             // see https://aka.ms/applicationconfiguration.
             Inizializzatore init = InizializzaPresenters();
             ApplicationConfiguration.Initialize();
-            Application.Run(new HomeSET(init));
+            Application.Run(new Forms.LoginView());
         }
 
         private static Inizializzatore InizializzaPresenters()

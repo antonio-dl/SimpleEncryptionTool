@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Presenters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
+        Inizializzatore init;
         private void LoginView_Load(object sender, EventArgs e)
         {
 
@@ -30,6 +32,14 @@ namespace UNIBO.SET.GUI.Forms
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Accedi_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            HomeSET home = new HomeSET(init);
+            home.ShowDialog();
         }
     }
 }
