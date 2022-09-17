@@ -28,7 +28,8 @@ namespace UNIBO.SET.Services.Cifratori.Tests
 
             File provaFile = new File(pathfile);
             var cifratore = new CifratoreAEScbc();
-            var fc = cifratore.CifraFile(provaFile);
+            var key = cifratore.CifraFile(provaFile);
+            var fc = new FileCifrato(pathfile, key);
 
             Assert.IsTrue(System.IO.File.Exists(fc.Path));
 
