@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using UNIBO.SET.Model;
+using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Services.Decifratori
 {
@@ -53,6 +54,9 @@ namespace UNIBO.SET.Services.Decifratori
 
         private FileDecifrato GeneraNuovoNomeFileDecifrato(FileDecifrato fd)
         {
+            File f = new Model.File("Prova.txt");
+            string nome = f.Name;
+            int pos = nome.LastIndexOf("."); // da qui continuare la modifica del nome
             throw new NotImplementedException();
         }
     }
