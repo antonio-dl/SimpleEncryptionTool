@@ -13,7 +13,7 @@ namespace UNIBO.SET.Services.Cifratori
     {
         public string Algoritmo => "AES-CBC";
 
-        public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn) // N.B.: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
+        public Key CifraFile(UNIBO.SET.Model.File fileIn) // N.B.: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
         {
 
             using var aes = Aes.Create();
@@ -33,7 +33,7 @@ namespace UNIBO.SET.Services.Cifratori
             targetStream.Write(aes.IV, 0, aes.IV.Length);
             sourceStream.CopyTo(cryptoStream);
 
-            return fcout;
+            return key;
         }
 
     }

@@ -12,7 +12,7 @@ namespace UNIBO.SET.Services.Cifratori
         //TODO: Lancio eccezioni, niente logging qui
     {
         public string Algoritmo => "AES-ECB";
-        public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn) // NOTE: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
+        public Key CifraFile(UNIBO.SET.Model.File fileIn) // NOTE: Size delle key in byte devono essere o di 128 o 192 o 256 byte!!
         {
 
             using var aes = Aes.Create();
@@ -31,7 +31,7 @@ namespace UNIBO.SET.Services.Cifratori
 
             sourceStream.CopyTo(cryptoStream);
 
-            return fcout;
+            return key;
         }
     }
 }
