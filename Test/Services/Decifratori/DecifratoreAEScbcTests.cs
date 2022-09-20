@@ -42,8 +42,8 @@ namespace UNIBO.SET.Services.Decifratori.Tests
             Assert.IsTrue(bytesLetti.Length > bytesContenutoFile.Length);   // Maggiore per aggiunta del IV
             Assert.IsTrue(bytesLetti.Length > bytesfd.Length);              // Maggiore per aggiunta del IV
             Assert.AreEqual(bytesfd.Length, bytesContenutoFile.Length);     // dovrebbero avere la stessa lunghezza
-            Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), contenutoFile); // dovrebbero essere ovviamente diversi perché il primo è cifrato, il seccondo no
-            Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), fdLetto); // dovrebbero essere ovviamente diversi perché il primo è cifrato, il seccondo no
+            Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), contenutoFile); // dovrebbero essere ovviamente diversi perché il primo è cifrato, il secondo no
+            Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), fdLetto); // dovrebbero essere ovviamente diversi perché il primo è cifrato, il secondo no
             Assert.AreEqual<string>(fdLetto, contenutoFile); // dovrebbero essere uguali perché una volta decifrato dovrebbe avere lo stesso contenuto di quello di partenza
             Assert.IsTrue(fdLetto.Length == contenutoFile.Length); // dovrebbero essere uguali per il motivo precedente
             

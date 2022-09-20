@@ -21,7 +21,7 @@ namespace UNIBO.SET.Services.Decifratori
             var fc = new FileCifrato(key.TargetFilePath);
             var fd = new FileDecifrato(key.SourceFilePath);
 
-            if (fc.Exists)
+            if (!fc.Exists)
             {
                 throw new FileNotFoundException($"File {fc.Path} non esistente!");
             }
@@ -30,8 +30,7 @@ namespace UNIBO.SET.Services.Decifratori
             {
                 fd = GeneraNuovoNomeFileDecifrato(fd);
             }
-
-
+            
             using var sourceStream = fc.Open();
             using var targetStream = fd.Create();
             var IV = new Byte[aes.IV.Length];
@@ -48,7 +47,7 @@ namespace UNIBO.SET.Services.Decifratori
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
             decryptoStream.CopyTo(targetStream);
-
+            
             return fd;
         }
 
@@ -58,11 +57,12 @@ namespace UNIBO.SET.Services.Decifratori
             int pos = nome.LastIndexOf(".");
             string nomeCut = nome.Substring(0, pos); // prova.txt --> . in posizione 5 ma nomeCut arriva fino a 4
             string formato = nome.Substring(pos); // prova.txt --> . in posizione 5, quindi inizia dalla posizione 5 fino alla fine
-            // prendendo ad esempio un file di nome prova.txt --> nomeCut = prova <-> formato = .txt
+            // prendendo ad esempio un file di nome prova.txt --> nomeCut = prova <-> formato = .txt --> mandare le due variabili in output lo conferma
+
             char last = nomeCut[pos - 1];
             if (last < '0' || last > '9')
             {
-                nomeCut.Concat("1");
+                nomeCut += "1";
             }
             else
             {
@@ -70,8 +70,8 @@ namespace UNIBO.SET.Services.Decifratori
                 int i = pos - 2;
                 do
                 {
-                    last = nomeCut[pos - i];
-                    i++;
+                    last = nomeCut[i];
+                    i--;
                     if (last >= '0' && last <= '9')
                     {
                         numeri = last + numeri;
@@ -83,10 +83,11 @@ namespace UNIBO.SET.Services.Decifratori
                 lastNum++;
                 nomeCut += lastNum;
             }
+
             nomeCut += formato;
             string newPath = fd.Path;
             newPath = newPath.Substring(0, newPath.LastIndexOf(nome));
-            newPath.Concat(nomeCut);
+            newPath += nomeCut;
             return new FileDecifrato(newPath);
         }
     }
