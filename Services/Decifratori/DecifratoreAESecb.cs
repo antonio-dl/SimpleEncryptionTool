@@ -46,7 +46,42 @@ namespace UNIBO.SET.Services.Decifratori
 
         private FileDecifrato GeneraNuovoNomeFileDecifrato(FileDecifrato fd)
         {
-            throw new NotImplementedException();
+            string nome = fd.Name;
+            int pos = nome.LastIndexOf(".");
+            string nomeCut = nome.Substring(0, pos); // prova.txt --> . in posizione 5 ma nomeCut arriva fino a 4
+            string formato = nome.Substring(pos); // prova.txt --> . in posizione 5, quindi inizia dalla posizione 5 fino alla fine
+            // prendendo ad esempio un file di nome prova.txt --> nomeCut = prova <-> formato = .txt --> mandare le due variabili in output lo conferma
+
+            char last = nomeCut[pos - 1];
+            if (last < '0' || last > '9')
+            {
+                nomeCut += "1";
+            }
+            else
+            {
+                string numeri = "" + last;
+                int i = pos - 2;
+                do
+                {
+                    last = nomeCut[i];
+                    i--;
+                    if (last >= '0' && last <= '9')
+                    {
+                        numeri = last + numeri;
+                    }
+                }
+                while (last >= '0' && last <= '9');
+                nomeCut = nomeCut.Substring(0, nomeCut.LastIndexOf(numeri));
+                int lastNum = int.Parse(numeri);
+                lastNum++;
+                nomeCut += lastNum;
+            }
+
+            nomeCut += formato;
+            string newPath = fd.Path;
+            newPath = newPath.Substring(0, newPath.LastIndexOf(nome));
+            newPath += nomeCut;
+            return new FileDecifrato(newPath);
         }
     }
 }
