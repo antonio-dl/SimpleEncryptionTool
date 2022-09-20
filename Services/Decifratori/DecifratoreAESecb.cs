@@ -21,7 +21,7 @@ namespace UNIBO.SET.Services.Decifratori
             var fc = new FileCifrato(key.TargetFilePath);
             var fd = new FileDecifrato(key.SourceFilePath);
 
-            if (fc.Exists)
+            if (!fc.Exists)
             {
                 throw new FileNotFoundException($"File {fc.Path} non esistente!");
             }
@@ -35,8 +35,7 @@ namespace UNIBO.SET.Services.Decifratori
             using var sourceStream = fc.Open();
             using var targetStream = fd.Create();
 
-            using var decryptor = aes.CreateDecryptor(
-                key.Password, null);
+            using var decryptor = aes.CreateDecryptor(key.Password, null);
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
             decryptoStream.CopyTo(targetStream);
