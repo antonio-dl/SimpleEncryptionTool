@@ -1,4 +1,4 @@
-﻿namespace UNIBO.SET.Forms
+﻿namespace UNIBO.SET.GUI.Forms
 {
     partial class FirstLoginView
     {
@@ -123,6 +123,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FirstLoginView";
             this.Text = "FirstLoginView";
+            this.Load += new System.EventHandler(this.FirstLoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

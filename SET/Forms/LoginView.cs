@@ -19,7 +19,7 @@ namespace UNIBO.SET.GUI.Forms
     {
         public LoginView()
         {
-            User user = LoadUserData();
+            Utente utente = LoadUserData();
             InitializeComponent();
 
 

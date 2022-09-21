@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SET.Forms
+namespace UNIBO.SET.GUI.Forms
 {
     public partial class FirstLoginView : Form
     {
@@ -19,6 +19,11 @@ namespace SET.Forms
 
         private void label2_Click(object sender, EventArgs e)
     {
+
+        }
+
+        private void FirstLoginView_Load(object sender, EventArgs e)
+        {
 
         }
     }
