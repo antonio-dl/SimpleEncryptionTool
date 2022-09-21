@@ -65,5 +65,10 @@ namespace UNIBO.SET.GUI.Forms
             HomeSET home = new HomeSET(init);
             home.ShowDialog();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
