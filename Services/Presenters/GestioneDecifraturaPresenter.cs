@@ -22,9 +22,9 @@ namespace UNIBO.SET.Services.Presenters
         public USB? SelectedUSB { get; private set; }
         public KeyChain? SelectedKeyChain { get; private set; }
 
-        private readonly Dictionary<string, IDecifratore> _decifratoriDictonary;
+        private readonly IDictionary<string, IDecifratore> _decifratoriDictonary;
 
-        public GestioneDecifraturaPresenter(ILogger logger, Dictionary<string, IDecifratore> decifratoriDictonary)
+        public GestioneDecifraturaPresenter(ILogger logger, IDictionary<string, IDecifratore> decifratoriDictonary)
         {
             _logger = logger;
             _decifratoriDictonary = decifratoriDictonary;

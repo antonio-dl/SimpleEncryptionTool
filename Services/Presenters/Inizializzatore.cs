@@ -1,19 +1,20 @@
 ﻿using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
+using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Cifratori;
+using UNIBO.SET.Services.Decifratori;
 using UNIBO.SET.Services.Presenters;
 
-namespace Services.Presenters
+namespace UNIBO.SET.Services.Presenters
 {
     public class Inizializzatore // Classe che si occupa di effettuare tutte le iniezioni di dipendenza
     {
+        private static readonly string PATH_CONFIG_FOLDER = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SET");
+
+
         private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
         private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
         private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
@@ -25,7 +26,6 @@ namespace Services.Presenters
 
         public Inizializzatore()
         {
-            CreaUtenteSingleton();
             CaricaComponenti();
 
 
@@ -42,24 +42,32 @@ namespace Services.Presenters
         private void CaricaComponenti()
         {
             GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
-            ILogger logger = GestioneLogPresenter as ILogger;
-            GestioneVerificaPresenter = new GestioneVerificaPresenter(logger); // Controllare che abbia effetivamente bisogno del logger
+            Logger = GestioneLogPresenter as ILogger;
+            GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
 
-            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter(logger);
+            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
 
-            GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(logger);
+            GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
 
         }
 
-        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter(ILogger logger)
+        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter()
         {
+            Impostazione impostazione;
+            try
+            {
+                impostazione = Utente.GetInstance().Impostazioni.OttieniImpostazione("cifratore");
 
-            Impostazione impostazione = Utente.GetInstance().Impostazioni.OttieniImpostazione("cifratore");
-
+            }
+            catch (KeyNotFoundException e)
+            {
+                Logger.WriteLog(EntryType.Errore, "Inizializzatore", "Errore nella ricerca dell' impostazione {cifratore}");
+                throw;
+            }
             ICifratore cifratore = CreaCifratore(impostazione);
-            var presenter = new GestioneCifraturaPresenter(cifratore, logger);
+            var presenter = new GestioneCifraturaPresenter(cifratore, this.Logger);
             return presenter;
         }
 
@@ -71,19 +79,35 @@ namespace Services.Presenters
             else if (nomeCifratore == "AES-ECB")
                 return new CifratoreAESecb();
             else
+            {
+                Logger.WriteLog(EntryType.Errore, "Inizializzatore", $"Il cifratore {nomeCifratore} non è stato trovato mentre si tentava di inizializzare l' applicativo");
                 throw new CifratoreNotFoundExeption($"Il cifratore {nomeCifratore} non è stato trovato");
-
+            }
         }
 
         private GestioneDecifraturaPresenter CreaGestioneDecifraturaPresenter()
         {
-            throw new NotImplementedException();
+            GestioneDecifraturaPresenter result;
+            IDictionary<string, IDecifratore> mappaDecifratori = GeneraMappaDecifratori();
+
+
+            return result = new GestioneDecifraturaPresenter(Logger, mappaDecifratori);
         }
 
-        private void CreaUtenteSingleton()
+        private Dictionary<string, IDecifratore> GeneraMappaDecifratori()
         {
-            throw new NotImplementedException();
+            var result = new Dictionary<string, IDecifratore>();
+            IDecifratore decifratore;
+
+            decifratore = new DecifratoreAEScbc();
+            result.Add(decifratore.Algoritmo, decifratore);
+
+            decifratore = new DecifratoreAESebc();
+            result.Add(decifratore.Algoritmo, decifratore);
+
+            return result;
         }
+
     }
 
     [Serializable]
