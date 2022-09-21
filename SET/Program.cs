@@ -14,8 +14,8 @@ namespace UNIBO.SET.GUI
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            if (PrimoAvvio())
-            {
+            if (ControllaEsistenzaCredenziali())
+            { // Primo avvio
                 ApplicationConfiguration.Initialize();
                 Application.Run(new Forms.FirstLoginView()); // Da creare :D
             }
@@ -26,7 +26,7 @@ namespace UNIBO.SET.GUI
             }
         }
 
-        private static bool PrimoAvvio()
+        private static bool ControllaEsistenzaCredenziali()
         {
             // Se non esistono le impostazioni/dati utente -> true
             string path_to_credential = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SET","cred.bin");

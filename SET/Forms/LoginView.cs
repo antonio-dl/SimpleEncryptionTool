@@ -1,4 +1,5 @@
-﻿using Services.Presenters;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using Services.Presenters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UNIBO.SET.Model;
 
 namespace UNIBO.SET.GUI.Forms
 {
@@ -15,10 +17,32 @@ namespace UNIBO.SET.GUI.Forms
     {
         public LoginView()
         {
+            User user = LoadUserData();
             InitializeComponent();
+
+
         }
 
-        Inizializzatore init;
+        private User LoadUserData()
+        {
+            // Credenziali -> Utente <- Impostazioni
+            Utente u = Utente.GetInstance(); // First Instance of Singleton
+            u.Credenziali = LoadCredenziali();
+            u.Impostazioni = LoadImpostazioni();
+
+
+        }
+
+        private Impostazioni LoadImpostazioni()
+        {
+            
+        }
+
+        private Credenziali LoadCredenziali()
+        {
+            throw new NotImplementedException();
+        }
+
         private void LoginView_Load(object sender, EventArgs e)
         {
 
