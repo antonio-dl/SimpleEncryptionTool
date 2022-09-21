@@ -6,10 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UNIBO.SET.Model;
+using File = System.IO.File;
 
 namespace UNIBO.SET.GUI.Forms
 {
@@ -23,24 +25,39 @@ namespace UNIBO.SET.GUI.Forms
 
         }
 
-        private User LoadUserData()
+        private Utente LoadUserData()
         {
             // Credenziali -> Utente <- Impostazioni
             Utente u = Utente.GetInstance(); // First Instance of Singleton
-            u.Credenziali = LoadCredenziali();
-            u.Impostazioni = LoadImpostazioni();
+            u.Credenziali = LoadCredenziali(u);
+            u.Impostazioni = LoadImpostazioni(u);
 
+            return u;
 
         }
 
-        private Impostazioni LoadImpostazioni()
+        private Impostazioni LoadImpostazioni(Utente u)
         {
-            
+            string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
+            Impostazioni i;
+            string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+
+            i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+
+            return i;
+
         }
 
-        private Credenziali LoadCredenziali()
+        private Credenziali LoadCredenziali(Utente u) // TODO: Test della seriallizzaziote e deserializzazione
         {
-            throw new NotImplementedException();
+            Credenziali c;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileInfo f = new FileInfo(SETEnvironment.Credential_Path);
+            Stream stream = f.OpenRead();
+            c = (Credenziali) bf.Deserialize(stream );
+            stream.Close();
+
+            return c;
         }
 
         private void LoginView_Load(object sender, EventArgs e)
@@ -60,7 +77,7 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Accedi_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
             HomeSET home = new HomeSET(init);
             home.ShowDialog();
