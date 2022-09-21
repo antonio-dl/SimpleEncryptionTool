@@ -35,7 +35,8 @@ namespace UNIBO.SET.Services.Presenters
             this.LogIt(EntryType.Operazione, $"Cifrato file nel path: {file.Path}");
             try
             {
-                return this.Cifratore.CifraFile(file);
+                Key key = this.Cifratore.CifraFile(file);
+                return new FileCifrato(file.Path, key);
             }
             catch(FileNotFoundException ex)
             {

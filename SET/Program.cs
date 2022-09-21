@@ -1,6 +1,6 @@
 
 
-using Services.Presenters;
+using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.GUI
 {
@@ -14,14 +14,26 @@ namespace UNIBO.SET.GUI
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            Inizializzatore init = InizializzaPresenters();
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Forms.LoginView());
+            if (PrimoAvvio())
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Forms.FirstLoginView()); // Da creare :D
+            }
+            else
+            {
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Forms.LoginView());
+            }
         }
 
-        private static Inizializzatore InizializzaPresenters()
+        private static bool PrimoAvvio()
         {
-            throw new NotImplementedException();
+            // Se non esistono le impostazioni/dati utente -> true
+            string path_to_credential = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SET","cred.bin");
+            if (File.Exists(path_to_credential))
+                return false;
+            return true;
+
         }
     }
 }

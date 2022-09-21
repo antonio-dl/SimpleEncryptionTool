@@ -12,7 +12,7 @@ namespace UNIBO.SET.Services.Cifratori
     {
         public string Algoritmo => throw new NotImplementedException();
 
-        public FileCifrato CifraFile(UNIBO.SET.Model.File fileIn)
+        public Key CifraFile(UNIBO.SET.Model.File fileIn)
         {
 
             FileCifrato fc = new FileCifrato(fileIn.Path + ".sef", null);
@@ -22,7 +22,7 @@ namespace UNIBO.SET.Services.Cifratori
 
             streamIn.CopyTo(streamOut);
 
-            return fc;
+            return fc.Key;
 
 
 
