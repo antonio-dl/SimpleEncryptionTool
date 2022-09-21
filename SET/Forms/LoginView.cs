@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
-using Services.Presenters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +10,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UNIBO.SET.Model;
+using UNIBO.SET.Services.Presenters;
 using File = System.IO.File;
 
 namespace UNIBO.SET.GUI.Forms
 {
     public partial class LoginView : Form
     {
+
+        private GestioneLoginPresenter presenter;
+
+        private Inizializzatore init;
         public LoginView()
         {
             Utente utente = LoadUserData();
+            init = new Inizializzatore();
+            presenter = init.GestioneLoginPresenter;
+
             InitializeComponent();
 
 

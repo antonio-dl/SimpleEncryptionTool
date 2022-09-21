@@ -29,7 +29,7 @@ namespace UNIBO.SET.GUI
         private static bool ControllaEsistenzaCredenziali()
         {
             // Se non esistono le impostazioni/dati utente -> true
-            string path_to_credential = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "SET","cred.bin");
+            string path_to_credential = SET.SETEnvironment.Credential_Path;
             if (File.Exists(path_to_credential))
                 return false;
             return true;
