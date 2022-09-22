@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 namespace UNIBO.SET.Model.Tests
 {
@@ -75,9 +74,9 @@ namespace UNIBO.SET.Model.Tests
             File provaFile2 = new File(pathfile2);
             File provaFile3 = new File(pathfile3);
 
-            var c7 = provaFile1.CalcolaMD5Byte();
-            var c8 = provaFile2.CalcolaMD5Byte();
-            var c9 = provaFile3.CalcolaMD5Byte();
+            CodiceVerifica c7 = provaFile1.CodiceVerifica;
+            CodiceVerifica c8 = provaFile2.CodiceVerifica;
+            CodiceVerifica c9 = provaFile3.CodiceVerifica;
 
             Assert.IsTrue(c7.Equals(c7));
             Assert.IsTrue(c7.Equals(c8));

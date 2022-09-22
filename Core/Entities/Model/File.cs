@@ -55,12 +55,10 @@
                 using (var stream = this.Open())
                 {
                     var hash = md5.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLower();
                 }
             }
         }
-
-  
 
         public virtual FileStream Open()
         {
