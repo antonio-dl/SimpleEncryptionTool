@@ -29,8 +29,9 @@ namespace UNIBO.SET.Services.Cifratori.Tests
             File provaFile = new File(pathfile);
             var cifratore = new TestNonCifratore();
             var key = cifratore.CifraFile(provaFile);
-            var fc = new FileCifrato(key.TargetFilePath, key);
+            var fc = new FileCifrato(pathfile); // sostituiti i paramentri "key.TargetFilePath, key" dentro le parentesi
 
+            Assert.IsTrue(key == null);
             Assert.IsTrue(System.IO.File.Exists(fc.Path));
             string lettoDaFile = System.IO.File.ReadAllText(fc.Path);
             Assert.IsTrue(lettoDaFile.Length == contenutoFile.Length );
