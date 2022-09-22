@@ -17,7 +17,7 @@ namespace UNIBO.SET.ModelLog
         }
 
 
-        public override void AddEntry(Entry entry) // Da controllare la chiusura del file
+        public override void AddEntry(Entry entry)
         {
             // usare questa stringa per l Inizializzatore
             // string path = Path.Combine(PathFile,"SetLog" + DateTime.Now.ToString("yMMdd") + ".log"); // es: SetLog200403.log
@@ -26,7 +26,6 @@ namespace UNIBO.SET.ModelLog
             string stringEntry = entry.ToString();
 
             logFile.WriteLine(stringEntry);
-
         }
 
         private Entry[] ReadEntries(StreamReader logReader)
@@ -40,8 +39,6 @@ namespace UNIBO.SET.ModelLog
             }
 
             return result.ToArray();
-
-
         }
 
         private Entry parseLine(string line)
@@ -54,7 +51,6 @@ namespace UNIBO.SET.ModelLog
             string message = tokens[3];
 
             return new Entry(timestamp, type, componenteFonte, message);
-
         }
 
         public override Entry[] GetEntries()

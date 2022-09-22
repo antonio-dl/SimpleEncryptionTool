@@ -17,6 +17,11 @@ namespace UNIBO.SET.ModelLog.Tests
             Entry entry = new Entry(EntryType.Info, "Test", "This is a test!");
             string asd = entry.ToString();
             Console.WriteLine(asd);
+        }
+
+        [TestMethod()]
+        public void FileLogTests()
+        {
 
         }
     }
