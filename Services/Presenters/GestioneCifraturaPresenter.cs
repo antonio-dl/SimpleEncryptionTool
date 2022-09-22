@@ -29,13 +29,12 @@ namespace UNIBO.SET.Services.Presenters
             return true;
         }
 
-        public FileCifrato Cifra(Model.File file) // da vedere altre eccezioni
+        public Key Cifra(Model.File file) // da vedere altre eccezioni
         {
             this.LogIt(EntryType.Operazione, $"Cifrato file nel path: {file.Path}");
             try
             {
-                Key key = this.Cifratore.CifraFile(file);
-                return new FileCifrato(file.Path, key);
+                return this.Cifratore.CifraFile(file);
             }
             catch(FileNotFoundException ex)
             {
