@@ -8,8 +8,7 @@ using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Decifratori
 {
-    internal class DecifratoreAESebc : IDecifratore
-
+    public class DecifratoreAESecb : IDecifratore
     {
         public string Algoritmo => "AES-EBC";
 
@@ -34,7 +33,7 @@ namespace UNIBO.SET.Services.Decifratori
 
             using var sourceStream = fc.Open();
             using var targetStream = fd.Create();
-
+            
             using var decryptor = aes.CreateDecryptor(key.Password, null);
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
