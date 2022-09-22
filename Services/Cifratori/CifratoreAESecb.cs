@@ -16,7 +16,7 @@ namespace UNIBO.SET.Services.Cifratori
         {
 
             using var aes = Aes.Create();
-            aes.Mode = CipherMode.ECB;// Modalita CBC (dal nome classe)
+            aes.Mode = CipherMode.ECB;// Modalita ECB (dal nome classe)
             string pathFileCifrato = fileIn.Path + ".sef";
             
             Key key = new Key(fileIn.Path, pathFileCifrato, aes.Key, aes.Mode.ToString());

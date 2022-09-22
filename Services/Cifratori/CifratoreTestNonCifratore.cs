@@ -15,7 +15,7 @@ namespace UNIBO.SET.Services.Cifratori
         public Key CifraFile(UNIBO.SET.Model.File fileIn)
         {
 
-            FileCifrato fc = new FileCifrato(fileIn.Path + ".sef", null);
+            FileCifrato fc = new FileCifrato(fileIn.Path + ".sef"); // rimosso ", null" dopo il ".sef"
 
             using var streamOut = fc.Create();
             using var streamIn = fileIn.Open();
