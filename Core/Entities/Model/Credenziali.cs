@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace UNIBO.SET.Model
 {
+    [Serializable]
     public abstract class Credenziali
     {
         public abstract bool Confronta(Credenziali credenziali);
     }
+
+    [Serializable]
     public class CredenzialiPassword : Credenziali
     {
         public string Password { get; set; }
