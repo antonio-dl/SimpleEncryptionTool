@@ -34,7 +34,7 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Registrati_Click(object sender, EventArgs e)
         {
-            if(Password.Text.Length<8 && ripetiPass.Text.Length < 8)
+            if(Password.Text.Length<5 && ripetiPass.Text.Length < 5)
             {
                 MessageBox.Show("Password troppo corta!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
