@@ -48,7 +48,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public USB[] ElencaDispositiviEsterni()
         {
-            return SystemHelper.GetUsbs();
+            return USB.GetUsbs();
         }
 
 

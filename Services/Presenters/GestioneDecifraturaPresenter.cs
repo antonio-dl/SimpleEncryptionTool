@@ -72,7 +72,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public USB[] ElencaDispositiviEsterni()
         {
-            return SystemHelper.GetUsbs();
+            return USB.GetUsbs();
         }
 
         public ISet<Model.File> FileDecifrabili(KeyChain chain)
