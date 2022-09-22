@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Accedi = new CustomControls.RJControls.RJButton2();
+            this.Registrati = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // label1
@@ -90,23 +90,24 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Ripetere password:";
             // 
-            // Accedi
+            // Registrati
             // 
-            this.Accedi.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.Accedi.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.Accedi.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Accedi.BorderRadius = 15;
-            this.Accedi.BorderSize = 0;
-            this.Accedi.FlatAppearance.BorderSize = 0;
-            this.Accedi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Accedi.ForeColor = System.Drawing.Color.White;
-            this.Accedi.Location = new System.Drawing.Point(352, 309);
-            this.Accedi.Name = "Accedi";
-            this.Accedi.Size = new System.Drawing.Size(110, 35);
-            this.Accedi.TabIndex = 12;
-            this.Accedi.Text = "Registrati";
-            this.Accedi.TextColor = System.Drawing.Color.White;
-            this.Accedi.UseVisualStyleBackColor = false;
+            this.Registrati.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Registrati.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.Registrati.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Registrati.BorderRadius = 15;
+            this.Registrati.BorderSize = 0;
+            this.Registrati.FlatAppearance.BorderSize = 0;
+            this.Registrati.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Registrati.ForeColor = System.Drawing.Color.White;
+            this.Registrati.Location = new System.Drawing.Point(352, 309);
+            this.Registrati.Name = "Registrati";
+            this.Registrati.Size = new System.Drawing.Size(110, 35);
+            this.Registrati.TabIndex = 12;
+            this.Registrati.Text = "Registrati";
+            this.Registrati.TextColor = System.Drawing.Color.White;
+            this.Registrati.UseVisualStyleBackColor = false;
+            this.Registrati.Click += new System.EventHandler(this.Registrati_Click);
             // 
             // FirstLoginView
             // 
@@ -114,7 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(474, 356);
-            this.Controls.Add(this.Accedi);
+            this.Controls.Add(this.Registrati);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
@@ -137,6 +138,6 @@
         private Label label3;
         private TextBox textBox1;
         private Label label4;
-        private CustomControls.RJControls.RJButton2 Accedi;
+        private CustomControls.RJControls.RJButton2 Registrati;
     }
 }
