@@ -102,7 +102,7 @@ namespace UNIBO.SET.Services.Presenters
             decifratore = new DecifratoreAEScbc();
             result.Add(decifratore.Algoritmo, decifratore);
 
-            decifratore = new DecifratoreAESebc();
+            decifratore = new DecifratoreAESecb();
             result.Add(decifratore.Algoritmo, decifratore);
 
             return result;
