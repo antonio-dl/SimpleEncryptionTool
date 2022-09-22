@@ -26,5 +26,12 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void Registrati_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginView login = new LoginView();
+            login.ShowDialog();
+        }
     }
 }
