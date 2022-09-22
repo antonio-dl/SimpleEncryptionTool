@@ -12,7 +12,6 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class Inizializzatore // Classe che si occupa di effettuare tutte le iniezioni di dipendenza
     {
-        private static readonly string PATH_CONFIG_FOLDER = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SET");
 
 
         private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
@@ -64,7 +63,7 @@ namespace UNIBO.SET.Services.Presenters
             catch (KeyNotFoundException e)
             {
                 Logger.WriteLog(EntryType.Errore, "Inizializzatore", "Errore nella ricerca dell' impostazione {cifratore}");
-                throw;
+                throw e;
             }
             ICifratore cifratore = CreaCifratore(impostazione);
             var presenter = new GestioneCifraturaPresenter(cifratore, this.Logger);
@@ -91,7 +90,8 @@ namespace UNIBO.SET.Services.Presenters
             IDictionary<string, IDecifratore> mappaDecifratori = GeneraMappaDecifratori();
 
 
-            return result = new GestioneDecifraturaPresenter(Logger, mappaDecifratori);
+            result = new GestioneDecifraturaPresenter(Logger, mappaDecifratori);
+            return result;
         }
 
         private Dictionary<string, IDecifratore> GeneraMappaDecifratori()

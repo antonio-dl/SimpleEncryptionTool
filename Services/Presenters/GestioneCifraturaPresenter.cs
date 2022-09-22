@@ -65,10 +65,6 @@ namespace UNIBO.SET.Services.Presenters
             return result;
         }
 
-        public bool SelezionaDestinazione(string path)
-        {
-            throw new NotImplementedException();
-        }
 
         public void SelezionaUSB(USB usb)
         {

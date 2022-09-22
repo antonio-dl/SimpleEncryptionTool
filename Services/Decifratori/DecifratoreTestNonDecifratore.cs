@@ -9,11 +9,11 @@ namespace UNIBO.SET.Services.Decifratori
 {
     internal class DecifratoreTestNonDecifratore : IDecifratore
     {
-        public string Algoritmo => throw new NotImplementedException();
+        public string Algoritmo => "NessunAlgoritmo";
 
         public FileDecifrato Decifra(Key key)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

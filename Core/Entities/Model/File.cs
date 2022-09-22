@@ -41,8 +41,7 @@
         {
             get
             {
-                if (_codice == null)
-                    _codice = new CodiceVerifica(this.CalcolaMD5());
+                _codice ??= new CodiceVerifica(this.CalcolaMD5());
                 return _codice;
             }
         }

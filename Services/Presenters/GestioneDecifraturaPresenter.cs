@@ -77,7 +77,14 @@ namespace UNIBO.SET.Services.Presenters
 
         public ISet<Model.File> FileDecifrabili(KeyChain chain)
         {
-            throw new NotImplementedException();
+            HashSet<Model.File> result = new HashSet<Model.File>();
+            foreach (var key in chain)
+            {
+                var file = new Model.File(key.SourceFilePath);
+                if (file.Exists)
+                    result.Add(file);
+            }
+            return result;
         }
 
         public void LogIt(EntryType type, string messaggio)
@@ -87,13 +94,16 @@ namespace UNIBO.SET.Services.Presenters
 
         public KeyChain ScansionaUSB()
         {
-            throw new NotImplementedException();
+            if (this.SelectedUSB.HasKeyChain())
+                return this.SelectedUSB.KeyChain;
+            else
+                return null;
         }
 
 
         public void SelezionaKeyChain(KeyChain chain)
         {
-            throw new NotImplementedException();
+            this.SelectedKeyChain = chain;
         }
 
         public void SelezionaUSB(USB usb)
