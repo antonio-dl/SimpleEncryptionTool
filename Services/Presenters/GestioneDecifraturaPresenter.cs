@@ -1,5 +1,4 @@
 ﻿using UNIBO.SET.Services.Decifratori;
-using UNIBO.SET.Services.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +71,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public USB[] ElencaDispositiviEsterni()
         {
-            return SystemHelper.GetUsbs();
+            return USB.GetUsbs();
         }
 
         public ISet<Model.File> FileDecifrabili(KeyChain chain)
