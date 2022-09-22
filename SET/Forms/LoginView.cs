@@ -19,11 +19,12 @@ namespace UNIBO.SET.GUI.Forms
     {
 
         private GestioneLoginPresenter presenter;
+        private Utente utente;
 
         private Inizializzatore init;
         public LoginView()
         {
-            Utente utente = LoadUserData();
+            utente = LoadUserData();
             init = new Inizializzatore();
             presenter = init.GestioneLoginPresenter;
 
@@ -49,19 +50,20 @@ namespace UNIBO.SET.GUI.Forms
             Impostazioni i;
             string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
 
+
             i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
 
             return i;
 
         }
 
-        private Credenziali LoadCredenziali(Utente u) // TODO: Test della seriallizzaziote e deserializzazione
+        private Credenziali LoadCredenziali(Utente u) // TODO: Test della serializzazione e deserializzazione
         {
             Credenziali c;
             BinaryFormatter bf = new BinaryFormatter();
             FileInfo f = new FileInfo(SETEnvironment.Credential_Path);
             Stream stream = f.OpenRead();
-            c = (Credenziali) bf.Deserialize(stream );
+            c = (Credenziali) bf.Deserialize(stream);
             stream.Close();
 
             return c;
@@ -77,17 +79,27 @@ namespace UNIBO.SET.GUI.Forms
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void Password_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void Accedi_Click(object sender, EventArgs e)
         {
+            CredenzialiPassword c = new CredenzialiPassword(Password.Text);
 
-            this.Hide();
-            HomeSET home = new HomeSET(init);
-            home.ShowDialog();
+            if (!c.Confronta(utente.Credenziali))
+            {
+                Thread.Sleep(1000);
+                MessageBox.Show("Password errata!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.Hide();
+                HomeSET home = new HomeSET(init);
+                home.ShowDialog();
+            }
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

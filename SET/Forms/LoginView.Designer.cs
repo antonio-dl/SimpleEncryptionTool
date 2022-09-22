@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Accedi = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
@@ -56,13 +56,13 @@
             this.label2.Text = "Effettua il login per poter continuare";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox3
+            // Password
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 158);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(170, 27);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.Password.Location = new System.Drawing.Point(149, 158);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(170, 27);
+            this.Password.TabIndex = 7;
+            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // label3
             // 
@@ -100,7 +100,7 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(474, 356);
             this.Controls.Add(this.Accedi);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.Password);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,7 +116,7 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox Password;
         private Label label3;
         private CustomControls.RJControls.RJButton2 Accedi;
     }
