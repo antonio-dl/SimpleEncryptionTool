@@ -1,5 +1,4 @@
 ﻿using UNIBO.SET.Services.Cifratori;
-using UNIBO.SET.Services.Shared;
 using System;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
@@ -48,7 +47,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public USB[] ElencaDispositiviEsterni()
         {
-            return SystemHelper.GetUsbs();
+            return USB.GetUsbs();
         }
 
 
