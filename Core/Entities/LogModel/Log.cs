@@ -33,10 +33,10 @@ namespace UNIBO.SET.ModelLog
 
     public class Entry
     {
-        DateTime Timestamp { get; }
-        EntryType Type { get; }
-        string Fonte { get; }
-        string Message { get; }
+        public DateTime Timestamp { get; }
+        public EntryType Type { get; }
+        public string Fonte { get; }
+        public string Message { get; }
 
         public Entry(EntryType type, string fonte, string message)
         {
@@ -47,11 +47,19 @@ namespace UNIBO.SET.ModelLog
             Message = message;
         }
 
+        public Entry(DateTime timestamp, EntryType type, string fonte, string message)
+        {
+            Timestamp = timestamp;
+            Type = type;
+            Fonte = fonte;
+            Message = message;
+        }
+
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
 
-            result.Append(this.Timestamp.ToString("MM/dd/yyyy HH:mm:ss:ff"));
+            result.Append(this.Timestamp.ToString("yyyy/MM/dd HH:mm:ss:ff"));
             result.Append(" | ");
 
             result.Append(this.Type.ToString());

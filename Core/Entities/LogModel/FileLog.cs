@@ -24,14 +24,37 @@ namespace UNIBO.SET.ModelLog
             using StreamWriter logFile = File.AppendText(PathFile);
 
             string stringEntry = entry.ToString();
-            
+
             logFile.WriteLineAsync(stringEntry).Start();
 
         }
 
         private Entry[] ReadEntries(StreamReader logReader)
         {
-            throw new NotImplementedException();
+            IList<Entry> result = new List<Entry>();
+            string line;
+            while ((line = logReader.ReadLine()) is not null)
+            {
+                Entry entry = parseLine(line);
+                result.Add(entry);
+            }
+
+            return result.ToArray();
+
+
+        }
+
+        private Entry parseLine(string line)
+        {
+            string[] tokens = line.Split('|');
+
+            DateTime timestamp = DateTime.Parse(tokens[0]);
+            EntryType type = Enum.Parse<EntryType>(tokens[1]);
+            string componenteFonte = tokens[2];
+            string message = tokens[3];
+
+            return new Entry(timestamp, type, componenteFonte, message);
+
         }
 
         public override Entry[] GetEntries()
@@ -41,7 +64,9 @@ namespace UNIBO.SET.ModelLog
 
         public override Entry[] GetEntries(EntryType filteredType)
         {
-            throw new NotImplementedException();
+            Entry[] result = GetEntries();
+
+            return result.Where(entry => entry.Type == filteredType).ToArray();
         }
     }
 }
