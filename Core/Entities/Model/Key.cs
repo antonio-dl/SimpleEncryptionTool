@@ -19,8 +19,6 @@ namespace UNIBO.SET.Model
 
         public DateTime UltimaModifica { get; } // FIXME: Da aggiustare il costruttore, forse meglio utilizzare un'altra classe per contenere le cryptInfo
 
-        // ricordarsi che va inserito anche il CodiceVerifica
-
         public Key(string sourceFilePath, CodiceVerifica codiceVerifica, string targetFilePath, byte[]? password, string algoritmo)
         {
             SourceFilePath = sourceFilePath ?? throw new ArgumentNullException(nameof(sourceFilePath));
