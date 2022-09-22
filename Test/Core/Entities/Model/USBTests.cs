@@ -20,10 +20,10 @@ namespace UNIBO.SET.Model.Tests
             const string nomeUsb = @"F:\";
             usb = new USB(nomeUsb);
             
-            Assert.IsFalse(usb.HasKeyChain());
+            // Assert.IsFalse(usb.HasKeyChain());
             
             keyChain = usb.KeyChain;
-            Console.WriteLine(keyChain);
+            Console.WriteLine(keyChain.ToString());
             
             Assert.IsTrue(usb.HasKeyChain());
             Assert.IsNotNull(keyChain.ToString());

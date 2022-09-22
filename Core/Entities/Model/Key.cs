@@ -15,12 +15,9 @@ namespace UNIBO.SET.Model
         public string SourceFilePath { get; }
         public byte[] Password { get; }
 
-        public DateTime UltimaModifica { get; } // FIXME: Da aggiustare il costruttore, forse meglio utilizzare un altra calsse per contenere le cryptInfo
+        public DateTime UltimaModifica { get; } // FIXME: Da aggiustare il costruttore, forse meglio utilizzare un altra classe per contenere le cryptInfo
 
-
-
-
-
+        // ricordarsi che va inserito anche il CodiceVerifica
 
         public Key(string sourceFilePath, string targetFilePath, byte[]? password, string algoritmo)
         {
