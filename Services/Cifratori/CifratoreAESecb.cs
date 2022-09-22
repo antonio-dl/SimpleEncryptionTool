@@ -19,7 +19,7 @@ namespace UNIBO.SET.Services.Cifratori
             aes.Mode = CipherMode.ECB;// Modalita ECB (dal nome classe)
             string pathFileCifrato = fileIn.Path + ".sef";
             
-            Key key = new Key(fileIn.Path, pathFileCifrato, aes.Key, aes.Mode.ToString());
+            Key key = new Key(fileIn.Path,fileIn.CodiceVerifica, pathFileCifrato, aes.Key, aes.Mode.ToString());
             FileCifrato fcout = new FileCifrato(pathFileCifrato, key);
             using var sourceStream = fileIn.Open();
             using var targetStream = fcout.Create();

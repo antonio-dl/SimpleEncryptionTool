@@ -46,15 +46,35 @@ namespace UNIBO.SET.GUI.Forms
 
         private Impostazioni LoadImpostazioni(Utente u)
         {
-            string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
-            Impostazioni i;
-            string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+            if (File.Exists(SETEnvironment.Configuration_Path))
+            {
+                string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
+                Impostazioni i;
+                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
 
+                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+            } else
+            {
+               return CreateDefaultSettings();
+            }
 
-            i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+        }
 
-            return i;
+        private Impostazioni CreateDefaultSettings()
+        {
+            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
+            Impostazione i = CaricaCifratori();
+            settings[i.Nome] = i;
+            
+            return new Impostazioni(settings);
 
+        }
+
+        private Impostazione CaricaCifratori()
+        {
+            
+            string[] cifratoriOpzioni = { "AES-ECB","AES-CBC" };
+            return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
 
         private Credenziali LoadCredenziali(Utente u) // TODO: Test della serializzazione e deserializzazione
