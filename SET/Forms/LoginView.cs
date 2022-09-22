@@ -29,8 +29,7 @@ namespace UNIBO.SET.GUI.Forms
             presenter = init.GestioneLoginPresenter;
 
             InitializeComponent();
-
-
+            Password.PasswordChar = '\u25CF';
         }
 
         private Utente LoadUserData()
