@@ -47,7 +47,6 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneCifratura : IUSBSelectorController
     {
-        public bool SelezionaDestinazione(string path);
         public FileCifrato Cifra(File file);
         public bool Aggiungi(FileSystemElement sysElement);
         public bool Rimuovi(FileSystemElement sysElement);
