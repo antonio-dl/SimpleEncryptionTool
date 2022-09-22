@@ -12,10 +12,10 @@ namespace UNIBO.SET.Model
         {
             IDictionary<string, Impostazione> basic = new Dictionary<string, Impostazione>();
             string[] caso1 = { "rosso", "giallo", "verde" };
-            Impostazione imp1 = new Impostazione("Colore", caso1, "rosso");
+            Impostazione imp1 = new Impostazione("Colore", "rosso", caso1);
             basic.Add("aCaso1", imp1);
             string[] caso2 = { "piccolo", "medio", "grande" };
-            Impostazione imp2 = new Impostazione("Dimensione", caso2, "piccolo");
+            Impostazione imp2 = new Impostazione("Dimensione", "piccolo", caso2);
             basic.Add("aCaso2", imp2);
             Credenziali cred = new CredenzialiPassword("Ciabatta");
             return new Utente("Me", new Impostazioni(basic), cred);
@@ -23,7 +23,7 @@ namespace UNIBO.SET.Model
 
         public static Utente GetInstance() {
             
-            return _utente ?? new Utente();
+            return _utente ??= new Utente();
         }
 
         public string Nome { get; set; }
@@ -75,7 +75,7 @@ namespace UNIBO.SET.Model
         public string[] Opzioni { get; set; }
         public string Selezionato { get; set; }
 
-        public Impostazione(string nome, string[] opzioni, string selezionato)
+        public Impostazione(string nome, string selezionato, string[] opzioni)
         {
             Nome = nome;
             Opzioni = opzioni;
