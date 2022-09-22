@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ripetiPass = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Registrati = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
@@ -58,12 +58,14 @@
             this.label2.Text = "Crea una password per creare l\'account";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox3
+            // Password
             // 
-            this.textBox3.Location = new System.Drawing.Point(205, 160);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(170, 27);
-            this.textBox3.TabIndex = 9;
+            this.Password.Location = new System.Drawing.Point(205, 160);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(170, 27);
+            this.Password.TabIndex = 9;
+            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // label3
             // 
@@ -74,12 +76,14 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Inserire password:";
             // 
-            // textBox1
+            // ripetiPass
             // 
-            this.textBox1.Location = new System.Drawing.Point(205, 204);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 27);
-            this.textBox1.TabIndex = 11;
+            this.ripetiPass.Location = new System.Drawing.Point(205, 204);
+            this.ripetiPass.Name = "ripetiPass";
+            this.ripetiPass.PasswordChar = '*';
+            this.ripetiPass.Size = new System.Drawing.Size(170, 27);
+            this.ripetiPass.TabIndex = 11;
+            this.ripetiPass.TextChanged += new System.EventHandler(this.ripetiPass_TextChanged);
             // 
             // label4
             // 
@@ -116,9 +120,9 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(474, 356);
             this.Controls.Add(this.Registrati);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ripetiPass);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.Password);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -134,9 +138,9 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox3;
+        private TextBox Password;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox ripetiPass;
         private Label label4;
         private CustomControls.RJControls.RJButton2 Registrati;
     }
