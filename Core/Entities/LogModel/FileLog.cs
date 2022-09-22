@@ -25,7 +25,7 @@ namespace UNIBO.SET.ModelLog
 
             string stringEntry = entry.ToString();
 
-            logFile.WriteLineAsync(stringEntry).Start();
+            logFile.WriteLine(stringEntry);
 
         }
 
