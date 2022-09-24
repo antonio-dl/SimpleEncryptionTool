@@ -6,9 +6,9 @@ namespace UNIBO.SET.GUI.Forms
     {
         private GestioneDecifraturaPresenter _presenter;
 
-        public DecifraFileView(GestioneDecifraturaPresenter _presenter)
+        public DecifraFileView(GestioneDecifraturaPresenter presenter)
         {
-            _presenter = _presenter;
+            _presenter = presenter;
             InitializeComponent();
         }
 

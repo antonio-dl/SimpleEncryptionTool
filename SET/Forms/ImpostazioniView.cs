@@ -6,9 +6,9 @@ namespace UNIBO.SET.GUI.Forms
     {
         private GestioneImpECrededenzialiPresenter _presenter;
 
-        public ImpostazioniView(GestioneImpECrededenzialiPresenter _presenter)
+        public ImpostazioniView(GestioneImpECrededenzialiPresenter presenter)
         {
-            _presenter = _presenter;
+            _presenter = presenter;
             InitializeComponent();
         }
 

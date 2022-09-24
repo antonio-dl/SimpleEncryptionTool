@@ -6,9 +6,9 @@ namespace UNIBO.SET.GUI.Forms
     {
         private GestioneCifraturaPresenter _presenter;
 
-        public CifraFileView(GestioneCifraturaPresenter _presenter)
+        public CifraFileView(GestioneCifraturaPresenter presenter)
         {
-            _presenter = _presenter;
+            _presenter = presenter;
             InitializeComponent();
         }
 

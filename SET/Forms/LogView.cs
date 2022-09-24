@@ -6,9 +6,9 @@ namespace UNIBO.SET.GUI.Forms
     {
         private GestioneLogPresenter _presenter;
 
-        public LogView(GestioneLogPresenter _presenter)
+        public LogView(GestioneLogPresenter presenter)
         {
-            _presenter = _presenter;
+            _presenter = presenter;
             InitializeComponent();
         }
 
