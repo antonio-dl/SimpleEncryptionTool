@@ -1,12 +1,11 @@
-﻿using System;
-using UNIBO.SET.Interfaces;
+﻿using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 
 namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneImpECrededenzialiPresenter : IGestioneCredenziali, IGestioneImpostazioni
-    {   
+    {
         private Utente _utente;
         private ILogger _logger;
 
@@ -20,8 +19,8 @@ namespace UNIBO.SET.Services.Presenters
         {
             Impostazioni opt = _utente.Impostazioni;
             Impostazione[] tutte = opt.OttieniTutteImpostazioni();
-            
-            for(int i=0; i < opt.LunghezzaImpostazioni(); i++)
+
+            for (int i = 0; i < opt.LunghezzaImpostazioni(); i++)
             {
                 if (tutte[i].Nome.Equals(impostazione.Nome))
                 {
@@ -46,12 +45,12 @@ namespace UNIBO.SET.Services.Presenters
 
         public void SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
         {
-            if(!_utente.Credenziali.Confronta(vecchie))
+            if (!_utente.Credenziali.Confronta(vecchie))
             {
                 LogIt(EntryType.Avvertimento, "Tentativo di cambio credenziali fallito");
                 return;
             }
-            else if(_utente.Credenziali.Confronta(vecchie))
+            else if (_utente.Credenziali.Confronta(vecchie))
             {
                 _utente.Credenziali = nuove;
                 LogIt(EntryType.Operazione, "L'utente ha cambiato le credenziali");

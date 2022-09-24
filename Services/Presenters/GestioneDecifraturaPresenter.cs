@@ -1,22 +1,14 @@
-﻿using UNIBO.SET.Services.Decifratori;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using UNIBO.SET.Interfaces;
+﻿using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
+using UNIBO.SET.Services.Decifratori;
 
 namespace UNIBO.SET.Services.Presenters
 {
-
     public class GestioneDecifraturaPresenter : IGestioneDecifratura
     {
         private readonly ILogger _logger;
         private IDecifratore? _decifratore;
-
 
         public USB? SelectedUSB { get; private set; }
         public KeyChain? SelectedKeyChain { get; private set; }
@@ -27,7 +19,6 @@ namespace UNIBO.SET.Services.Presenters
         {
             _logger = logger;
             _decifratoriDictonary = decifratoriDictonary;
-
         }
 
         public FileDecifrato Decifra(Key key)
@@ -43,7 +34,6 @@ namespace UNIBO.SET.Services.Presenters
                     this.LogIt(EntryType.Errore, $"La chiave ha un algoritmo non supportato! Key {key}"); // TODO: To String di Key
                     throw e;
                 }
-
             }
 
             try
@@ -65,8 +55,6 @@ namespace UNIBO.SET.Services.Presenters
             //    this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
             //    throw e;
             //}
-
-
         }
 
         public USB[] ElencaDispositiviEsterni()
@@ -99,7 +87,6 @@ namespace UNIBO.SET.Services.Presenters
                 return null;
         }
 
-
         public void SelezionaKeyChain(KeyChain chain)
         {
             this.SelectedKeyChain = chain;
@@ -109,8 +96,5 @@ namespace UNIBO.SET.Services.Presenters
         {
             this.SelectedUSB = usb;
         }
-
-
-
     }
 }

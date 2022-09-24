@@ -1,7 +1,4 @@
-﻿using System.IO;
-
-
-namespace UNIBO.SET.Model
+﻿namespace UNIBO.SET.Model
 {
     public abstract class FileSystemElement
     {
@@ -12,7 +9,6 @@ namespace UNIBO.SET.Model
         public FileSystemElement(string path)
         {
             Path = path ?? throw new ArgumentNullException(nameof(path));
-            
         }
 
         public abstract IList<string> OttieniPaths();

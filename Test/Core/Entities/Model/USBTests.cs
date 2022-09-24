@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UNIBO.SET.Model.Tests
+﻿namespace UNIBO.SET.Model.Tests
 {
     [TestClass()]
     public class USBTests
@@ -42,7 +35,7 @@ namespace UNIBO.SET.Model.Tests
 
             Assert.IsNotNull(tutte);
             Console.WriteLine(tutte.ToString());
-            for(int i=0; i<tutte.Length; i++)
+            for (int i = 0; i < tutte.Length; i++)
             {
                 Console.WriteLine(tutte[i].Name);
                 Console.WriteLine(tutte[i].KeyChain.Name);

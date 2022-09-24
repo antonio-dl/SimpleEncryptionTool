@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
 using UNIBO.SET.Model;
-using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Services.Decifratori
 {
@@ -30,7 +24,7 @@ namespace UNIBO.SET.Services.Decifratori
             {
                 fd = GeneraNuovoNomeFileDecifrato(fd);
             }
-            
+
             using var sourceStream = fc.Open();
             using var targetStream = fd.Create();
             var IV = new Byte[aes.IV.Length];
@@ -46,7 +40,7 @@ namespace UNIBO.SET.Services.Decifratori
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
             decryptoStream.CopyTo(targetStream);
-            
+
             return fd;
         }
 
@@ -91,4 +85,3 @@ namespace UNIBO.SET.Services.Decifratori
         }
     }
 }
-

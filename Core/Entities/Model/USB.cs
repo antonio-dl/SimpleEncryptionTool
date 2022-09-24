@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UNIBO.SET.Model
+﻿namespace UNIBO.SET.Model
 {
     public class USB
     {
         private DriveInfo _driveInfo;
         private FileKeyChain? _keyChain;
+
         public FileKeyChain KeyChain
         {
             get
@@ -22,8 +17,8 @@ namespace UNIBO.SET.Model
                 return _keyChain;
             }
         }
-        public string Name { get => _driveInfo.Name; }
 
+        public string Name { get => _driveInfo.Name; }
 
         public bool HasKeyChain() // Dovrebbe funzionare a dovere
         {
@@ -51,6 +46,5 @@ namespace UNIBO.SET.Model
             }
             return usblist.ToArray();
         }
-
     }
 }

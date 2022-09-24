@@ -1,12 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UNIBO.SET.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UNIBO.SET.Model.Tests
+﻿namespace UNIBO.SET.Model.Tests
 {
     [TestClass()]
     public class FileTests

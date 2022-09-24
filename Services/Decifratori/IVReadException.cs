@@ -17,7 +17,6 @@ namespace UNIBO.SET.Services.Decifratori
         {
         }
 
-
         protected IVReadException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

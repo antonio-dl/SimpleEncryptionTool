@@ -3,6 +3,7 @@
     public class CodiceVerifica
     {
         public string Codice { get; }
+
         public CodiceVerifica(string codice)
         {
             Codice = codice;
@@ -29,13 +30,13 @@
         protected readonly System.IO.FileInfo _file;
 
         private CodiceVerifica? _codice = null;
+
         public File(string path) : base(path)
         {
             _file = new System.IO.FileInfo(path);
         }
 
         public bool Exists => _file.Exists;
-
 
         public CodiceVerifica CodiceVerifica
         {
@@ -64,6 +65,7 @@
         {
             return _file.Open(FileMode.Open, FileAccess.Read);
         }
+
         public override IList<string> OttieniPaths()
         {
             return new List<string>() { _file.FullName };
@@ -93,8 +95,8 @@
     {
         public FileDecifrato(string path) : base(path)
         {
-
         }
+
         public FileStream Create()
         {
             return this._file.Open(FileMode.Create, FileAccess.Write);

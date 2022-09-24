@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UNIBO.SET.Model
+﻿namespace UNIBO.SET.Model
 {
     [Serializable]
     public abstract class Credenziali
@@ -39,5 +33,4 @@ namespace UNIBO.SET.Model
             return HashCode.Combine(Password);
         }
     }
-
 }

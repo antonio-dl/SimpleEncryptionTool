@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UNIBO.SET.Model;
-using System.Security.Cryptography;
+﻿using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Cifratori
 {
@@ -14,7 +8,6 @@ namespace UNIBO.SET.Services.Cifratori
 
         public Key CifraFile(UNIBO.SET.Model.File fileIn)
         {
-
             FileCifrato fc = new FileCifrato(fileIn.Path + ".sef"); // rimosso ", null" dopo il ".sef"
 
             using var streamOut = fc.Create();
@@ -23,9 +16,6 @@ namespace UNIBO.SET.Services.Cifratori
             streamIn.CopyTo(streamOut);
 
             return fc.Key;
-
-
-
         }
     }
 }

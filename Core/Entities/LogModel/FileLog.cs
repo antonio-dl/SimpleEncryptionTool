@@ -1,21 +1,14 @@
-﻿using UNIBO.SET.ModelLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UNIBO.SET.ModelLog
+﻿namespace UNIBO.SET.ModelLog
 
 {
     public class FileLog : Log
     {
         public string PathFile { get; init; }
+
         public FileLog(string pathFile)
         {
             PathFile = pathFile;
         }
-
 
         public override void AddEntry(Entry entry) // Da controllare la chiusura del file
         {
@@ -26,7 +19,6 @@ namespace UNIBO.SET.ModelLog
             string stringEntry = entry.ToString();
 
             logFile.WriteLine(stringEntry);
-
         }
 
         private Entry[] ReadEntries(StreamReader logReader)
@@ -40,8 +32,6 @@ namespace UNIBO.SET.ModelLog
             }
 
             return result.ToArray();
-
-
         }
 
         private Entry parseLine(string line)
@@ -54,7 +44,6 @@ namespace UNIBO.SET.ModelLog
             string message = tokens[3];
 
             return new Entry(timestamp, type, componenteFonte, message);
-
         }
 
         public override Entry[] GetEntries()

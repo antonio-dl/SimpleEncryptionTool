@@ -1,19 +1,17 @@
-﻿using UNIBO.SET.Services.Cifratori;
-using System;
-using UNIBO.SET.Interfaces;
+﻿using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
+using UNIBO.SET.Services.Cifratori;
 
 namespace UNIBO.SET.Services.Presenters
 {
-
     public class GestioneCifraturaPresenter : IGestioneCifratura
     {
         private ILogger _logger;
         public USB? SelectedUSB { get; set; }
         public ISet<string> ListaFileSelezionati { get; set; }
 
-        ICifratore Cifratore { get; set; }
+        private ICifratore Cifratore { get; set; }
 
         public GestioneCifraturaPresenter(ICifratore cifratore, ILogger logger)
         {
@@ -24,7 +22,7 @@ namespace UNIBO.SET.Services.Presenters
 
         public bool Aggiungi(FileSystemElement sysElement)
         {
-            foreach(string path in sysElement.OttieniPaths())
+            foreach (string path in sysElement.OttieniPaths())
                 ListaFileSelezionati.Add(path);
             return true;
         }
@@ -36,19 +34,17 @@ namespace UNIBO.SET.Services.Presenters
             {
                 return this.Cifratore.CifraFile(file);
             }
-            catch(FileNotFoundException ex)
+            catch (FileNotFoundException ex)
             {
                 this.LogIt(EntryType.Errore, $"Il file non esiste: {file.Path}");
                 throw ex;
             }
-
         }
 
         public USB[] ElencaDispositiviEsterni()
         {
             return USB.GetUsbs();
         }
-
 
         public void LogIt(EntryType type, string messaggio)
         {
@@ -59,10 +55,9 @@ namespace UNIBO.SET.Services.Presenters
         {
             bool result = true;
             foreach (string path in sysElement.OttieniPaths())
-                 result &= ListaFileSelezionati.Remove(path);
+                result &= ListaFileSelezionati.Remove(path);
             return result;
         }
-
 
         public void SelezionaUSB(USB usb)
         {
