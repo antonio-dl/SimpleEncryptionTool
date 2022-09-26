@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UNIBO.SET.ModelLog
-
 {
     public class FileLog : Log
     {
@@ -16,10 +15,9 @@ namespace UNIBO.SET.ModelLog
             PathFile = pathFile;
         }
 
-
         public override void AddEntry(Entry entry)
         {
-            // usare questa stringa per l Inizializzatore
+            // usare questa stringa per l'Inizializzatore
             // string path = Path.Combine(PathFile,"SetLog" + DateTime.Now.ToString("yMMdd") + ".log"); // es: SetLog200403.log
             using StreamWriter logFile = File.AppendText(PathFile);
 

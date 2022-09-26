@@ -30,7 +30,6 @@ namespace UNIBO.SET.ModelLog
 
     }
 
-
     public class Entry
     {
         public DateTime Timestamp { get; }
