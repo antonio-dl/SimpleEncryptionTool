@@ -1,4 +1,6 @@
-﻿namespace UNIBO.SET.ModelLog
+﻿using System.Globalization;
+
+namespace UNIBO.SET.ModelLog
 {
     public class FileLog : Log
     {
@@ -37,7 +39,7 @@
         {
             string[] tokens = line.Split('|');
 
-            DateTime timestamp = DateTime.Parse(tokens[0]);
+            DateTime timestamp = DateTime.ParseExact(tokens[0], "yyyy/MM/dd HH:mm:ss:ff", CultureInfo.CurrentCulture);
             EntryType type = Enum.Parse<EntryType>(tokens[1]);
             string componenteFonte = tokens[2];
             string message = tokens[3];
