@@ -52,7 +52,7 @@ namespace UNIBO.SET.ModelLog
         {
             StringBuilder result = new StringBuilder();
 
-            result.Append(this.Timestamp.ToString("yyyy/MM/dd HH:mm:ss:ff"));
+            result.Append(this.Timestamp.ToString("yyyy/MM/dd HH:mm:ss.ff"));
             result.Append(" | ");
 
             result.Append(this.Type.ToString());
