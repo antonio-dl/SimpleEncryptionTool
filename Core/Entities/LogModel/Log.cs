@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace UNIBO.SET.ModelLog
 {
@@ -15,10 +10,10 @@ namespace UNIBO.SET.ModelLog
         {
             _entries.Append(entry);
         }
+
         public abstract Entry[] GetEntries();
 
         public abstract Entry[] GetEntries(EntryType filteredType);
-
     }
 
     public enum EntryType
@@ -27,7 +22,6 @@ namespace UNIBO.SET.ModelLog
         Operazione,
         Avvertimento,
         Errore
-
     }
 
     public class Entry

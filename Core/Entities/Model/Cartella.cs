@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace UNIBO.SET.Model
+﻿namespace UNIBO.SET.Model
 {
     public class Cartella : FileSystemElement
     {
@@ -16,11 +9,10 @@ namespace UNIBO.SET.Model
             _directory = new System.IO.DirectoryInfo(path);
         }
 
-
-        public override IList<string> OttieniPaths() 
+        public override IList<string> OttieniPaths()
         {
             var result = new List<string>();
-            foreach(var dir in _directory.EnumerateDirectories())
+            foreach (var dir in _directory.EnumerateDirectories())
             {
                 result.AddRange(new Cartella(dir.FullName).OttieniPaths());
             }

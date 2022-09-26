@@ -1,14 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 using File = System.IO.File;
@@ -17,11 +7,11 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class LoginView : Form
     {
-
         private GestioneLoginPresenter presenter;
         private Utente utente;
 
         private Inizializzatore init;
+
         public LoginView()
         {
             utente = LoadUserData();
@@ -40,7 +30,6 @@ namespace UNIBO.SET.GUI.Forms
             u.Impostazioni = LoadImpostazioni(u);
 
             return u;
-
         }
 
         private Impostazioni LoadImpostazioni(Utente u)
@@ -52,11 +41,11 @@ namespace UNIBO.SET.GUI.Forms
                 string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
 
                 return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
-            } else
-            {
-               return CreateDefaultSettings();
             }
-
+            else
+            {
+                return CreateDefaultSettings();
+            }
         }
 
         private Impostazioni CreateDefaultSettings()
@@ -64,15 +53,13 @@ namespace UNIBO.SET.GUI.Forms
             Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
             Impostazione i = CaricaCifratori();
             settings[i.Nome] = i;
-            
-            return new Impostazioni(settings);
 
+            return new Impostazioni(settings);
         }
 
         private Impostazione CaricaCifratori()
         {
-            
-            string[] cifratoriOpzioni = { "AES-ECB","AES-CBC" };
+            string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
             return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
 
@@ -82,7 +69,7 @@ namespace UNIBO.SET.GUI.Forms
             BinaryFormatter bf = new BinaryFormatter();
             FileInfo f = new FileInfo(SETEnvironment.Credential_Path);
             Stream stream = f.OpenRead();
-            c = (Credenziali) bf.Deserialize(stream);
+            c = (Credenziali)bf.Deserialize(stream);
             stream.Close();
 
             return c;
@@ -90,17 +77,14 @@ namespace UNIBO.SET.GUI.Forms
 
         private void LoginView_Load(object sender, EventArgs e)
         {
-
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void Password_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void Accedi_Click(object sender, EventArgs e)
@@ -118,12 +102,10 @@ namespace UNIBO.SET.GUI.Forms
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
             }
-            
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

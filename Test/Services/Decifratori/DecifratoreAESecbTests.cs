@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using UNIBO.SET.Services.Cifratori;
 using File = UNIBO.SET.Model.File;
 
@@ -17,11 +13,9 @@ namespace UNIBO.SET.Services.Decifratori.Tests
             string pathfile = Test.Constanti.CARTELLATEST + "prova.txt";
             string contenutoFile = Test.Constanti.TESTODIPROVA;
 
-
             CreaFileDiTest(pathfile, contenutoFile);
             //string test = System.IO.File.ReadAllText(pathfile);
             System.IO.File.Delete(pathfile + ".sef");
-
 
             File provaFile = new File(pathfile);
             var cifratore = new CifratoreAESecb();
@@ -46,7 +40,6 @@ namespace UNIBO.SET.Services.Decifratori.Tests
             Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), fdLetto); // dovrebbero essere ovviamente diversi perché il primo è cifrato, il secondo no
             Assert.AreEqual<string>(fdLetto, contenutoFile); // dovrebbero essere uguali perché una volta decifrato dovrebbe avere lo stesso contenuto di quello di partenza
             Assert.IsTrue(fdLetto.Length == contenutoFile.Length); // dovrebbero essere uguali per il motivo precedente
-
         }
 
         private static void CreaFileDiTest(string pathfile, string content)

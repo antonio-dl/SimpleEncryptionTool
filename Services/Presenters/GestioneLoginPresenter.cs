@@ -1,5 +1,4 @@
-﻿using System;
-using UNIBO.SET.Interfaces;
+﻿using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 
@@ -19,7 +18,7 @@ namespace UNIBO.SET.Services.Presenters
         public bool LogIn(Credenziali credenziali)
         {
             Thread.Sleep(1200); // Per evitare brute force
-            if(!_utente.Credenziali.Confronta(credenziali))
+            if (!_utente.Credenziali.Confronta(credenziali))
             {
                 LogIt(EntryType.Avvertimento, "Login fallito, credenziali errate");
                 return false;

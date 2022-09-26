@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace UNIBO.SET.GUI.Forms
+﻿namespace UNIBO.SET.GUI.Forms
 {
     public partial class CambioCredenzialiView : Form
     {
@@ -19,7 +9,6 @@ namespace UNIBO.SET.GUI.Forms
 
         private void CambioCredenzialiView_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

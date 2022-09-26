@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
-using System.Drawing;
+﻿using System.ComponentModel;
 using System.Drawing.Drawing2D;
-using System.ComponentModel;
 
 namespace CustomControls.RJControls
 {
@@ -15,6 +7,7 @@ namespace CustomControls.RJControls
     {
         //Fields
         private int borderSize = 0;
+
         private int borderRadius = 0;
         private Color borderColor = Color.PaleVioletRed;
 
@@ -96,7 +89,6 @@ namespace CustomControls.RJControls
         {
             base.OnPaint(pevent);
 
-
             Rectangle rectSurface = this.ClientRectangle;
             Rectangle rectBorder = Rectangle.Inflate(rectSurface, -borderSize, -borderSize);
             int smoothSize = 2;
@@ -116,7 +108,7 @@ namespace CustomControls.RJControls
                     //Draw surface border for HD result
                     pevent.Graphics.DrawPath(penSurface, pathSurface);
 
-                    //Button border                    
+                    //Button border
                     if (borderSize >= 1)
                         //Draw control border
                         pevent.Graphics.DrawPath(penBorder, pathBorder);
@@ -138,6 +130,7 @@ namespace CustomControls.RJControls
                 }
             }
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -148,6 +141,7 @@ namespace CustomControls.RJControls
         {
             this.Invalidate();
         }
+
         private void Button_Resize(object sender, EventArgs e)
         {
             if (borderRadius > this.Height)

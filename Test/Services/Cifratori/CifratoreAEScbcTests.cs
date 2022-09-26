@@ -1,12 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UNIBO.SET.Services.Cifratori;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using UNIBO.SET.Model;
+﻿using System.Text;
 using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Services.Cifratori.Tests
@@ -20,11 +12,9 @@ namespace UNIBO.SET.Services.Cifratori.Tests
             string pathfile = Test.Constanti.CARTELLATEST + "prova.txt";
             string contenutoFile = Test.Constanti.TESTODIPROVA;
 
-
-            CreaFileDiTest(pathfile,contenutoFile);
+            CreaFileDiTest(pathfile, contenutoFile);
             //string test = System.IO.File.ReadAllText(pathfile);
             System.IO.File.Delete(pathfile + ".sef");
-
 
             File provaFile = new File(pathfile);
             var cifratore = new CifratoreAEScbc();
@@ -35,11 +25,10 @@ namespace UNIBO.SET.Services.Cifratori.Tests
 
             var bytesLetti = System.IO.File.ReadAllBytes(fc.Path);
             byte[] bytesContenutoFile = Encoding.ASCII.GetBytes(contenutoFile);
-            
+
             // testoLetto.Length > contenutoFile.Length ); parte interna alle parentesi dell'assert qui sotto
             Assert.IsTrue(bytesLetti.Length > bytesContenutoFile.Length); // Maggiore per aggiunta del IV
             Assert.AreNotEqual<string>(System.IO.File.ReadAllText(fc.Path), contenutoFile);
-
         }
 
         private static void CreaFileDiTest(string pathfile, string content)

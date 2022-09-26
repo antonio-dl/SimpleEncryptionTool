@@ -1,7 +1,5 @@
-
 using UNIBO.SET.Services.Presenters;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+
 namespace UNIBO.SET.GUI
 {
     public partial class HomeSET : Form
@@ -10,12 +8,10 @@ namespace UNIBO.SET.GUI
         private Form activeForm;
         private Inizializzatore _init;
 
-
         public HomeSET(Inizializzatore init)
         {
             this._init = init;
             InitializeComponent();
-
         }
 
         private void ActivateRadioButton(object sender)
@@ -34,7 +30,7 @@ namespace UNIBO.SET.GUI
 
         private void DisableRadioButton()
         {
-            foreach(Control previousBtn in groupBox1.Controls)
+            foreach (Control previousBtn in groupBox1.Controls)
             {
                 if (previousBtn.GetType() == typeof(RadioButton))
                 {
@@ -43,10 +39,8 @@ namespace UNIBO.SET.GUI
             }
         }
 
-
-
-         private void OpenChildForm(Form childForm, object sender)
-         {
+        private void OpenChildForm(Form childForm, object sender)
+        {
             if (activeForm != null)
             {
                 activeForm.Close();
@@ -61,19 +55,17 @@ namespace UNIBO.SET.GUI
             childForm.BringToFront();
             childForm.Show();
             label1.Text = childForm.Text;
-         }
+        }
 
         private void Reset()
         {
             DisableRadioButton();
             label1.Text = "HOME";
             currentButton = null;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -87,7 +79,6 @@ namespace UNIBO.SET.GUI
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
-            
         }
 
         private void CifraRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -112,12 +103,10 @@ namespace UNIBO.SET.GUI
 
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -1,19 +1,15 @@
 ﻿using Microsoft.VisualBasic.FileIO;
-using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Cifratori;
 using UNIBO.SET.Services.Decifratori;
-using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.Services.Presenters
 {
     public class Inizializzatore // Classe che si occupa di effettuare tutte le iniezioni di dipendenza
     {
-
-
         private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
         private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
         private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
@@ -26,8 +22,6 @@ namespace UNIBO.SET.Services.Presenters
         public Inizializzatore()
         {
             CaricaComponenti();
-
-
         }
 
         public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
@@ -47,27 +41,7 @@ namespace UNIBO.SET.Services.Presenters
             GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
-
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
-
-        }
-
-        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter()
-        {
-            Impostazione impostazione;
-            try
-            {
-                impostazione = Utente.GetInstance().Impostazioni.OttieniImpostazione("cifratore");
-
-            }
-            catch (KeyNotFoundException e)
-            {
-                Logger.WriteLog(EntryType.Errore, "Inizializzatore", "Errore nella ricerca dell' impostazione {cifratore}");
-                throw e;
-            }
-            ICifratore cifratore = CreaCifratore(impostazione);
-            var presenter = new GestioneCifraturaPresenter(cifratore, this.Logger);
-            return presenter;
         }
 
         private ICifratore CreaCifratore(Impostazione impostazione)
@@ -84,11 +58,27 @@ namespace UNIBO.SET.Services.Presenters
             }
         }
 
+        private GestioneCifraturaPresenter CreaGestioneCifraturaPresenter()
+        {
+            Impostazione impostazione;
+            try
+            {
+                impostazione = Utente.GetInstance().Impostazioni.OttieniImpostazione("cifratore");
+            }
+            catch (KeyNotFoundException e)
+            {
+                Logger.WriteLog(EntryType.Errore, "Inizializzatore", "Errore nella ricerca dell' impostazione {cifratore}");
+                throw e;
+            }
+            ICifratore cifratore = CreaCifratore(impostazione);
+            var presenter = new GestioneCifraturaPresenter(cifratore, this.Logger);
+            return presenter;
+        }
+
         private GestioneDecifraturaPresenter CreaGestioneDecifraturaPresenter()
         {
             GestioneDecifraturaPresenter result;
             IDictionary<string, IDecifratore> mappaDecifratori = GeneraMappaDecifratori();
-
 
             result = new GestioneDecifraturaPresenter(Logger, mappaDecifratori);
             return result;
@@ -107,7 +97,6 @@ namespace UNIBO.SET.Services.Presenters
 
             return result;
         }
-
     }
 
     [Serializable]

@@ -1,7 +1,3 @@
-
-
-using UNIBO.SET.Services.Presenters;
-
 namespace UNIBO.SET.GUI
 {
     internal static class Program
@@ -10,7 +6,7 @@ namespace UNIBO.SET.GUI
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
@@ -33,7 +29,6 @@ namespace UNIBO.SET.GUI
             if (File.Exists(path_to_credential))
                 return false;
             return true;
-
         }
     }
 }

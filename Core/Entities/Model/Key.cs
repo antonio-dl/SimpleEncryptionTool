@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Collections;
 
 namespace UNIBO.SET.Model
 {
@@ -27,7 +20,6 @@ namespace UNIBO.SET.Model
             Algoritmo = algoritmo ?? throw new ArgumentNullException(nameof(algoritmo));
             CodiceVerifica = codiceVerifica ?? throw new ArgumentNullException(nameof(codiceVerifica));
         }
-
     }
 
     public abstract class KeyChain : IEnumerable<Key>
@@ -43,12 +35,10 @@ namespace UNIBO.SET.Model
         {
             return _keychain.GetEnumerator();
         }
-
     }
 
     public class FileKeyChain : KeyChain
     {
-
         private FileInfo _file;
         public string Name { get => _file.Name; }
         public string Path { get => _file.FullName; }
@@ -57,6 +47,5 @@ namespace UNIBO.SET.Model
         {
             _file = new FileInfo(pathFile);
         }
-
     }
 }

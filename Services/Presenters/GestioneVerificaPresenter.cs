@@ -5,7 +5,7 @@ using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.Services.Presenters
 {
-	public class GestioneVerificaPresenter : IGestioneVerifica
+    public class GestioneVerificaPresenter : IGestioneVerifica
     {
         private ILogger _logger;
 
@@ -18,7 +18,7 @@ namespace UNIBO.SET.Services.Presenters
         {
             _logger.WriteLog(type, this.GetType().Name, messaggio);
         }
-        
+
         public CodiceVerifica GeneraCodice(File file)
         {
             CodiceVerifica result = file.CodiceVerifica;
@@ -38,7 +38,7 @@ namespace UNIBO.SET.Services.Presenters
                 }
                 return true;
             }
-            catch(IOException e)
+            catch (IOException e)
             {
                 LogIt(EntryType.Errore, $"Errore nella verifica del file {file.Path}");
                 throw new IOException($"Errore nella verifica del file {file.Path}", e);

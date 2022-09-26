@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UNIBO.SET.Model;
+﻿using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Decifratori
 {

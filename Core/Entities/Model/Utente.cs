@@ -4,7 +4,8 @@ namespace UNIBO.SET.Model
     {
         private static Utente _utente;
 
-        private Utente() {
+        private Utente()
+        {
             _utente = LoadUserDataMock();
         }
 
@@ -21,8 +22,8 @@ namespace UNIBO.SET.Model
             return new Utente("Me", new Impostazioni(basic), cred);
         }
 
-        public static Utente GetInstance() {
-            
+        public static Utente GetInstance()
+        {
             return _utente ??= new Utente();
         }
 
@@ -40,7 +41,7 @@ namespace UNIBO.SET.Model
 
     public class Impostazioni
     {
-        private IDictionary<string,Impostazione> impostazioni;
+        private IDictionary<string, Impostazione> impostazioni;
 
         public Impostazioni(IDictionary<string, Impostazione> impostazioni)
         {
