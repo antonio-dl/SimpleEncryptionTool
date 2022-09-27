@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nuovaPw2 = new System.Windows.Forms.TextBox();
+            this.nuovaPw = new System.Windows.Forms.TextBox();
+            this.vecchiaPw = new System.Windows.Forms.TextBox();
             this.Annulla = new CustomControls.RJControls.RJButton2();
             this.Conferma = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
@@ -65,26 +65,26 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Ripetere nuova password";
             // 
-            // textBox1
+            // nuovaPw2
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 225);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 3;
+            this.nuovaPw2.Location = new System.Drawing.Point(86, 225);
+            this.nuovaPw2.Name = "nuovaPw2";
+            this.nuovaPw2.Size = new System.Drawing.Size(125, 27);
+            this.nuovaPw2.TabIndex = 3;
             // 
-            // textBox2
+            // nuovaPw
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 142);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 4;
+            this.nuovaPw.Location = new System.Drawing.Point(85, 142);
+            this.nuovaPw.Name = "nuovaPw";
+            this.nuovaPw.Size = new System.Drawing.Size(125, 27);
+            this.nuovaPw.TabIndex = 4;
             // 
-            // textBox3
+            // vecchiaPw
             // 
-            this.textBox3.Location = new System.Drawing.Point(85, 58);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 27);
-            this.textBox3.TabIndex = 5;
+            this.vecchiaPw.Location = new System.Drawing.Point(85, 58);
+            this.vecchiaPw.Name = "vecchiaPw";
+            this.vecchiaPw.Size = new System.Drawing.Size(125, 27);
+            this.vecchiaPw.TabIndex = 5;
             // 
             // Annulla
             // 
@@ -103,6 +103,7 @@
             this.Annulla.Text = "Annulla";
             this.Annulla.TextColor = System.Drawing.Color.White;
             this.Annulla.UseVisualStyleBackColor = false;
+            this.Annulla.Click += new System.EventHandler(this.Annulla_Click);
             // 
             // Conferma
             // 
@@ -121,6 +122,7 @@
             this.Conferma.Text = "Conferma";
             this.Conferma.TextColor = System.Drawing.Color.White;
             this.Conferma.UseVisualStyleBackColor = false;
+            this.Conferma.Click += new System.EventHandler(this.Conferma_Click);
             // 
             // CambioCredenzialiView
             // 
@@ -130,9 +132,9 @@
             this.ClientSize = new System.Drawing.Size(476, 392);
             this.Controls.Add(this.Conferma);
             this.Controls.Add(this.Annulla);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.vecchiaPw);
+            this.Controls.Add(this.nuovaPw);
+            this.Controls.Add(this.nuovaPw2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -150,9 +152,9 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox nuovaPw2;
+        private TextBox nuovaPw;
+        private TextBox vecchiaPw;
         private CustomControls.RJControls.RJButton2 Annulla;
         private CustomControls.RJControls.RJButton2 Conferma;
     }
