@@ -52,7 +52,7 @@ namespace UNIBO.SET.GUI.Forms
                     bf.Serialize(stream, c2);
                     stream.Close();
 
-                    
+                    this.Close();
                 }
             }
         }
