@@ -5,7 +5,8 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class CambioCredenzialiView : Form
     {
-        private Utente utente;
+        private Utente utente = Utente.GetInstance();
+
         public CambioCredenzialiView()
         {
             InitializeComponent();
