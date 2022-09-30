@@ -49,6 +49,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(286, 28);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // CambioCredenziali
             // 
@@ -81,6 +82,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ImpostazioniView";
             this.Text = "Impostazioni";
+            this.Load += new System.EventHandler(this.ImpostazioniView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
