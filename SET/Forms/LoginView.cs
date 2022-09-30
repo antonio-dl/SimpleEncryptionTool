@@ -7,14 +7,15 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class LoginView : Form
     {
-        private GestioneLoginPresenter presenter;
-        private Utente utente;
+        private readonly GestioneLoginPresenter presenter;
+        private readonly Utente utente;
 
         private Inizializzatore init;
 
         public LoginView()
         {
-            utente = LoadUserData();
+            utente = Utente.GetInstance();
+            utente.Credenziali = LoadCredenziali();
             init = new Inizializzatore();
             presenter = init.GestioneLoginPresenter;
 
@@ -22,48 +23,7 @@ namespace UNIBO.SET.GUI.Forms
             Password.PasswordChar = '\u25CF';
         }
 
-        private Utente LoadUserData()
-        {
-            // Credenziali -> Utente <- Impostazioni
-            Utente u = Utente.GetInstance(); // First Instance of Singleton
-            u.Credenziali = LoadCredenziali(u);
-            u.Impostazioni = LoadImpostazioni(u);
-
-            return u;
-        }
-
-        private Impostazioni LoadImpostazioni(Utente u)
-        {
-            if (File.Exists(SETEnvironment.Configuration_Path))
-            {
-                string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
-                Impostazioni i;
-                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
-
-                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
-            }
-            else
-            {
-                return CreateDefaultSettings();
-            }
-        }
-
-        private Impostazioni CreateDefaultSettings()
-        {
-            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
-            Impostazione i = CaricaCifratori();
-            settings[i.Nome] = i;
-
-            return new Impostazioni(settings);
-        }
-
-        private Impostazione CaricaCifratori()
-        {
-            string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
-            return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
-        }
-
-        private Credenziali LoadCredenziali(Utente u) // TODO: Test della serializzazione e deserializzazione
+        private static Credenziali LoadCredenziali() // TODO: Test della serializzazione e deserializzazione
         {
             Credenziali c;
             BinaryFormatter bf = new BinaryFormatter();
@@ -75,25 +35,12 @@ namespace UNIBO.SET.GUI.Forms
             return c;
         }
 
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void Accedi_Click(object sender, EventArgs e)
         {
             CredenzialiPassword c = new CredenzialiPassword(Password.Text);
-
-            if (!c.Confronta(utente.Credenziali))
+            
+            if (!presenter.LogIn(c))
             {
-                Thread.Sleep(1000);
                 MessageBox.Show("Password errata!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -101,11 +48,9 @@ namespace UNIBO.SET.GUI.Forms
                 this.Hide();
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
+                this.Close(); // TODO: potrebbe causare errori :D
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

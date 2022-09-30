@@ -1,4 +1,5 @@
-﻿using UNIBO.SET.Interfaces;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 
@@ -13,6 +14,8 @@ namespace UNIBO.SET.Services.Presenters
         {
             _utente = utente;
             _logger = logger;
+
+            utente.Credenziali = LoadCredenziali();
         }
 
         public bool LogIn(Credenziali credenziali)
@@ -20,10 +23,26 @@ namespace UNIBO.SET.Services.Presenters
             Thread.Sleep(1200); // Per evitare brute force
             if (!_utente.Credenziali.Confronta(credenziali))
             {
-                LogIt(EntryType.Avvertimento, "Login fallito, credenziali errate");
+                LogIt(EntryType.Avvertimento, "Tentativo di Login fallito, credenziali errate");
                 return false;
             }
-            return true;
+            else
+            {
+                LogIt(EntryType.Info, "Login effettuato");
+                return true;
+            }
+        }
+
+        private Credenziali LoadCredenziali() // TODO: Test della serializzazione e deserializzazione
+        {
+            Credenziali c;
+            BinaryFormatter bf = new BinaryFormatter();
+            FileInfo f = new FileInfo(SETEnvironment.Credential_Path);
+            Stream stream = f.OpenRead();
+            c = (Credenziali)bf.Deserialize(stream);
+            stream.Close();
+
+            return c;
         }
 
         public void LogIt(EntryType type, string messaggio)
