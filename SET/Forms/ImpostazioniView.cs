@@ -46,15 +46,22 @@ namespace UNIBO.SET.GUI.Forms
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void SelezioneCifraturaBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
         private void ImpostazioniView_Load(object sender, EventArgs e)
         {
-            var list = new List<Impostazione>();
-            //list.Add(new Impostazione() { });
+            var impost= _presenter.OttieniImpostazioni();
+            var imp = impost.OttieniImpostazione("cifratore");
+
+            this.SelezioneCifraturaBox.DataSource = imp.Opzioni;
+        }
+
+        private void Salva_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
