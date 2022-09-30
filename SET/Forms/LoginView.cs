@@ -7,14 +7,15 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class LoginView : Form
     {
-        private GestioneLoginPresenter presenter;
-        private Utente utente;
+        private readonly GestioneLoginPresenter presenter;
+        private readonly Utente utente;
 
         private Inizializzatore init;
 
         public LoginView()
         {
-            utente = LoadUserData();
+            utente = Utente.GetInstance();
+            utente.Credenziali = LoadCredenziali();
             init = new Inizializzatore();
             presenter = init.GestioneLoginPresenter;
 
@@ -22,16 +23,7 @@ namespace UNIBO.SET.GUI.Forms
             Password.PasswordChar = '\u25CF';
         }
 
-        private Utente LoadUserData()
-        {
-            // Credenziali -> Utente <- Impostazioni
-            Utente u = Utente.GetInstance(); // First Instance of Singleton
-            u.Credenziali = LoadCredenziali(u);
-
-            return u;
-        }
-
-        private Credenziali LoadCredenziali(Utente u) // TODO: Test della serializzazione e deserializzazione
+        private static Credenziali LoadCredenziali() // TODO: Test della serializzazione e deserializzazione
         {
             Credenziali c;
             BinaryFormatter bf = new BinaryFormatter();
@@ -56,7 +48,7 @@ namespace UNIBO.SET.GUI.Forms
                 this.Hide();
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
-                this.Dispose(); // TODO: potrebbe causare errori :D
+                this.Close(); // TODO: potrebbe causare errori :D
             }
         }
 

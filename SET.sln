@@ -12,10 +12,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 		{CC38D665-8452-4DF4-B3E1-E88E2DBFA16C} = {CC38D665-8452-4DF4-B3E1-E88E2DBFA16C}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{957903A5-D644-413C-82F4-19BDA7D155B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{957903A5-D644-413C-82F4-19BDA7D155B6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CC38D665-8452-4DF4-B3E1-E88E2DBFA16C} = {CC38D665-8452-4DF4-B3E1-E88E2DBFA16C}
 		{EAC387C5-4D76-49A2-8ADA-4A1792A607E8} = {EAC387C5-4D76-49A2-8ADA-4A1792A607E8}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBAAE1EC-4AD8-49C1-9AB9-B2EDAC463C4A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Global
