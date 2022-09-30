@@ -61,7 +61,8 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Salva_Click(object sender, EventArgs e)
         {
-
+            var impost = _presenter.OttieniImpostazioni();
+            _presenter.PersistiImpostazioni(impost);
         }
     }
 }
