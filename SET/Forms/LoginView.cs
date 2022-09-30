@@ -14,7 +14,6 @@ namespace UNIBO.SET.GUI.Forms
 
         public LoginView()
         {
-
             _utente = Utente.GetInstance();
             _utente.Credenziali = LoadCredenziali();
             init = new Inizializzatore();
@@ -52,5 +51,9 @@ namespace UNIBO.SET.GUI.Forms
             }
         }
 
+        private void LoginView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace UNIBO.SET.Services.Presenters
             _log.AddEntry(new Entry(type, fonte, messaggio));
         }
 
-        public Log[] GetAllLogs() // TODO: Da testare
+        public Log[] GetAllLogs()
         {
             return Directory.EnumerateFiles(CartellaLog, "*.log").Select(f => new FileLog(f)).ToArray();
         }

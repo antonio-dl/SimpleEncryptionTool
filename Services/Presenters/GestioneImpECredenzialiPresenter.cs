@@ -44,18 +44,19 @@ namespace UNIBO.SET.Services.Presenters
             return _utente.Impostazioni;
         }
 
-        public void SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
+        public bool SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
         {
             if (!_utente.Credenziali.Confronta(vecchie))
             {
                 LogIt(EntryType.Avvertimento, "Tentativo di cambio credenziali fallito");
-                return;
+                return false;
             }
-            else if (_utente.Credenziali.Confronta(vecchie))
+            else
             {
                 _utente.Credenziali = nuove;
-                LogIt(EntryType.Operazione, "L'utente ha cambiato le credenziali");
+                LogIt(EntryType.Info, "L'utente ha cambiato le credenziali");
             }
+            return true;
         }
     }
 }

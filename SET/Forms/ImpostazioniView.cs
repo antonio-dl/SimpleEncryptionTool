@@ -5,7 +5,7 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class ImpostazioniView : Form
     {
-        private GestioneImpECrededenzialiPresenter _presenter;
+        private readonly GestioneImpECrededenzialiPresenter _presenter;
 
         public ImpostazioniView(GestioneImpECrededenzialiPresenter presenter)
         {
@@ -18,7 +18,7 @@ namespace UNIBO.SET.GUI.Forms
             Form formBackground = new Form();
             try
             {
-                using (CambioCredenzialiView uu = new CambioCredenzialiView())
+                using (CambioCredenzialiView uu = new CambioCredenzialiView(_presenter))
                 {
                     formBackground.StartPosition = FormStartPosition.Manual;
                     formBackground.FormBorderStyle = FormBorderStyle.None;
