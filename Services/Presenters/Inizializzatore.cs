@@ -24,10 +24,10 @@ namespace UNIBO.SET.Services.Presenters
             Utente u = Utente.GetInstance();
             u.Impostazioni = LoadImpostazioni();
 
-            GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
+            GestioneLogPresenter = new GestioneLogPresenter(SETEnvironment.Log_Folder); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
             Logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
-
+            GestioneLoginPresenter = new GestioneLoginPresenter(Logger);
             GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
@@ -130,7 +130,8 @@ namespace UNIBO.SET.Services.Presenters
             else
             {
                 Impostazioni created = CreateDefaultSettings();
-                System.IO.File.WriteAllText(pathImpostazioni, System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
+                string contents = System.Text.Json.JsonSerializer.Serialize(created);
+                System.IO.File.WriteAllText(pathImpostazioni, contents);
                 return created;
             }
         }

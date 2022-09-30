@@ -7,17 +7,18 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class LoginView : Form
     {
-        private readonly GestioneLoginPresenter presenter;
-        private readonly Utente utente;
+        private readonly GestioneLoginPresenter _presenter;
+        private readonly Utente _utente;
 
         private Inizializzatore init;
 
         public LoginView()
         {
-            utente = Utente.GetInstance();
-            utente.Credenziali = LoadCredenziali();
+
+            _utente = Utente.GetInstance();
+            _utente.Credenziali = LoadCredenziali();
             init = new Inizializzatore();
-            presenter = init.GestioneLoginPresenter;
+            _presenter = init.GestioneLoginPresenter;
 
             InitializeComponent();
             Password.PasswordChar = '\u25CF';
@@ -39,7 +40,7 @@ namespace UNIBO.SET.GUI.Forms
         {
             CredenzialiPassword c = new CredenzialiPassword(Password.Text);
             
-            if (!presenter.LogIn(c))
+            if (!_presenter.LogIn(c))
             {
                 MessageBox.Show("Password errata!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -48,7 +49,6 @@ namespace UNIBO.SET.GUI.Forms
                 this.Hide();
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
-                this.Close(); // TODO: potrebbe causare errori :D
             }
         }
 

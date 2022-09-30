@@ -10,12 +10,12 @@ namespace UNIBO.SET.Services.Presenters
         private Utente _utente;
         private ILogger _logger;
 
-        public GestioneLoginPresenter(Utente utente, ILogger logger)
+        public GestioneLoginPresenter(ILogger logger)
         {
-            _utente = utente;
+            _utente = Utente.GetInstance();
             _logger = logger;
 
-            utente.Credenziali = LoadCredenziali();
+            _utente.Credenziali = LoadCredenziali();
         }
 
         public bool LogIn(Credenziali credenziali)

@@ -39,18 +39,24 @@ namespace UNIBO.SET.Model
         }
     }
 
+    [Serializable]
     public class Impostazioni
     {
-        private IDictionary<string, Impostazione> impostazioni;
+        private IDictionary<string, Impostazione> _dizionario;
+
+        public IDictionary<string, Impostazione> Dizionario { get => _dizionario; set => _dizionario = value; }
 
         public Impostazioni(IDictionary<string, Impostazione> impostazioni)
         {
-            this.impostazioni = impostazioni;
+            this.Dizionario = impostazioni;
         }
+
+        public Impostazioni() { }
+
 
         public Impostazione[] OttieniTutteImpostazioni()
         {
-            return this.impostazioni.Values.ToArray();
+            return this.Dizionario.Values.ToArray();
         }
 
         /*public void AggiungiImpostazione(Impostazione imp)
@@ -61,12 +67,12 @@ namespace UNIBO.SET.Model
 
         public int LunghezzaImpostazioni()
         {
-            return impostazioni.Count;
+            return Dizionario.Count;
         }
 
         public Impostazione OttieniImpostazione(string nomeImpostazione)
         {
-            return impostazioni[nomeImpostazione];
+            return Dizionario[nomeImpostazione];
         }
     }
 

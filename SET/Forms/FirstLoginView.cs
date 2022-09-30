@@ -35,6 +35,7 @@ namespace UNIBO.SET.GUI.Forms
                 CredenzialiPassword c = new CredenzialiPassword(Password.Text);
                 BinaryFormatter bf = new BinaryFormatter();
                 FileInfo f = new FileInfo(SETEnvironment.Credential_Path);
+                f.Directory.Create();
                 Stream stream = f.OpenWrite();
                 bf.Serialize(stream, c);
                 stream.Close();

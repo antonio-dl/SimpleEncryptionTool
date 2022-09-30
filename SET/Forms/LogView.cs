@@ -25,17 +25,9 @@ namespace UNIBO.SET.GUI.Forms
         {
             var logFiles = _presenter.GetAllLogs();
             LogBox.DataSource = logFiles;
-            LogBox.DisplayMember = "PathFile";
-            LogBox.ValueMember = "PathFile";
 
-            var tipoOp = new List<EntryType>();
-            tipoOp.Add(EntryType.Info);
-            tipoOp.Add(EntryType.Operazione);
-            tipoOp.Add(EntryType.Avvertimento);
-            tipoOp.Add(EntryType.Errore);
-            TipoBox.DataSource = tipoOp;
-            TipoBox.DisplayMember = "Name";
-            TipoBox.ValueMember = "Value";
+
+            TipoBox.DataSource = Enum.GetNames<EntryType>();
         }
 
         private void LogBox_SelectedIndexChanged(object sender, EventArgs e)

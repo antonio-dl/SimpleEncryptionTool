@@ -12,8 +12,11 @@ namespace UNIBO.SET.Services.Presenters
         public GestioneLogPresenter(string pathCartellaLog)
         {
             CartellaLog = pathCartellaLog;
+            Directory.CreateDirectory(pathCartellaLog);
 
-            _log = new FileLog(Path.Combine(CartellaLog, "SetLog" + DateTime.Now.ToString("yMMdd") + ".log"));
+            _log = new FileLog(Path.Combine(CartellaLog, "SET" + DateTime.Now.ToString("yMMdd") + ".log"));
+
+            return;
         }
 
         public void WriteLog(EntryType type, string fonte, string messaggio)
