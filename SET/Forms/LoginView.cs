@@ -27,43 +27,8 @@ namespace UNIBO.SET.GUI.Forms
             // Credenziali -> Utente <- Impostazioni
             Utente u = Utente.GetInstance(); // First Instance of Singleton
             u.Credenziali = LoadCredenziali(u);
-            u.Impostazioni = LoadImpostazioni(u);
 
             return u;
-        }
-
-        private Impostazioni LoadImpostazioni(Utente u)
-        {
-                string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
-            if (File.Exists(pathImpostazioni))
-            {
-                Impostazioni i;
-                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
-
-                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
-            }
-            else
-            {
-
-                    Impostazioni created = CreateDefaultSettings();
-                System.IO.File.WriteAllText(pathImpostazioni,System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
-                return created;
-            }
-        }
-
-        private Impostazioni CreateDefaultSettings()
-        {
-            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
-            Impostazione i = CaricaCifratori();
-            settings[i.Nome] = i;
-
-            return new Impostazioni(settings);
-        }
-
-        private Impostazione CaricaCifratori()
-        {
-            string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
-            return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
 
         private Credenziali LoadCredenziali(Utente u) // TODO: Test della serializzazione e deserializzazione
@@ -93,10 +58,9 @@ namespace UNIBO.SET.GUI.Forms
         private void Accedi_Click(object sender, EventArgs e)
         {
             CredenzialiPassword c = new CredenzialiPassword(Password.Text);
-
-            if (!c.Confronta(utente.Credenziali))
+            
+            if (!presenter.LogIn(c))
             {
-                Thread.Sleep(1000);
                 MessageBox.Show("Password errata!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

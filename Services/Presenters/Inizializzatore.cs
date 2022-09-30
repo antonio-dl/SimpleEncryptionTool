@@ -21,6 +21,9 @@ namespace UNIBO.SET.Services.Presenters
 
         public Inizializzatore()
         {
+            Utente u = Utente.GetInstance();
+            u.Impostazioni = LoadImpostazioni();
+
             GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
             Logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
@@ -29,6 +32,40 @@ namespace UNIBO.SET.Services.Presenters
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
+        }
+
+        private Impostazioni LoadImpostazioni()
+        {
+            string pathImpostazioni = SETEnvironment.Configuration_Path;
+            if (System.IO.File.Exists(pathImpostazioni))
+            {
+                Impostazioni i;
+                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+
+                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+            }
+            else
+            {
+
+                Impostazioni created = CreateDefaultSettings();
+                System.IO.File.WriteAllText(pathImpostazioni, System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
+                return created;
+            }
+        }
+
+        private Impostazioni CreateDefaultSettings()
+        {
+            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
+            Impostazione i = CaricaCifratori();
+            settings[i.Nome] = i;
+
+            return new Impostazioni(settings);
+        }
+
+        private Impostazione CaricaCifratori()
+        {
+            string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
+            return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
 
         public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
