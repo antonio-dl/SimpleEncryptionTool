@@ -43,18 +43,6 @@ namespace UNIBO.SET.GUI.Forms
             return c;
         }
 
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-        }
-
         private void Accedi_Click(object sender, EventArgs e)
         {
             CredenzialiPassword c = new CredenzialiPassword(Password.Text);
@@ -68,11 +56,9 @@ namespace UNIBO.SET.GUI.Forms
                 this.Hide();
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
+                this.Dispose(); // TODO: potrebbe causare errori :D
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
     }
 }
