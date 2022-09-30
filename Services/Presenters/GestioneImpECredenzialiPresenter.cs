@@ -26,12 +26,12 @@ namespace UNIBO.SET.Services.Presenters
 
         }
 
-        private void PersistiImpostazioni(Impostazioni opt)
+        public void PersistiImpostazioni(Impostazioni opt)
         {
             string pathImpostazioni = SETEnvironment.Configuration_Path;
-            string contents = System.Text.Json.JsonSerializer.Serialize();
+            string contents = System.Text.Json.JsonSerializer.Serialize(opt);
             System.IO.File.WriteAllText(pathImpostazioni, contents);
-            return created;
+            return;
         }
 
         public void LogIt(EntryType type, string messaggio)
