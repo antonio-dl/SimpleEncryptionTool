@@ -42,13 +42,13 @@ namespace UNIBO.SET.Model
     [Serializable]
     public class Impostazioni
     {
-        private IDictionary<string, Impostazione> _dizionario;
+        private IDictionary<string, Impostazione> _mappa;
 
-        public IDictionary<string, Impostazione> Dizionario { get => _dizionario; set => _dizionario = value; }
+        public IDictionary<string, Impostazione> Mappa { get => _mappa; set => _mappa = value; }
 
         public Impostazioni(IDictionary<string, Impostazione> impostazioni)
         {
-            this.Dizionario = impostazioni;
+            this.Mappa = impostazioni;
         }
 
         public Impostazioni() { }
@@ -56,7 +56,7 @@ namespace UNIBO.SET.Model
 
         public Impostazione[] OttieniTutteImpostazioni()
         {
-            return this.Dizionario.Values.ToArray();
+            return this.Mappa.Values.ToArray();
         }
 
         /*public void AggiungiImpostazione(Impostazione imp)
@@ -67,12 +67,12 @@ namespace UNIBO.SET.Model
 
         public int LunghezzaImpostazioni()
         {
-            return Dizionario.Count;
+            return Mappa.Count;
         }
 
         public Impostazione OttieniImpostazione(string nomeImpostazione)
         {
-            return Dizionario[nomeImpostazione];
+            return Mappa[nomeImpostazione];
         }
     }
 
