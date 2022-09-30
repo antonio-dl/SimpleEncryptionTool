@@ -137,6 +137,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Name = "CifraFileView";
             this.Text = "Cifra File";
+            this.Load += new System.EventHandler(this.CifraFileView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

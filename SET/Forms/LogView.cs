@@ -5,7 +5,7 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class LogView : Form
     {
-        private GestioneLogPresenter _presenter;
+        private readonly GestioneLogPresenter _presenter;
 
         public LogView(GestioneLogPresenter presenter)
         {

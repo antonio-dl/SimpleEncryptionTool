@@ -4,7 +4,7 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class CifraFileView : Form
     {
-        private GestioneCifraturaPresenter _presenter;
+        private readonly GestioneCifraturaPresenter _presenter;
 
         public CifraFileView(GestioneCifraturaPresenter presenter)
         {
@@ -30,6 +30,11 @@ namespace UNIBO.SET.GUI.Forms
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void CifraFileView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

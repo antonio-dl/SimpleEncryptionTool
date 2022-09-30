@@ -4,7 +4,7 @@ namespace UNIBO.SET.GUI.Forms
 {
     public partial class DecifraFileView : Form
     {
-        private GestioneDecifraturaPresenter _presenter;
+        private readonly GestioneDecifraturaPresenter _presenter;
 
         public DecifraFileView(GestioneDecifraturaPresenter presenter)
         {
@@ -18,6 +18,11 @@ namespace UNIBO.SET.GUI.Forms
 
         private void label3_Click(object sender, EventArgs e)
         {
+        }
+
+        private void DecifraFileView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

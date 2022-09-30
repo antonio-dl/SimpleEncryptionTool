@@ -162,6 +162,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "DecifraFileView";
             this.Text = "Decifra File";
+            this.Load += new System.EventHandler(this.DecifraFileView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
