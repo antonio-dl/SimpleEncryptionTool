@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.LogBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.TipoBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -44,13 +44,14 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // comboBox1
+            // LogBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(49, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 28);
-            this.comboBox1.TabIndex = 1;
+            this.LogBox.FormattingEnabled = true;
+            this.LogBox.Location = new System.Drawing.Point(49, 57);
+            this.LogBox.Name = "LogBox";
+            this.LogBox.Size = new System.Drawing.Size(206, 28);
+            this.LogBox.TabIndex = 1;
+            this.LogBox.SelectedIndexChanged += new System.EventHandler(this.LogBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -61,13 +62,14 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Log";
             // 
-            // comboBox2
+            // TipoBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(358, 57);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(206, 28);
-            this.comboBox2.TabIndex = 4;
+            this.TipoBox.FormattingEnabled = true;
+            this.TipoBox.Location = new System.Drawing.Point(358, 57);
+            this.TipoBox.Name = "TipoBox";
+            this.TipoBox.Size = new System.Drawing.Size(206, 28);
+            this.TipoBox.TabIndex = 4;
+            this.TipoBox.SelectedIndexChanged += new System.EventHandler(this.TipoBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -86,12 +88,13 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.TipoBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.LogBox);
             this.Controls.Add(this.richTextBox1);
             this.Name = "LogView";
             this.Text = "Log";
+            this.Load += new System.EventHandler(this.LogView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,9 +103,9 @@
         #endregion
 
         private RichTextBox richTextBox1;
-        private ComboBox comboBox1;
+        private ComboBox LogBox;
         private Label label1;
-        private ComboBox comboBox2;
+        private ComboBox TipoBox;
         private Label label3;
     }
 }
