@@ -1,4 +1,5 @@
-﻿using UNIBO.SET.Services.Presenters;
+﻿using UNIBO.SET.Model;
+using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.GUI.Forms
 {
@@ -43,6 +44,17 @@ namespace UNIBO.SET.GUI.Forms
             {
                 formBackground.Dispose();
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImpostazioniView_Load(object sender, EventArgs e)
+        {
+            List<Impostazione> list = new List<Impostazione>();
+            list.Add(new Impostazione() { });
         }
     }
 }
