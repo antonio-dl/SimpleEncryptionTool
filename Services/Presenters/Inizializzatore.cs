@@ -21,7 +21,14 @@ namespace UNIBO.SET.Services.Presenters
 
         public Inizializzatore()
         {
-            CaricaComponenti();
+            GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
+            Logger = GestioneLogPresenter as ILogger;
+            GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
+
+            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
+            GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
+
+            GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
         }
 
         public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
@@ -32,17 +39,6 @@ namespace UNIBO.SET.Services.Presenters
         public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
         public ILogger Logger { get => _logger; private set => _logger = value; }
 
-        private void CaricaComponenti()
-        {
-            GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
-            Logger = GestioneLogPresenter as ILogger;
-            GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
-
-            GestioneCifraturaPresenter = CreaGestioneCifraturaPresenter();
-            GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
-
-            GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
-        }
 
         private ICifratore CreaCifratore(Impostazione impostazione)
         {
