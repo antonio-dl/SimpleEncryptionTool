@@ -34,48 +34,25 @@ namespace UNIBO.SET.Services.Presenters
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
         }
 
-        private Impostazioni LoadImpostazioni()
-        {
-            string pathImpostazioni = SETEnvironment.Configuration_Path;
-            if (System.IO.File.Exists(pathImpostazioni))
-            {
-                Impostazioni i;
-                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
 
-                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
-            }
-            else
-            {
+        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get => _gestioneDecifraturaPresenter; private set => _gestioneDecifraturaPresenter = value; }
 
-                Impostazioni created = CreateDefaultSettings();
-                System.IO.File.WriteAllText(pathImpostazioni, System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
-                return created;
-            }
-        }
+        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get => _gestioneImpECrededenzialiPresenter; private set => _gestioneImpECrededenzialiPresenter = value; }
 
-        private Impostazioni CreateDefaultSettings()
-        {
-            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
-            Impostazione i = CaricaCifratori();
-            settings[i.Nome] = i;
+        public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
 
-            return new Impostazioni(settings);
-        }
+        public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
+
+        public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
+
+        public ILogger Logger { get => _logger; private set => _logger = value; }
 
         private Impostazione CaricaCifratori()
         {
             string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
             return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
-
-        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
-        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get => _gestioneDecifraturaPresenter; private set => _gestioneDecifraturaPresenter = value; }
-        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get => _gestioneImpECrededenzialiPresenter; private set => _gestioneImpECrededenzialiPresenter = value; }
-        public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
-        public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
-        public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
-        public ILogger Logger { get => _logger; private set => _logger = value; }
-
 
         private ICifratore CreaCifratore(Impostazione impostazione)
         {
@@ -117,6 +94,15 @@ namespace UNIBO.SET.Services.Presenters
             return result;
         }
 
+        private Impostazioni CreateDefaultSettings()
+        {
+            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
+            Impostazione i = CaricaCifratori();
+            settings[i.Nome] = i;
+
+            return new Impostazioni(settings);
+        }
+
         private Dictionary<string, IDecifratore> GeneraMappaDecifratori()
         {
             var result = new Dictionary<string, IDecifratore>();
@@ -129,6 +115,24 @@ namespace UNIBO.SET.Services.Presenters
             result.Add(decifratore.Algoritmo, decifratore);
 
             return result;
+        }
+
+        private Impostazioni LoadImpostazioni()
+        {
+            string pathImpostazioni = SETEnvironment.Configuration_Path;
+            if (System.IO.File.Exists(pathImpostazioni))
+            {
+                Impostazioni i;
+                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+
+                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+            }
+            else
+            {
+                Impostazioni created = CreateDefaultSettings();
+                System.IO.File.WriteAllText(pathImpostazioni, System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
+                return created;
+            }
         }
     }
 
