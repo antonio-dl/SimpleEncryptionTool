@@ -26,11 +26,17 @@ namespace UNIBO.SET.Services.Presenters
                 {
                     tutte[i].Selezionato = impostazione.Selezionato;
                     LogIt(EntryType.Info, $"{impostazione.Nome}: l'impostazione è stata modificata in {impostazione.Selezionato}");
+                    PersistiImpostazioni(opt);
                     return true;
                 }
             }
             LogIt(EntryType.Errore, $"Impossibile modificare l'impostazione {impostazione.Nome}");
             return false;
+        }
+
+        private void PersistiImpostazioni(Impostazioni opt)
+        {
+           
         }
 
         public void LogIt(EntryType type, string messaggio)
