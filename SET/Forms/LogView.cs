@@ -25,34 +25,39 @@ namespace UNIBO.SET.GUI.Forms
         {
             var logFiles = _presenter.GetAllLogs();
             this.LogBox.DataSource = logFiles;
+            this.LogBox.SelectedIndex = 0;
 
             List<object> list = new List<object>();
             list.Add("Tutto");
             list.AddRange(Enum.GetNames<EntryType>());
             this.TipoBox.DataSource = list;
-
-            this.LogBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.TipoBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.TipoBox.SelectedIndex = 0;
 
             this.richTextBox1.Clear();
-            this.richTextBox1.ReadOnly = true;
+
+            this.LogBox_SelectedIndexChanged(sender, e);
         }
 
         private void LogBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Log logSelezionato;
-            EntryType tipo;
+            string tipo;
+            EntryType entryScelta;
             string result = "";
-            if(LogBox.SelectedItem is not null && TipoBox.SelectedItem is null)
+            if(LogBox.SelectedItem is not null && TipoBox.SelectedItem is not null)
             {
-                logSelezionato = (Log) LogBox.SelectedItem;
-                result = _presenter.ReadLog(logSelezionato);
-            }
-            else if (LogBox.SelectedItem is not null && TipoBox.SelectedItem is not null)
-            {
-                logSelezionato = (Log)LogBox.SelectedItem;
-                tipo = (EntryType)TipoBox.SelectedItem;
-                result = _presenter.ReadLog(logSelezionato, tipo);
+                if(TipoBox.SelectedItem.ToString().Equals("Tutto"))
+                {
+                    logSelezionato = (Log)LogBox.SelectedItem;
+                    result = _presenter.ReadLog(logSelezionato);
+                }
+                else
+                {
+                    logSelezionato = (Log)LogBox.SelectedItem;
+                    tipo = TipoBox.SelectedItem.ToString();
+                    entryScelta = Enum.Parse<EntryType>(tipo);
+                    result = _presenter.ReadLog(logSelezionato, entryScelta);
+                }
             }
             richTextBox1.Clear();
             richTextBox1.Text = result;
@@ -61,18 +66,23 @@ namespace UNIBO.SET.GUI.Forms
         private void TipoBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Log logSelezionato;
-            EntryType tipo;
+            string tipo;
+            EntryType entryScelta;
             string result = "";
             if (LogBox.SelectedItem is not null && TipoBox.SelectedItem is not null)
             {
-                logSelezionato = (Log) LogBox.SelectedItem;
-                tipo = (EntryType) TipoBox.SelectedItem;
-                result = _presenter.ReadLog(logSelezionato, tipo);
-            }
-            else if (LogBox.SelectedItem is not null && TipoBox.SelectedItem is null)
-            {
-                logSelezionato = (Log)LogBox.SelectedItem;
-                result = _presenter.ReadLog(logSelezionato);
+                if (TipoBox.SelectedItem.ToString().Equals("Tutto"))
+                {
+                    logSelezionato = (Log)LogBox.SelectedItem;
+                    result = _presenter.ReadLog(logSelezionato);
+                }
+                else
+                {
+                    logSelezionato = (Log)LogBox.SelectedItem;
+                    tipo = TipoBox.SelectedItem.ToString();
+                    entryScelta = Enum.Parse<EntryType>(tipo);
+                    result = _presenter.ReadLog(logSelezionato, entryScelta);
+                }
             }
             richTextBox1.Clear();
             richTextBox1.Text = result;

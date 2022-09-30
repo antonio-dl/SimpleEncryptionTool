@@ -10,14 +10,14 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class Inizializzatore // Classe che si occupa di effettuare tutte le iniezioni di dipendenza
     {
-        private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
-        private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
-        private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
-        private GestioneLoginPresenter _gestioneLoginPresenter;
-        private GestioneLogPresenter _gestioneLogPresenter;
-        private GestioneVerificaPresenter _gestioneVerificaPresenter;
+        //private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
+        //private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
+        //private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
+        //private GestioneLoginPresenter _gestioneLoginPresenter;
+        //private GestioneLogPresenter _gestioneLogPresenter;
+        //private GestioneVerificaPresenter _gestioneVerificaPresenter;
 
-        private ILogger _logger;
+        //private ILogger _logger;
 
         public Inizializzatore()
         {
@@ -34,19 +34,19 @@ namespace UNIBO.SET.Services.Presenters
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
         }
 
-        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
+        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get; private set; }
 
-        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get => _gestioneDecifraturaPresenter; private set => _gestioneDecifraturaPresenter = value; }
+        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get; private set; }
 
-        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get => _gestioneImpECrededenzialiPresenter; private set => _gestioneImpECrededenzialiPresenter = value; }
+        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get; private set; }
 
-        public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
+        public GestioneLoginPresenter GestioneLoginPresenter { get ; private set; }
 
-        public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
+        public GestioneLogPresenter GestioneLogPresenter { get; private set; }
 
-        public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
+        public GestioneVerificaPresenter GestioneVerificaPresenter { get; private set; }
 
-        public ILogger Logger { get => _logger; private set => _logger = value; }
+        public ILogger Logger { get ; private set ; }
 
         private Impostazione CaricaCifratori()
         {

@@ -39,6 +39,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(49, 130);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(687, 274);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
@@ -46,6 +47,7 @@
             // 
             // LogBox
             // 
+            this.LogBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LogBox.FormattingEnabled = true;
             this.LogBox.Location = new System.Drawing.Point(49, 57);
             this.LogBox.Name = "LogBox";
@@ -64,6 +66,7 @@
             // 
             // TipoBox
             // 
+            this.TipoBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipoBox.FormattingEnabled = true;
             this.TipoBox.Location = new System.Drawing.Point(358, 57);
             this.TipoBox.Name = "TipoBox";
