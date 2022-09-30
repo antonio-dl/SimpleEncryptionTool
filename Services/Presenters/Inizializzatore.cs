@@ -21,19 +21,9 @@ namespace UNIBO.SET.Services.Presenters
 
         public Inizializzatore()
         {
-            CaricaComponenti();
-        }
+            Utente u = Utente.GetInstance();
+            u.Impostazioni = LoadImpostazioni();
 
-        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
-        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get => _gestioneDecifraturaPresenter; private set => _gestioneDecifraturaPresenter = value; }
-        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get => _gestioneImpECrededenzialiPresenter; private set => _gestioneImpECrededenzialiPresenter = value; }
-        public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
-        public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
-        public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
-        public ILogger Logger { get => _logger; private set => _logger = value; }
-
-        private void CaricaComponenti()
-        {
             GestioneLogPresenter = new GestioneLogPresenter(SpecialDirectories.CurrentUserApplicationData + @"SET\Log"); // TODO: TEST THIS NON SO SE E UN PATH VALIDO
             Logger = GestioneLogPresenter as ILogger;
             GestioneVerificaPresenter = new GestioneVerificaPresenter(Logger); // Controllare che abbia effetivamente bisogno del logger
@@ -42,6 +32,26 @@ namespace UNIBO.SET.Services.Presenters
             GestioneDecifraturaPresenter = CreaGestioneDecifraturaPresenter();
 
             GestioneImpECrededenzialiPresenter = new GestioneImpECrededenzialiPresenter(Logger);
+        }
+
+        public GestioneCifraturaPresenter GestioneCifraturaPresenter { get => _gestioneCifraturaPresenter; private set => _gestioneCifraturaPresenter = value; }
+
+        public GestioneDecifraturaPresenter GestioneDecifraturaPresenter { get => _gestioneDecifraturaPresenter; private set => _gestioneDecifraturaPresenter = value; }
+
+        public GestioneImpECrededenzialiPresenter GestioneImpECrededenzialiPresenter { get => _gestioneImpECrededenzialiPresenter; private set => _gestioneImpECrededenzialiPresenter = value; }
+
+        public GestioneLoginPresenter GestioneLoginPresenter { get => _gestioneLoginPresenter; private set => _gestioneLoginPresenter = value; }
+
+        public GestioneLogPresenter GestioneLogPresenter { get => _gestioneLogPresenter; private set => _gestioneLogPresenter = value; }
+
+        public GestioneVerificaPresenter GestioneVerificaPresenter { get => _gestioneVerificaPresenter; private set => _gestioneVerificaPresenter = value; }
+
+        public ILogger Logger { get => _logger; private set => _logger = value; }
+
+        private Impostazione CaricaCifratori()
+        {
+            string[] cifratoriOpzioni = { "AES-ECB", "AES-CBC" };
+            return new Impostazione("cifratore", cifratoriOpzioni[0], cifratoriOpzioni);
         }
 
         private ICifratore CreaCifratore(Impostazione impostazione)
@@ -84,6 +94,15 @@ namespace UNIBO.SET.Services.Presenters
             return result;
         }
 
+        private Impostazioni CreateDefaultSettings()
+        {
+            Dictionary<string, Impostazione> settings = new Dictionary<string, Impostazione>();
+            Impostazione i = CaricaCifratori();
+            settings[i.Nome] = i;
+
+            return new Impostazioni(settings);
+        }
+
         private Dictionary<string, IDecifratore> GeneraMappaDecifratori()
         {
             var result = new Dictionary<string, IDecifratore>();
@@ -96,6 +115,24 @@ namespace UNIBO.SET.Services.Presenters
             result.Add(decifratore.Algoritmo, decifratore);
 
             return result;
+        }
+
+        private Impostazioni LoadImpostazioni()
+        {
+            string pathImpostazioni = SETEnvironment.Configuration_Path;
+            if (System.IO.File.Exists(pathImpostazioni))
+            {
+                Impostazioni i;
+                string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
+
+                return i = System.Text.Json.JsonSerializer.Deserialize<Impostazioni>(settingsJSON);
+            }
+            else
+            {
+                Impostazioni created = CreateDefaultSettings();
+                System.IO.File.WriteAllText(pathImpostazioni, System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
+                return created;
+            }
         }
     }
 

@@ -54,7 +54,6 @@
             this.label2.Size = new System.Drawing.Size(363, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Effettua il login per poter continuare";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Password
             // 
@@ -62,7 +61,6 @@
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(170, 27);
             this.Password.TabIndex = 7;
-            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // label3
             // 
@@ -72,7 +70,6 @@
             this.label3.Size = new System.Drawing.Size(127, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Inserire password:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Accedi
             // 
@@ -106,7 +103,6 @@
             this.Controls.Add(this.label1);
             this.Name = "LoginView";
             this.Text = "LoginView";
-            this.Load += new System.EventHandler(this.LoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
