@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.SelezioneCifraturaBox = new System.Windows.Forms.ComboBox();
             this.CambioCredenziali = new CustomControls.RJControls.RJButton2();
+            this.Salva = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // label1
@@ -42,14 +43,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Selezione impostazione di cifratura";
             // 
-            // comboBox1
+            // SelezioneCifraturaBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(39, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(286, 28);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.SelezioneCifraturaBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SelezioneCifraturaBox.FormattingEnabled = true;
+            this.SelezioneCifraturaBox.Location = new System.Drawing.Point(39, 72);
+            this.SelezioneCifraturaBox.Name = "SelezioneCifraturaBox";
+            this.SelezioneCifraturaBox.Size = new System.Drawing.Size(286, 28);
+            this.SelezioneCifraturaBox.TabIndex = 1;
+            this.SelezioneCifraturaBox.SelectedIndexChanged += new System.EventHandler(this.SelezioneCifraturaBox_SelectedIndexChanged);
             // 
             // CambioCredenziali
             // 
@@ -71,14 +73,34 @@
             this.CambioCredenziali.UseVisualStyleBackColor = false;
             this.CambioCredenziali.Click += new System.EventHandler(this.CambioCredenziali_Click);
             // 
+            // Salva
+            // 
+            this.Salva.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Salva.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.Salva.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Salva.BorderRadius = 15;
+            this.Salva.BorderSize = 0;
+            this.Salva.FlatAppearance.BorderSize = 0;
+            this.Salva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Salva.ForeColor = System.Drawing.Color.White;
+            this.Salva.Location = new System.Drawing.Point(666, 411);
+            this.Salva.Name = "Salva";
+            this.Salva.Size = new System.Drawing.Size(113, 44);
+            this.Salva.TabIndex = 3;
+            this.Salva.Text = "Salva";
+            this.Salva.TextColor = System.Drawing.Color.White;
+            this.Salva.UseVisualStyleBackColor = false;
+            this.Salva.Click += new System.EventHandler(this.Salva_Click);
+            // 
             // ImpostazioniView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.Salva);
             this.Controls.Add(this.CambioCredenziali);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.SelezioneCifraturaBox);
             this.Controls.Add(this.label1);
             this.Name = "ImpostazioniView";
             this.Text = "Impostazioni";
@@ -91,7 +113,8 @@
         #endregion
 
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox SelezioneCifraturaBox;
         private CustomControls.RJControls.RJButton2 CambioCredenziali;
+        private CustomControls.RJControls.RJButton2 Salva;
     }
 }
