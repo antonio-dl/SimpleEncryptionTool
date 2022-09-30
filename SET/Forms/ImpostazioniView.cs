@@ -54,7 +54,7 @@ namespace UNIBO.SET.GUI.Forms
         private void ImpostazioniView_Load(object sender, EventArgs e)
         {
             var list = new List<Impostazione>();
-            list.Add(new Impostazione() { });
+            //list.Add(new Impostazione() { });
         }
     }
 }

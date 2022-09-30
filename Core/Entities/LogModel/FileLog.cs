@@ -58,5 +58,10 @@ namespace UNIBO.SET.ModelLog
 
             return result.Where(entry => entry.Type == filteredType).ToArray();
         }
+
+        public override string ToString()
+        {
+            return Path.GetFileName(this.PathFile);
+        }
     }
 }

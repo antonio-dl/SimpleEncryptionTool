@@ -26,8 +26,10 @@ namespace UNIBO.SET.GUI.Forms
             var logFiles = _presenter.GetAllLogs();
             LogBox.DataSource = logFiles;
 
-
-            TipoBox.DataSource = Enum.GetNames<EntryType>();
+            List<object> list = new List<object>();
+            list.Add("Tutto");
+            list.AddRange(Enum.GetNames<EntryType>());
+            TipoBox.DataSource = list;
         }
 
         private void LogBox_SelectedIndexChanged(object sender, EventArgs e)
