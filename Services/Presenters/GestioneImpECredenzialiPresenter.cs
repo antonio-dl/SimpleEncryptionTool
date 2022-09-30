@@ -15,28 +15,23 @@ namespace UNIBO.SET.Services.Presenters
             _logger = logger;
         }
 
-        public bool CambiaImpostazione(Impostazione impostazione)
+        public bool CambiaImpostazione(string selezionato, Impostazione impostazione)
         {
             Impostazioni opt = _utente.Impostazioni;
-            Impostazione[] tutte = opt.OttieniTutteImpostazioni();
+            var currentImpostazione = opt.OttieniImpostazione(impostazione.Nome);
 
-            for (int i = 0; i < opt.LunghezzaImpostazioni(); i++)
-            {
-                if (tutte[i].Nome.Equals(impostazione.Nome))
-                {
-                    tutte[i].Selezionato = impostazione.Selezionato;
-                    LogIt(EntryType.Info, $"{impostazione.Nome}: l'impostazione è stata modificata in {impostazione.Selezionato}");
-                    PersistiImpostazioni(opt);
-                    return true;
-                }
-            }
-            LogIt(EntryType.Errore, $"Impossibile modificare l'impostazione {impostazione.Nome}");
-            return false;
+            currentImpostazione.Selezionato = selezionato;
+            LogIt(EntryType.Info, $"{impostazione.Nome}: l'impostazione è stata modificata in {impostazione.Selezionato}");
+            return true;
+
         }
 
         private void PersistiImpostazioni(Impostazioni opt)
         {
-           
+            string pathImpostazioni = SETEnvironment.Configuration_Path;
+            string contents = System.Text.Json.JsonSerializer.Serialize();
+            System.IO.File.WriteAllText(pathImpostazioni, contents);
+            return created;
         }
 
         public void LogIt(EntryType type, string messaggio)

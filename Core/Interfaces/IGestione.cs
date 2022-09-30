@@ -11,7 +11,7 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneImpostazioni : IController
     {
-        public bool CambiaImpostazione(Impostazione impostazione);
+        public bool CambiaImpostazione(string selezionato, Impostazione impostazione);
 
         public Impostazioni OttieniImpostazioni();
     }
