@@ -34,9 +34,9 @@ namespace UNIBO.SET.GUI.Forms
 
         private Impostazioni LoadImpostazioni(Utente u)
         {
-            if (File.Exists(SETEnvironment.Configuration_Path))
-            {
                 string pathImpostazioni = UNIBO.SET.SETEnvironment.Configuration_Path;
+            if (File.Exists(pathImpostazioni))
+            {
                 Impostazioni i;
                 string settingsJSON = System.IO.File.ReadAllText(pathImpostazioni);
 
@@ -44,7 +44,10 @@ namespace UNIBO.SET.GUI.Forms
             }
             else
             {
-                return CreateDefaultSettings();
+
+                    Impostazioni created = CreateDefaultSettings();
+                System.IO.File.WriteAllText(pathImpostazioni,System.Text.Json.JsonSerializer.Serialize<Impostazioni>(created));
+                return created;
             }
         }
 
