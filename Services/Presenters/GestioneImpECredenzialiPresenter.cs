@@ -44,6 +44,18 @@ namespace UNIBO.SET.Services.Presenters
             return _utente.Impostazioni;
         }
 
+        public Impostazione[] OttieniTutteLeImpostazioni()
+        {
+            Impostazioni imp = this.OttieniImpostazioni();
+            return imp.OttieniTutteImpostazioni();
+        }
+
+        public Impostazione OttieniImpostazioneSingola(string nomeImpostazione)
+        {
+            Impostazioni imp = this.OttieniImpostazioni();
+            return imp.OttieniImpostazione(nomeImpostazione);
+        }
+
         public bool SalvaNuoveCredenziali(Credenziali vecchie, Credenziali nuove)
         {
             if (!_utente.Credenziali.Confronta(vecchie))

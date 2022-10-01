@@ -53,16 +53,21 @@ namespace UNIBO.SET.GUI.Forms
 
         private void ImpostazioniView_Load(object sender, EventArgs e)
         {
-            var impost= _presenter.OttieniImpostazioni();
-            var imp = impost.OttieniImpostazione("cifratore");
+            var impost = _presenter.OttieniImpostazioneSingola("cifratore");
 
-            this.SelezioneCifraturaBox.DataSource = imp.Opzioni;
+            this.SelezioneCifraturaBox.DataSource = impost.Opzioni;
         }
 
         private void Salva_Click(object sender, EventArgs e)
         {
-            var impost = _presenter.OttieniImpostazioni();
-            _presenter.PersistiImpostazioni(impost);
+            var imp = _presenter.OttieniImpostazioneSingola("cifratore");
+            string selezionato = (string) SelezioneCifraturaBox.SelectedItem;
+
+            if(_presenter.CambiaImpostazione(selezionato, imp))
+            {
+                var impost = _presenter.OttieniImpostazioni();
+                _presenter.PersistiImpostazioni(impost);
+            }
         }
     }
 }
