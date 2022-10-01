@@ -7,7 +7,7 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneCifraturaPresenter : IGestioneCifratura
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
         public USB? SelectedUSB { get; set; }
         public ISet<string> ListaFileSelezionati { get; set; }
 

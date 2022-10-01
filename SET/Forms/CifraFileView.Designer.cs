@@ -41,6 +41,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(41, 50);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(679, 257);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
@@ -106,13 +107,13 @@
             // 
             // SelezionaUsb
             // 
+            this.SelezionaUsb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SelezionaUsb.FormattingEnabled = true;
             this.SelezionaUsb.Location = new System.Drawing.Point(41, 373);
             this.SelezionaUsb.Name = "SelezionaUsb";
             this.SelezionaUsb.Size = new System.Drawing.Size(186, 28);
             this.SelezionaUsb.TabIndex = 4;
-            this.SelezionaUsb.Text = "Seleziona USB";
-            this.SelezionaUsb.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.SelezionaUsb.SelectedIndexChanged += new System.EventHandler(this.SelezionaUsb_SelectedIndexChanged);
             // 
             // label1
             // 
