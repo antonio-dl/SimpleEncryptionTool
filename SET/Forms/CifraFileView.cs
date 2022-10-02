@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
+using File = UNIBO.SET.Model.File;
 
 namespace UNIBO.SET.GUI.Forms
 {
@@ -15,17 +16,61 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
+        /* https://learn.microsoft.com/en-us/windows/uwp/files/quickstart-using-file-and-folder-pickers 
+           https://stackoverflow.com/questions/4999734/how-to-add-browse-file-button-to-windows-form-using-c-sharp */
         private void AggiungiFile_Click(object sender, EventArgs e)
         {
-            Process.Start("Explorer.exe");
-            // questo qui sopra non va propriamente bene; guardare dal link qui sotto
-            /* https://learn.microsoft.com/en-us/windows/uwp/files/quickstart-using-file-and-folder-pickers 
-             https://stackoverflow.com/questions/4999734/how-to-add-browse-file-button-to-windows-form-using-c-sharp */
+            var filePicker = new System.Windows.Forms.OpenFileDialog();
+            filePicker.Multiselect = true;
+            if (filePicker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] fileSelezionati = filePicker.FileNames;
+                foreach(string s in fileSelezionati)
+                {
+                    richTextBox1.AppendText(s+ "\n");
+                }
+            }
+        }
+
+        private void AggiungiCartella_Click(object sender, EventArgs e)
+        {
+            var cartellaPicker = new FolderBrowserDialog();
+            DialogResult result = cartellaPicker.ShowDialog();
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(cartellaPicker.SelectedPath))
+            {
+                string[] files = Directory.GetFiles(cartellaPicker.SelectedPath);
+                foreach (string s in files)
+                {
+                    richTextBox1.AppendText(s + "\n");
+                }
+            }
+        }
+
+        private void EliminaSpaziVuoti()
+        {
+            string testo = richTextBox1.Text.Trim();
+            richTextBox1.Clear();
+            richTextBox1.Text = testo;
+            return;
         }
 
         private void Rimuovi_Click(object sender, EventArgs e)
         {
+            // va bene ma per vedere se tutto va la lascio commentata ----> this.EliminaSpaziVuoti();
+            string[] righe = richTextBox1.Lines;
+            int lungRiga = richTextBox1.SelectedText.Length;
+            /*
+            foreach (string s in righe)
+            {
+                richTextBox1.AppendText(s + "\n");
+            }
+            */
+            string selezionato = richTextBox1.SelectedText.Trim();
+            int pos = selezionato.IndexOf('\n');
 
+            string[] daRimuovere = new string[righe.Length];
+            daRimuovere[0] = selezionato;
+            richTextBox1.AppendText("\n\t" + daRimuovere[0]);
         }
 
         private void Cifra_Click(object sender, EventArgs e)
@@ -66,9 +111,5 @@ namespace UNIBO.SET.GUI.Forms
             this.SelezionaUsb_SelectedIndexChanged(sender, e);
         }
 
-        private void AggiungiCartella_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
