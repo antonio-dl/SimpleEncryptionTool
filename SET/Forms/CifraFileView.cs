@@ -15,7 +15,7 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
-        private void Aggiungi_Click(object sender, EventArgs e)
+        private void AggiungiFile_Click(object sender, EventArgs e)
         {
             Process.Start("Explorer.exe");
             // questo qui sopra non va propriamente bene; guardare dal link qui sotto
@@ -64,6 +64,11 @@ namespace UNIBO.SET.GUI.Forms
             this.richTextBox1.Clear();
             
             this.SelezionaUsb_SelectedIndexChanged(sender, e);
+        }
+
+        private void AggiungiCartella_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,11 +30,12 @@
         private void InitializeComponent()
         {
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.Aggiungi = new CustomControls.RJControls.RJButton2();
+            this.AggiungiFile = new CustomControls.RJControls.RJButton2();
             this.Rimuovi = new CustomControls.RJControls.RJButton2();
             this.Cifra = new CustomControls.RJControls.RJButton2();
             this.SelezionaUsb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AggiungiCartella = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -47,24 +48,24 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // Aggiungi
+            // AggiungiFile
             // 
-            this.Aggiungi.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.Aggiungi.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.Aggiungi.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.Aggiungi.BorderRadius = 15;
-            this.Aggiungi.BorderSize = 0;
-            this.Aggiungi.FlatAppearance.BorderSize = 0;
-            this.Aggiungi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Aggiungi.ForeColor = System.Drawing.Color.White;
-            this.Aggiungi.Location = new System.Drawing.Point(41, 313);
-            this.Aggiungi.Name = "Aggiungi";
-            this.Aggiungi.Size = new System.Drawing.Size(90, 35);
-            this.Aggiungi.TabIndex = 1;
-            this.Aggiungi.Text = "Aggiungi";
-            this.Aggiungi.TextColor = System.Drawing.Color.White;
-            this.Aggiungi.UseVisualStyleBackColor = false;
-            this.Aggiungi.Click += new System.EventHandler(this.Aggiungi_Click);
+            this.AggiungiFile.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.AggiungiFile.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.AggiungiFile.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.AggiungiFile.BorderRadius = 15;
+            this.AggiungiFile.BorderSize = 0;
+            this.AggiungiFile.FlatAppearance.BorderSize = 0;
+            this.AggiungiFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggiungiFile.ForeColor = System.Drawing.Color.White;
+            this.AggiungiFile.Location = new System.Drawing.Point(41, 313);
+            this.AggiungiFile.Name = "AggiungiFile";
+            this.AggiungiFile.Size = new System.Drawing.Size(118, 35);
+            this.AggiungiFile.TabIndex = 1;
+            this.AggiungiFile.Text = "Aggiungi file";
+            this.AggiungiFile.TextColor = System.Drawing.Color.White;
+            this.AggiungiFile.UseVisualStyleBackColor = false;
+            this.AggiungiFile.Click += new System.EventHandler(this.AggiungiFile_Click);
             // 
             // Rimuovi
             // 
@@ -76,7 +77,7 @@
             this.Rimuovi.FlatAppearance.BorderSize = 0;
             this.Rimuovi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Rimuovi.ForeColor = System.Drawing.Color.White;
-            this.Rimuovi.Location = new System.Drawing.Point(137, 313);
+            this.Rimuovi.Location = new System.Drawing.Point(307, 313);
             this.Rimuovi.Name = "Rimuovi";
             this.Rimuovi.Size = new System.Drawing.Size(90, 35);
             this.Rimuovi.TabIndex = 2;
@@ -124,17 +125,37 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "File da cifrare";
             // 
+            // AggiungiCartella
+            // 
+            this.AggiungiCartella.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.AggiungiCartella.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.AggiungiCartella.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.AggiungiCartella.BorderRadius = 15;
+            this.AggiungiCartella.BorderSize = 0;
+            this.AggiungiCartella.FlatAppearance.BorderSize = 0;
+            this.AggiungiCartella.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AggiungiCartella.ForeColor = System.Drawing.Color.White;
+            this.AggiungiCartella.Location = new System.Drawing.Point(165, 313);
+            this.AggiungiCartella.Name = "AggiungiCartella";
+            this.AggiungiCartella.Size = new System.Drawing.Size(136, 35);
+            this.AggiungiCartella.TabIndex = 6;
+            this.AggiungiCartella.Text = "Aggiungi cartella";
+            this.AggiungiCartella.TextColor = System.Drawing.Color.White;
+            this.AggiungiCartella.UseVisualStyleBackColor = false;
+            this.AggiungiCartella.Click += new System.EventHandler(this.AggiungiCartella_Click);
+            // 
             // CifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.AggiungiCartella);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SelezionaUsb);
             this.Controls.Add(this.Cifra);
             this.Controls.Add(this.Rimuovi);
-            this.Controls.Add(this.Aggiungi);
+            this.Controls.Add(this.AggiungiFile);
             this.Controls.Add(this.richTextBox1);
             this.Name = "CifraFileView";
             this.Text = "Cifra File";
@@ -147,10 +168,11 @@
         #endregion
 
         private RichTextBox richTextBox1;
-        private CustomControls.RJControls.RJButton2 Aggiungi;
+        private CustomControls.RJControls.RJButton2 AggiungiFile;
         private CustomControls.RJControls.RJButton2 Rimuovi;
         private CustomControls.RJControls.RJButton2 Cifra;
         private ComboBox SelezionaUsb;
         private Label label1;
+        private CustomControls.RJControls.RJButton2 AggiungiCartella;
     }
 }
