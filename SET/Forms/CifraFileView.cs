@@ -46,36 +46,57 @@ namespace UNIBO.SET.GUI.Forms
             }
         }
 
-        private void EliminaSpaziVuoti()
-        {
-            string testo = richTextBox1.Text.Trim();
-            richTextBox1.Clear();
-            richTextBox1.Text = testo;
-            return;
-        }
-
         private void Rimuovi_Click(object sender, EventArgs e)
         {
-            // va bene ma per vedere se tutto va la lascio commentata ----> this.EliminaSpaziVuoti();
             string[] righe = richTextBox1.Lines;
-            int lungRiga = richTextBox1.SelectedText.Length;
-            /*
-            foreach (string s in righe)
-            {
-                richTextBox1.AppendText(s + "\n");
-            }
-            */
             string selezionato = richTextBox1.SelectedText.Trim();
-            int pos = selezionato.IndexOf('\n');
 
-            string[] daRimuovere = new string[righe.Length];
-            daRimuovere[0] = selezionato;
-            richTextBox1.AppendText("\n\t" + daRimuovere[0]);
+            if(selezionato != "")
+            {
+                for(int i=0; i<righe.Length; i++)
+                {
+                    if (righe[i].Contains(selezionato))
+                    {
+                        righe[i] = "";
+                    }
+                }
+            }
+            richTextBox1.Clear();
+            foreach(string s in righe)
+            {
+                if(s != "")
+                {
+                    richTextBox1.AppendText(s + "\n");
+                }
+            }
         }
 
         private void Cifra_Click(object sender, EventArgs e)
         {
+            string[] fileDaCifrare = richTextBox1.Lines;
+            string fileSingolo;
+            File f;
+            USB? usb = _presenter.SelectedUSB;
+            Key key;
+            FileKeyChain fkc;
 
+            if(usb is not null)
+            {
+                for(int i=0; i<fileDaCifrare.Length; i++)
+                {
+                    fileSingolo = fileDaCifrare[i].Trim();
+                    f = new File(fileSingolo);
+                    key = _presenter.Cifra(f);
+                    fkc = usb.KeyChain;
+/*
+Non ho capito/manca proprio:
+- metodi per creare materialmente il path di cartelle di un FileKeyChain sulla chiavetta USB nel caso ancora non ne avesse uno
+- metodi per aggiungere e/o rimuovere Key da una KeyChain contenuta da un FileKeyChain (dal Model)
+- metodi nel CifraFilePresenter che permettano di salvare nell'USB (dal Model) una Key dentro a KeyChain contenuta da un FileKeyChain dopo aver cifrato un file
+*/
+                }
+                richTextBox1.Clear();
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
