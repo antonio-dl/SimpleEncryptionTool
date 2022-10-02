@@ -19,7 +19,8 @@ namespace UNIBO.SET.GUI.Forms
         {
             Process.Start("Explorer.exe");
             // questo qui sopra non va propriamente bene; guardare dal link qui sotto
-            /* https://learn.microsoft.com/en-us/windows/uwp/files/quickstart-using-file-and-folder-pickers */
+            /* https://learn.microsoft.com/en-us/windows/uwp/files/quickstart-using-file-and-folder-pickers 
+             https://stackoverflow.com/questions/4999734/how-to-add-browse-file-button-to-windows-form-using-c-sharp */
         }
 
         private void Rimuovi_Click(object sender, EventArgs e)
