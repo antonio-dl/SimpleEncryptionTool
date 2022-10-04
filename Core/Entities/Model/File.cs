@@ -1,5 +1,6 @@
 ﻿namespace UNIBO.SET.Model
 {
+    [Serializable]
     public class CodiceVerifica
     {
         public string Codice { get; }

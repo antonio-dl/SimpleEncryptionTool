@@ -80,6 +80,8 @@ namespace UNIBO.SET.Services.Presenters
 
         private void SalvaFileKeyChain(FileKeyChain fkc)
         {
+            Directory.CreateDirectory(Path.GetDirectoryName(fkc.PathFileKeyChain));
+
             BinaryFormatter bf = new BinaryFormatter();
             FileInfo f = new FileInfo(fkc.PathFileKeyChain);
             using Stream stream = f.OpenWrite();
@@ -88,10 +90,17 @@ namespace UNIBO.SET.Services.Presenters
 
         private FileKeyChain RecuperaFileKeyChain(string pathToKeyChain)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileInfo f = new FileInfo(pathToKeyChain);
-            using Stream stream = f.OpenRead();
-            return (FileKeyChain)bf.Deserialize(stream);
+            if (System.IO.File.Exists(pathToKeyChain))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileInfo f = new FileInfo(pathToKeyChain);
+                using Stream stream = f.OpenRead();
+                return (FileKeyChain)bf.Deserialize(stream);
+            } else
+            {
+
+                return new FileKeyChain(pathToKeyChain);
+            }
             
         }
     }

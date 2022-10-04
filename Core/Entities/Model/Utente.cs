@@ -6,21 +6,9 @@ namespace UNIBO.SET.Model
 
         private Utente()
         {
-            _utente = LoadUserDataMock();
+
         }
 
-        private Utente LoadUserDataMock()
-        {
-            IDictionary<string, Impostazione> basic = new Dictionary<string, Impostazione>();
-            string[] caso1 = { "rosso", "giallo", "verde" };
-            Impostazione imp1 = new Impostazione("Colore", "rosso", caso1);
-            basic.Add("aCaso1", imp1);
-            string[] caso2 = { "piccolo", "medio", "grande" };
-            Impostazione imp2 = new Impostazione("Dimensione", "piccolo", caso2);
-            basic.Add("aCaso2", imp2);
-            Credenziali cred = new CredenzialiPassword("Ciabatta");
-            return new Utente("Me", new Impostazioni(basic), cred);
-        }
 
         public static Utente GetInstance()
         {

@@ -62,8 +62,6 @@
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(170, 27);
             this.Password.TabIndex = 7;
-            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
-            this.Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Password_KeyDown);
             // 
             // label3
             // 
@@ -107,7 +105,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginView";
             this.Text = "LoginView";
-            this.Load += new System.EventHandler(this.LoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -65,7 +65,6 @@ namespace UNIBO.SET.GUI.Forms
 
             if (usb is not null)
             {
-                
                 for (int i = 0; i < fileDaCifrare.Length; i++)
                 {
                     try

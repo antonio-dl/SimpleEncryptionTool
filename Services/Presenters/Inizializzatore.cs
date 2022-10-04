@@ -14,6 +14,8 @@ namespace UNIBO.SET.Services.Presenters
         public Inizializzatore()
         {
             Utente u = Utente.GetInstance();
+            u.Nome = Environment.UserName;
+
             u.Impostazioni = LoadImpostazioni();
 
             GestioneLogPresenter = new GestioneLogPresenter(SETEnvironment.Log_Folder); // TODO: TEST THIS NON SO SE E UN PATH VALIDO

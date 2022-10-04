@@ -2,6 +2,7 @@
 
 namespace UNIBO.SET.Model
 {
+    [Serializable]
     public record Key
     {
         public string Algoritmo { get; }
@@ -21,10 +22,10 @@ namespace UNIBO.SET.Model
             CodiceVerifica = codiceVerifica ?? throw new ArgumentNullException(nameof(codiceVerifica));
         }
     }
-
+    [Serializable]
     public abstract class KeyChain
     {
-        protected IList<Key> _keylist;
+        protected IList<Key> _keylist ;
 
         public abstract void AddKey(Key key);
         public abstract IList<Key> GetAllKey();
@@ -32,7 +33,7 @@ namespace UNIBO.SET.Model
         public abstract bool DeleteKey(Key key);
 
     }
-
+    [Serializable]
     public class FileKeyChain : KeyChain
     {
         public string Name { get => Path.GetFileName(PathFileKeyChain); }
@@ -41,7 +42,7 @@ namespace UNIBO.SET.Model
         public FileKeyChain(string pathFileKeyChain)
         {
             PathFileKeyChain = pathFileKeyChain;
-            Directory.CreateDirectory(PathFileKeyChain);
+            this._keylist = new List<Key>();
 
         }
 

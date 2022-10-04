@@ -21,6 +21,13 @@ namespace UNIBO.SET.GUI.Forms
 
             InitializeComponent();
             Password.PasswordChar = '\u25CF';
+
+
+            // Per velocizzare il debug
+            this.Hide();
+            HomeSET home = new HomeSET(init);
+            home.ShowDialog();
+            this.Close();
         }
 
         private static Credenziali LoadCredenziali() // TODO: Test della serializzazione e deserializzazione
@@ -52,15 +59,6 @@ namespace UNIBO.SET.GUI.Forms
             }
         }
 
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void Password_KeyDown(object sender, KeyEventArgs e)
         {
