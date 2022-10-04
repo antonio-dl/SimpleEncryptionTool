@@ -48,6 +48,7 @@ namespace UNIBO.SET.GUI.Forms
                 this.Hide();
                 HomeSET home = new HomeSET(init);
                 home.ShowDialog();
+                this.Close();
             }
         }
 

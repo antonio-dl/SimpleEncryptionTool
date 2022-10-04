@@ -40,7 +40,7 @@ namespace UNIBO.SET.GUI.Forms
                 bf.Serialize(stream, c);
                 stream.Close();
 
-                this.Hide();
+                this.Close();
                 LoginView login = new LoginView();
                 login.ShowDialog();
             }

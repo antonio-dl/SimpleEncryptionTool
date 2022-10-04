@@ -4,6 +4,7 @@ using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 using File = UNIBO.SET.Model.File;
 
+
 namespace UNIBO.SET.GUI.Forms
 {
     public partial class CifraFileView : Form
