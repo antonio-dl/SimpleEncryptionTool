@@ -56,5 +56,18 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Accedi.PerformClick();
+            }
+        }
     }
 }
