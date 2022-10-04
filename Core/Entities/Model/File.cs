@@ -47,6 +47,8 @@
             }
         }
 
+        public override string ToString() => this.Path;
+        
         public new string Name { get => _file.Name; }
 
         public string CalcolaMD5()
