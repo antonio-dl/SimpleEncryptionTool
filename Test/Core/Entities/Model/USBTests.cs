@@ -13,18 +13,18 @@
             const string nomeUsb = @"F:\";
             usb = new USB(nomeUsb);
 
-            keyChain = usb.KeyChain;
+            keyChain = new FileKeyChain(usb.GetPathToKeyChain());
             Console.WriteLine(keyChain.Name);
             Console.WriteLine(keyChain.PathFileKeyChain);
 
-            Assert.IsTrue(usb.HasKeyChain(usb.GetPathToKeyChain()));
+            Assert.IsTrue(usb.HasKeyChain());
             Assert.IsNotNull(keyChain.ToString());
 
             USB usb2;
             const string nomeUsb2 = @"G:\";
             usb2 = new USB(nomeUsb2);
 
-            Assert.IsFalse(usb2.HasKeyChain(usb2.GetPathToKeyChain()));
+            Assert.IsFalse(usb2.HasKeyChain());
         }
 
         [TestMethod()]
@@ -35,12 +35,6 @@
 
             Assert.IsNotNull(tutte);
             Console.WriteLine(tutte.ToString());
-            for (int i = 0; i < tutte.Length; i++)
-            {
-                Console.WriteLine(tutte[i].Name);
-                Console.WriteLine(tutte[i].KeyChain.Name);
-                Console.WriteLine(tutte[i].KeyChain.Path);
-            }
         }
     }
 }

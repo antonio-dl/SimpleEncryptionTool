@@ -10,14 +10,6 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class Inizializzatore // Classe che si occupa di effettuare tutte le iniezioni di dipendenza
     {
-        //private GestioneCifraturaPresenter _gestioneCifraturaPresenter;
-        //private GestioneDecifraturaPresenter _gestioneDecifraturaPresenter;
-        //private GestioneImpECrededenzialiPresenter _gestioneImpECrededenzialiPresenter;
-        //private GestioneLoginPresenter _gestioneLoginPresenter;
-        //private GestioneLogPresenter _gestioneLogPresenter;
-        //private GestioneVerificaPresenter _gestioneVerificaPresenter;
-
-        //private ILogger _logger;
 
         public Inizializzatore()
         {
