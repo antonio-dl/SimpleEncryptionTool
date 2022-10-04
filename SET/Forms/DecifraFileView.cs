@@ -60,9 +60,6 @@ namespace UNIBO.SET.GUI.Forms
                     _presenter.SelezionaKeyChain(keyChain);
                     PathChiaveBox.Text = _presenter.SelectedKeyChain.ToString();
                 }
-                else
-                    PathChiaveBox.Text = "sfsd";
-                
             }
         }
 
