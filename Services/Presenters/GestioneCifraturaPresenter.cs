@@ -1,4 +1,5 @@
-﻿using UNIBO.SET.Interfaces;
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Cifratori;
@@ -62,6 +63,36 @@ namespace UNIBO.SET.Services.Presenters
         public void SelezionaUSB(USB usb)
         {
             this.SelectedUSB = usb;
+        }
+
+        public void SalvaKey(Key key)
+        {
+            if (this.SelectedUSB == null)
+                return;
+            string pathToKeyChain = this.SelectedUSB.GetPathToKeyChain();
+
+            FileKeyChain fkc = RecuperaFileKeyChain(pathToKeyChain);
+            fkc.AddKey(key);
+            SalvaFileKeyChain(fkc);
+
+
+        }
+
+        private void SalvaFileKeyChain(FileKeyChain fkc)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileInfo f = new FileInfo(fkc.PathFileKeyChain);
+            using Stream stream = f.OpenWrite();
+            bf.Serialize(stream,fkc);
+        }
+
+        private FileKeyChain RecuperaFileKeyChain(string pathToKeyChain)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileInfo f = new FileInfo(pathToKeyChain);
+            using Stream stream = f.OpenRead();
+            return (FileKeyChain)bf.Deserialize(stream);
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Services;
+using System.Collections;
 using System.Diagnostics;
 using System.Windows.Forms;
 using UNIBO.SET.Model;
@@ -62,17 +63,27 @@ namespace UNIBO.SET.GUI.Forms
             string fileSingolo;
             File f;
             USB? usb = _presenter.SelectedUSB;
-            Key key;
-            FileKeyChain fkc;
 
             if (usb is not null)
             {
+                
                 for (int i = 0; i < fileDaCifrare.Length; i++)
                 {
-                    fileSingolo = fileDaCifrare[i].Trim();
-                    f = new File(fileSingolo);
-                    key = _presenter.Cifra(f);
-                    fkc = usb.KeyChain;
+                    try
+                    {
+                        fileSingolo = fileDaCifrare[i].Trim();
+                        f = new File(fileSingolo);
+                        Key key = _presenter.Cifra(f);
+                        _presenter.SalvaKey(key);
+                    } catch (FileNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    } catch (SalveKeyException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     /*
                     Non ho capito/manca proprio:
                     - metodi per creare materialmente il path di cartelle di un FileKeyChain sulla chiavetta USB nel caso ancora non ne avesse uno

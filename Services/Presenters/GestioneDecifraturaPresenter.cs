@@ -65,7 +65,7 @@ namespace UNIBO.SET.Services.Presenters
         public ISet<Model.File> FileDecifrabili(KeyChain chain)
         {
             HashSet<Model.File> result = new HashSet<Model.File>();
-            foreach (var key in chain)
+            foreach (var key in chain.GetAllKey())
             {
                 var file = new Model.File(key.SourceFilePath);
                 if (file.Exists)
@@ -82,7 +82,7 @@ namespace UNIBO.SET.Services.Presenters
         public KeyChain ScansionaUSB()
         {
             if (this.SelectedUSB.HasKeyChain())
-                return this.SelectedUSB.KeyChain;
+                return new FileKeyChain(this.SelectedUSB.GetPathToKeyChain());
             else
                 return null;
         }

@@ -15,16 +15,16 @@
 
             keyChain = usb.KeyChain;
             Console.WriteLine(keyChain.Name);
-            Console.WriteLine(keyChain.Path);
+            Console.WriteLine(keyChain.PathFileKeyChain);
 
-            Assert.IsTrue(usb.HasKeyChain());
+            Assert.IsTrue(usb.HasKeyChain(usb.GetPathToKeyChain()));
             Assert.IsNotNull(keyChain.ToString());
 
             USB usb2;
             const string nomeUsb2 = @"G:\";
             usb2 = new USB(nomeUsb2);
 
-            Assert.IsFalse(usb2.HasKeyChain());
+            Assert.IsFalse(usb2.HasKeyChain(usb2.GetPathToKeyChain()));
         }
 
         [TestMethod()]

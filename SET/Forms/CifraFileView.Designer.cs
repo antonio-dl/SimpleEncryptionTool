@@ -139,7 +139,7 @@
             this.listaFileDaCifrare.FormattingEnabled = true;
             this.listaFileDaCifrare.ItemHeight = 20;
             this.listaFileDaCifrare.Items.AddRange(new object[] {
-            "Path dei File da cifrare"});
+            "PathFileKeyChain dei File da cifrare"});
             this.listaFileDaCifrare.Location = new System.Drawing.Point(41, 46);
             this.listaFileDaCifrare.Name = "listaFileDaCifrare";
             this.listaFileDaCifrare.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;

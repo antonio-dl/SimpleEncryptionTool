@@ -2,28 +2,18 @@
 {
     public class USB
     {
-        private DriveInfo _driveInfo;
-        private FileKeyChain? _keyChain;
-
-        public FileKeyChain KeyChain
-        {
-            get
-            {
-                if (_keyChain == null) // Dovrebbe funzionare a dovere ma è il costruttore FileKeyChain che va corretto
-                {
-                    string pathToKeyChain = Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome + ".skc");
-                    _keyChain = new FileKeyChain(pathToKeyChain);
-                }
-                return _keyChain;
-            }
-        }
+        private readonly DriveInfo _driveInfo;
 
         public string Name { get => _driveInfo.Name; }
 
+        public string GetPathToKeyChain()
+        {
+            return Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome + ".skc");
+        }
+
         public bool HasKeyChain() // Dovrebbe funzionare a dovere
         {
-            string pathToKeyChain = Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome + ".skc");
-            return System.IO.File.Exists(pathToKeyChain);
+            return System.IO.File.Exists(GetPathToKeyChain());
         }
 
         public USB(string s)
@@ -46,5 +36,6 @@
             }
             return usblist.ToArray();
         }
+
     }
 }

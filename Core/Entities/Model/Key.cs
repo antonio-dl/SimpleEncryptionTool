@@ -2,7 +2,7 @@
 
 namespace UNIBO.SET.Model
 {
-    public class Key
+    public record Key
     {
         public string Algoritmo { get; }
         public string TargetFilePath { get; }
@@ -22,30 +22,42 @@ namespace UNIBO.SET.Model
         }
     }
 
-    public abstract class KeyChain : IEnumerable<Key>
+    public abstract class KeyChain
     {
-        protected Key[] _keychain;
+        protected IList<Key> _keylist;
 
-        public IEnumerator<Key> GetEnumerator()
-        {
-            return ((IEnumerable<Key>)_keychain).GetEnumerator();
-        }
+        public abstract void AddKey(Key key);
+        public abstract IList<Key> GetAllKey();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _keychain.GetEnumerator();
-        }
+        public abstract bool DeleteKey(Key key);
+
     }
 
     public class FileKeyChain : KeyChain
     {
-        private FileInfo _file;
-        public string Name { get => _file.Name; }
-        public string Path { get => _file.FullName; }
+        public string Name { get => Path.GetFileName(PathFileKeyChain); }
+        public string PathFileKeyChain { get; }
 
-        public FileKeyChain(string pathFile)
+        public FileKeyChain(string pathFileKeyChain)
         {
-            _file = new FileInfo(pathFile);
+            PathFileKeyChain = pathFileKeyChain;
+            Directory.CreateDirectory(PathFileKeyChain);
+
+        }
+
+        public override void AddKey(Key key)
+        {
+            this._keylist.Add(key);
+        }
+
+        public override IList<Key> GetAllKey()
+        {
+            return this._keylist;
+        }
+
+        public override bool DeleteKey(Key key)
+        {
+            return this._keylist.Remove(key);
         }
     }
 }
