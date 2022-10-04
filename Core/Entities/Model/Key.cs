@@ -60,5 +60,10 @@ namespace UNIBO.SET.Model
         {
             return this._keylist.Remove(key);
         }
+
+        public override string ToString()
+        {
+            return this.PathFileKeyChain;
+        }
     }
 }
