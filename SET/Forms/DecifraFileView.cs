@@ -20,8 +20,12 @@ namespace UNIBO.SET.GUI.Forms
         private void DecifraFileView_Load(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
-            ListaUsbBox.DataSource = tutteUsb;
-            ListaUsbBox.SelectedIndex = 0;
+            string[] nomiUsb = new string[tutteUsb.Length];
+            for (int i = 0; i < tutteUsb.Length; i++)
+            {
+                nomiUsb[i] = tutteUsb[i].Name;
+            }
+            ListaUsbBox.DataSource = nomiUsb;
 
             listaFileDaDecifrare.Items.Clear();
             PathChiaveBox.Clear();
@@ -41,11 +45,24 @@ namespace UNIBO.SET.GUI.Forms
 
         private void ListaUsbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            USB usbSelezionata;
-            if(ListaUsbBox.SelectedItem is not null)
+            string nomeUsb;
+            USB usb;
+            KeyChain? keyChain;
+
+            if (ListaUsbBox.SelectedItem is not null)
             {
-                usbSelezionata = (USB)ListaUsbBox.SelectedItem;
-                _presenter.SelezionaUSB(usbSelezionata);
+                nomeUsb = (string) ListaUsbBox.SelectedItem;
+                usb = new USB(nomeUsb);
+                _presenter.SelezionaUSB(usb);
+                /*
+                if((keyChain = _presenter.ScansionaUSB()) is not null)
+                {
+                    _presenter.SelezionaKeyChain(keyChain);
+                    PathChiaveBox.Text = _presenter.SelectedUSB.KeyChain.Path;
+                }
+                else
+                    PathChiaveBox.Text = "sfsd";
+                */
             }
         }
 
@@ -66,8 +83,12 @@ namespace UNIBO.SET.GUI.Forms
         private void Scan_Click(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
-            ListaUsbBox.DataSource = tutteUsb;
-            ListaUsbBox.SelectedIndex = 0;
+            string[] nomiUsb = new string[tutteUsb.Length];
+            for (int i = 0; i < tutteUsb.Length; i++)
+            {
+                nomiUsb[i] = tutteUsb[i].Name;
+            }
+            ListaUsbBox.DataSource = nomiUsb;
 
             ListaUsbBox_SelectedIndexChanged(sender, e);
         }
