@@ -54,15 +54,15 @@ namespace UNIBO.SET.GUI.Forms
                 nomeUsb = (string) ListaUsbBox.SelectedItem;
                 usb = new USB(nomeUsb);
                 _presenter.SelezionaUSB(usb);
-                /*
+                
                 if((keyChain = _presenter.ScansionaUSB()) is not null)
                 {
                     _presenter.SelezionaKeyChain(keyChain);
-                    PathChiaveBox.Text = _presenter.SelectedUSB.KeyChain.Path;
+                    PathChiaveBox.Text = _presenter.SelectedKeyChain.ToString();
                 }
                 else
                     PathChiaveBox.Text = "sfsd";
-                */
+                
             }
         }
 
