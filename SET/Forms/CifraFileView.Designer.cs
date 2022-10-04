@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AggiungiCartella = new CustomControls.RJControls.RJButton2();
             this.listaFileDaCifrare = new System.Windows.Forms.ListBox();
+            this.Aggiorna = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // AggiungiFile
@@ -147,12 +148,31 @@
             this.listaFileDaCifrare.TabIndex = 7;
             this.listaFileDaCifrare.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
+            // Aggiorna
+            // 
+            this.Aggiorna.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Aggiorna.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.Aggiorna.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Aggiorna.BorderRadius = 15;
+            this.Aggiorna.BorderSize = 0;
+            this.Aggiorna.FlatAppearance.BorderSize = 0;
+            this.Aggiorna.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Aggiorna.ForeColor = System.Drawing.Color.White;
+            this.Aggiorna.Location = new System.Drawing.Point(246, 369);
+            this.Aggiorna.Name = "Aggiorna";
+            this.Aggiorna.Size = new System.Drawing.Size(90, 35);
+            this.Aggiorna.TabIndex = 0;
+            this.Aggiorna.Text = "Aggiorna";
+            this.Aggiorna.TextColor = System.Drawing.Color.White;
+            this.Aggiorna.UseVisualStyleBackColor = false;
+            // 
             // CifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.Aggiorna);
             this.Controls.Add(this.listaFileDaCifrare);
             this.Controls.Add(this.AggiungiCartella);
             this.Controls.Add(this.label1);
@@ -176,5 +196,6 @@
         private Label label1;
         private CustomControls.RJControls.RJButton2 AggiungiCartella;
         private ListBox listaFileDaCifrare;
+        private CustomControls.RJControls.RJButton2 Aggiorna;
     }
 }
