@@ -109,7 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 27);
+            this.label1.Location = new System.Drawing.Point(41, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 5;
@@ -139,12 +139,11 @@
             this.listaFileDaCifrare.FormattingEnabled = true;
             this.listaFileDaCifrare.ItemHeight = 20;
             this.listaFileDaCifrare.Items.AddRange(new object[] {
-            "asdasd",
-            "dsadasd"});
-            this.listaFileDaCifrare.Location = new System.Drawing.Point(41, 66);
+            "Path dei File da cifrare"});
+            this.listaFileDaCifrare.Location = new System.Drawing.Point(41, 46);
             this.listaFileDaCifrare.Name = "listaFileDaCifrare";
             this.listaFileDaCifrare.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listaFileDaCifrare.Size = new System.Drawing.Size(633, 244);
+            this.listaFileDaCifrare.Size = new System.Drawing.Size(680, 264);
             this.listaFileDaCifrare.TabIndex = 7;
             this.listaFileDaCifrare.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 

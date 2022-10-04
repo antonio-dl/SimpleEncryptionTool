@@ -18,8 +18,6 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
-        /* https://learn.microsoft.com/en-us/windows/uwp/files/quickstart-using-file-and-folder-pickers 
-           https://stackoverflow.com/questions/4999734/how-to-add-browse-file-button-to-windows-form-using-c-sharp */
         private void AggiungiFile_Click(object sender, EventArgs e)
         {
             var filePicker = new System.Windows.Forms.OpenFileDialog();
@@ -84,10 +82,6 @@ namespace UNIBO.SET.GUI.Forms
                 }
                 listaFileDaCifrare.Items.Clear();
             }
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void SelezionaUsb_SelectedIndexChanged(object sender, EventArgs e)
