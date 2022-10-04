@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Diagnostics;
+using System.Windows.Forms;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 using File = UNIBO.SET.Model.File;
@@ -26,11 +27,11 @@ namespace UNIBO.SET.GUI.Forms
             if (filePicker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string[] fileSelezionati = filePicker.FileNames;
-                foreach(string s in fileSelezionati)
-                {
-                    richTextBox1.AppendText(s+ "\n");
-                }
+                foreach (string s in fileSelezionati)
+                    if (!listaFileDaCifrare.Items.Contains(s))
+                        listaFileDaCifrare.Items.Add(s);
             }
+
         }
 
         private void AggiungiCartella_Click(object sender, EventArgs e)
@@ -39,64 +40,49 @@ namespace UNIBO.SET.GUI.Forms
             DialogResult result = cartellaPicker.ShowDialog();
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(cartellaPicker.SelectedPath))
             {
-                string[] files = Directory.GetFiles(cartellaPicker.SelectedPath);
+                string[] files = Directory.GetFiles(cartellaPicker.SelectedPath, "*.*", SearchOption.AllDirectories);
                 foreach (string s in files)
-                {
-                    richTextBox1.AppendText(s + "\n");
-                }
+                    if (!listaFileDaCifrare.Items.Contains(s))
+                        listaFileDaCifrare.Items.Add(s);
             }
         }
 
         private void Rimuovi_Click(object sender, EventArgs e)
         {
-            string[] righe = richTextBox1.Lines;
-            string selezionato = richTextBox1.SelectedText.Trim();
+            var selectedItems = listaFileDaCifrare.SelectedItems;
 
-            if(selezionato != "")
+            if (listaFileDaCifrare.SelectedIndex != -1)
             {
-                for(int i=0; i<righe.Length; i++)
-                {
-                    if (righe[i].Contains(selezionato))
-                    {
-                        righe[i] = "";
-                    }
-                }
-            }
-            richTextBox1.Clear();
-            foreach(string s in righe)
-            {
-                if(s != "")
-                {
-                    richTextBox1.AppendText(s + "\n");
-                }
+                for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    listaFileDaCifrare.Items.Remove(selectedItems[i]);
             }
         }
 
         private void Cifra_Click(object sender, EventArgs e)
         {
-            string[] fileDaCifrare = richTextBox1.Lines;
+            string[] fileDaCifrare = listaFileDaCifrare.Items.Cast<string>().ToArray();
             string fileSingolo;
             File f;
             USB? usb = _presenter.SelectedUSB;
             Key key;
             FileKeyChain fkc;
 
-            if(usb is not null)
+            if (usb is not null)
             {
-                for(int i=0; i<fileDaCifrare.Length; i++)
+                for (int i = 0; i < fileDaCifrare.Length; i++)
                 {
                     fileSingolo = fileDaCifrare[i].Trim();
                     f = new File(fileSingolo);
                     key = _presenter.Cifra(f);
                     fkc = usb.KeyChain;
-/*
-Non ho capito/manca proprio:
-- metodi per creare materialmente il path di cartelle di un FileKeyChain sulla chiavetta USB nel caso ancora non ne avesse uno
-- metodi per aggiungere e/o rimuovere Key da una KeyChain contenuta da un FileKeyChain (dal Model)
-- metodi nel CifraFilePresenter che permettano di salvare nell'USB (dal Model) una Key dentro a KeyChain contenuta da un FileKeyChain dopo aver cifrato un file
-*/
+                    /*
+                    Non ho capito/manca proprio:
+                    - metodi per creare materialmente il path di cartelle di un FileKeyChain sulla chiavetta USB nel caso ancora non ne avesse uno
+                    - metodi per aggiungere e/o rimuovere Key da una KeyChain contenuta da un FileKeyChain (dal Model)
+                    - metodi nel CifraFilePresenter che permettano di salvare nell'USB (dal Model) una Key dentro a KeyChain contenuta da un FileKeyChain dopo aver cifrato un file
+                    */
                 }
-                richTextBox1.Clear();
+                listaFileDaCifrare.Items.Clear();
             }
         }
 
@@ -109,9 +95,9 @@ Non ho capito/manca proprio:
             string nomeUsb;
             USB usb;
 
-            if(SelezionaUsb.SelectedItem is not null)
+            if (SelezionaUsb.SelectedItem is not null)
             {
-                nomeUsb = (string) SelezionaUsb.SelectedItem;
+                nomeUsb = (string)SelezionaUsb.SelectedItem;
                 usb = new USB(nomeUsb);
                 _presenter.SelezionaUSB(usb);
             }
@@ -121,17 +107,21 @@ Non ho capito/manca proprio:
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
             string[] nomiUsb = new string[tutteUsb.Length];
-            for(int i=0; i<tutteUsb.Length; i++)
+            for (int i = 0; i < tutteUsb.Length; i++)
             {
                 nomiUsb[i] = tutteUsb[i].Name;
             }
 
             this.SelezionaUsb.DataSource = nomiUsb;
 
-            this.richTextBox1.Clear();
-            
+            this.listaFileDaCifrare.Items.Clear();
+
             this.SelezionaUsb_SelectedIndexChanged(sender, e);
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

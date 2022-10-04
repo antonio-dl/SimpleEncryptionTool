@@ -29,24 +29,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.AggiungiFile = new CustomControls.RJControls.RJButton2();
             this.Rimuovi = new CustomControls.RJControls.RJButton2();
             this.Cifra = new CustomControls.RJControls.RJButton2();
             this.SelezionaUsb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AggiungiCartella = new CustomControls.RJControls.RJButton2();
+            this.listaFileDaCifrare = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(41, 50);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(679, 257);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // AggiungiFile
             // 
@@ -144,19 +134,33 @@
             this.AggiungiCartella.UseVisualStyleBackColor = false;
             this.AggiungiCartella.Click += new System.EventHandler(this.AggiungiCartella_Click);
             // 
+            // listaFileDaCifrare
+            // 
+            this.listaFileDaCifrare.FormattingEnabled = true;
+            this.listaFileDaCifrare.ItemHeight = 20;
+            this.listaFileDaCifrare.Items.AddRange(new object[] {
+            "asdasd",
+            "dsadasd"});
+            this.listaFileDaCifrare.Location = new System.Drawing.Point(41, 66);
+            this.listaFileDaCifrare.Name = "listaFileDaCifrare";
+            this.listaFileDaCifrare.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listaFileDaCifrare.Size = new System.Drawing.Size(633, 244);
+            this.listaFileDaCifrare.TabIndex = 7;
+            this.listaFileDaCifrare.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // CifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.listaFileDaCifrare);
             this.Controls.Add(this.AggiungiCartella);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SelezionaUsb);
             this.Controls.Add(this.Cifra);
             this.Controls.Add(this.Rimuovi);
             this.Controls.Add(this.AggiungiFile);
-            this.Controls.Add(this.richTextBox1);
             this.Name = "CifraFileView";
             this.Text = "Cifra File";
             this.Load += new System.EventHandler(this.CifraFileView_Load);
@@ -166,13 +170,12 @@
         }
 
         #endregion
-
-        private RichTextBox richTextBox1;
         private CustomControls.RJControls.RJButton2 AggiungiFile;
         private CustomControls.RJControls.RJButton2 Rimuovi;
         private CustomControls.RJControls.RJButton2 Cifra;
         private ComboBox SelezionaUsb;
         private Label label1;
         private CustomControls.RJControls.RJButton2 AggiungiCartella;
+        private ListBox listaFileDaCifrare;
     }
 }
