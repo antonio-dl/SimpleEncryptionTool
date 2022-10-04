@@ -127,5 +127,18 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void Aggiorna_Click(object sender, EventArgs e)
+        {
+            var tutteUsb = _presenter.ElencaDispositiviEsterni();
+            string[] nomiUsb = new string[tutteUsb.Length];
+            for (int i = 0; i < tutteUsb.Length; i++)
+            {
+                nomiUsb[i] = tutteUsb[i].Name;
+            }
+            SelezionaUsb.DataSource = nomiUsb;
+
+            SelezionaUsb_SelectedIndexChanged(sender, e);
+        }
     }
 }

@@ -165,6 +165,7 @@
             this.Aggiorna.Text = "Aggiorna";
             this.Aggiorna.TextColor = System.Drawing.Color.White;
             this.Aggiorna.UseVisualStyleBackColor = false;
+            this.Aggiorna.Click += new System.EventHandler(this.Aggiorna_Click);
             // 
             // CifraFileView
             // 
