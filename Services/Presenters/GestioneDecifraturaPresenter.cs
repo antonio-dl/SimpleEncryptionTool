@@ -22,7 +22,7 @@ namespace UNIBO.SET.Services.Presenters
         public USB? SelectedUSB { get; private set; }
         public FileDecifrato Decifra(Key key)
         {
-            if (_decifratore is not null && _decifratore.Algoritmo != key.Algoritmo) // Caching del decifratore
+            if (_decifratore is null || _decifratore.Algoritmo != key.Algoritmo) // Caching del decifratore
             {
                 try
                 {

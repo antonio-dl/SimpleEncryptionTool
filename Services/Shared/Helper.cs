@@ -22,7 +22,7 @@ namespace UNIBO.SET.Services.Shared
             }
             else
             {
-                throw new FileNotFoundException($"FileKeyChain non trovata nel path {pathToKeyChain}");
+                return new FileKeyChain(pathToKeyChain);
             }
         }
 
