@@ -33,15 +33,6 @@ namespace UNIBO.SET.GUI.Forms
             ListaUsbBox_SelectedIndexChanged(sender, e);
         }
 
-        private void listaFileDaDecifrare_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PathChiaveBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ListaUsbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -92,7 +83,7 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Decifra_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
