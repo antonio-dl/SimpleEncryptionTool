@@ -20,7 +20,7 @@ namespace UNIBO.SET.Services.Decifratori
                 throw new FileNotFoundException($"File {fc.Path} non esistente!");
             }
 
-            if (fd.Exists)
+            while (fd.Exists)
             {
                 fd = GeneraNuovoNomeFileDecifrato(fd);
             }
