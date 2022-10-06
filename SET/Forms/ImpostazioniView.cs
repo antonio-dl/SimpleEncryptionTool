@@ -56,6 +56,8 @@ namespace UNIBO.SET.GUI.Forms
             var impost = _presenter.OttieniImpostazioneSingola("cifratore");
 
             this.SelezioneCifraturaBox.DataSource = impost.Opzioni;
+            string selected = impost.Selezionato;
+            SelezioneCifraturaBox.SelectedItem = selected;
         }
 
         private void Salva_Click(object sender, EventArgs e)
