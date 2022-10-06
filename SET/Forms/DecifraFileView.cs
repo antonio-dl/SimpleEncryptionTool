@@ -112,5 +112,16 @@ namespace UNIBO.SET.GUI.Forms
 
             }
         }
+
+        private void Rimuovi_Click(object sender, EventArgs e)
+        {
+            var selectedItems = listaFileDaDecifrare.SelectedItems;
+
+            if (listaFileDaDecifrare.SelectedIndex != -1)
+            {
+                for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    listaFileDaDecifrare.Items.Remove(selectedItems[i]);
+            }
+        }
     }
 }

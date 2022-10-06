@@ -38,6 +38,7 @@
             this.Decifra = new CustomControls.RJControls.RJButton2();
             this.listaFileDaDecifrare = new System.Windows.Forms.ListBox();
             this.OttieniFDBottone = new CustomControls.RJControls.RJButton2();
+            this.Rimuovi = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // PathChiaveBox
@@ -174,12 +175,32 @@
             this.OttieniFDBottone.UseVisualStyleBackColor = false;
             this.OttieniFDBottone.Click += new System.EventHandler(this.OttieniFDBottone_Click);
             // 
+            // Rimuovi
+            // 
+            this.Rimuovi.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.Rimuovi.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.Rimuovi.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Rimuovi.BorderRadius = 15;
+            this.Rimuovi.BorderSize = 0;
+            this.Rimuovi.FlatAppearance.BorderSize = 0;
+            this.Rimuovi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Rimuovi.ForeColor = System.Drawing.Color.White;
+            this.Rimuovi.Location = new System.Drawing.Point(677, 209);
+            this.Rimuovi.Name = "Rimuovi";
+            this.Rimuovi.Size = new System.Drawing.Size(90, 35);
+            this.Rimuovi.TabIndex = 12;
+            this.Rimuovi.Text = "Rimuovi";
+            this.Rimuovi.TextColor = System.Drawing.Color.White;
+            this.Rimuovi.UseVisualStyleBackColor = false;
+            this.Rimuovi.Click += new System.EventHandler(this.Rimuovi_Click);
+            // 
             // DecifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.Rimuovi);
             this.Controls.Add(this.OttieniFDBottone);
             this.Controls.Add(this.listaFileDaDecifrare);
             this.Controls.Add(this.Decifra);
@@ -210,5 +231,6 @@
         private CustomControls.RJControls.RJButton2 Decifra;
         private ListBox listaFileDaDecifrare;
         private CustomControls.RJControls.RJButton2 OttieniFDBottone;
+        private CustomControls.RJControls.RJButton2 Rimuovi;
     }
 }
