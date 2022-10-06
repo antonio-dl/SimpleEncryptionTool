@@ -51,18 +51,19 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 20);
+            this.label1.Size = new System.Drawing.Size(85, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "PathFileKeyChain chiave";
+            this.label1.Text = "Path Chiave";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 89);
+            this.label2.Location = new System.Drawing.Point(33, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Lista di USB";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -103,7 +104,7 @@
             this.ScanBottone.FlatAppearance.BorderSize = 0;
             this.ScanBottone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ScanBottone.ForeColor = System.Drawing.Color.White;
-            this.ScanBottone.Location = new System.Drawing.Point(237, 105);
+            this.ScanBottone.Location = new System.Drawing.Point(237, 82);
             this.ScanBottone.Name = "ScanBottone";
             this.ScanBottone.Size = new System.Drawing.Size(90, 35);
             this.ScanBottone.TabIndex = 7;
@@ -116,7 +117,7 @@
             // 
             this.ListaUsbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ListaUsbBox.FormattingEnabled = true;
-            this.ListaUsbBox.Location = new System.Drawing.Point(33, 112);
+            this.ListaUsbBox.Location = new System.Drawing.Point(33, 89);
             this.ListaUsbBox.Name = "ListaUsbBox";
             this.ListaUsbBox.Size = new System.Drawing.Size(191, 28);
             this.ListaUsbBox.TabIndex = 8;

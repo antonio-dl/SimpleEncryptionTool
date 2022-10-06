@@ -2,6 +2,7 @@
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Decifratori;
+using UNIBO.SET.Services.Shared;
 
 namespace UNIBO.SET.Services.Presenters
 {
@@ -38,7 +39,12 @@ namespace UNIBO.SET.Services.Presenters
 
             try
             {
-                return _decifratore.Decifra(key);
+
+                this.LogIt(EntryType.Operazione, $"Decifrazione del file {key.TargetFilePath} in {key.SourceFilePath}");
+                FileDecifrato fd = _decifratore.Decifra(key);
+                if (fd.Path != key.SourceFilePath) // Sovrascittura evitata!
+                    LogIt(EntryType.Avvertimento, $"Il file {key.SourceFilePath} è stato rinominato in {fd.Path} per evitare conflitti di nomi");
+                return fd;
             }
             catch (FileNotFoundException e)
             {
@@ -77,7 +83,10 @@ namespace UNIBO.SET.Services.Presenters
         public KeyChain ScansionaUSB()
         {
             if (this.SelectedUSB.HasKeyChain())
-                return new FileKeyChain(this.SelectedUSB.GetPathToKeyChain());
+            {
+                this.SelezionaKeyChain(Helper.RecuperaFileKeyChain(this.SelectedUSB.GetPathToKeyChain()));
+                return this.SelectedKeyChain;
+            }
             else
                 return null;
         }
@@ -85,6 +94,7 @@ namespace UNIBO.SET.Services.Presenters
         public void SelezionaKeyChain(KeyChain chain)
         {
             this.SelectedKeyChain = chain;
+            this.LogIt(EntryType.Info, $"Selezionata KeyChain nel path {chain}");
         }
 
         public void SelezionaUSB(USB usb)

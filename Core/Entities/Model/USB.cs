@@ -4,23 +4,13 @@
     {
         private readonly DriveInfo _driveInfo;
 
-        public string Name { get => _driveInfo.Name; }
-
-        public string GetPathToKeyChain()
-        {
-            return Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome + ".skc");
-        }
-
-        public bool HasKeyChain() // Dovrebbe funzionare a dovere
-        {
-            return System.IO.File.Exists(GetPathToKeyChain());
-        }
-
         public USB(string s)
         {
             _driveInfo = new DriveInfo(s);
             // _keyChain = this.KeyChain;
         }
+
+        public string Name { get => _driveInfo.Name; }
 
         public static USB[] GetUsbs()
         {
@@ -37,5 +27,19 @@
             return usblist.ToArray();
         }
 
+        public string GetPathToKeyChain()
+        {
+            return Path.Combine(_driveInfo.Name, ".set", Utente.GetInstance().Nome + ".skc");
+        }
+
+        public bool HasKeyChain() // Dovrebbe funzionare a dovere
+        {
+            return System.IO.File.Exists(GetPathToKeyChain());
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

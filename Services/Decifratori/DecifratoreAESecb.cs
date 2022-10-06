@@ -67,6 +67,7 @@ namespace UNIBO.SET.Services.Decifratori
                 int lastNum = int.Parse(numeri);
                 lastNum++;
                 nomeCut += lastNum;
+                
             }
 
             nomeCut += formato;
