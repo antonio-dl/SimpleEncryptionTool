@@ -50,11 +50,6 @@ namespace UNIBO.SET.Services.Presenters
                 this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFilePath}");
                 throw e;
             }
-            //catch (DecifrazioneException e)
-            //{
-            //    this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFile}");
-            //    throw e;
-            //}
         }
 
         public USB[] ElencaDispositiviEsterni()

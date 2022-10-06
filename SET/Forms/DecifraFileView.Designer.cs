@@ -43,17 +43,15 @@
             // 
             this.PathChiaveBox.Location = new System.Drawing.Point(33, 32);
             this.PathChiaveBox.Name = "PathChiaveBox";
-            this.PathChiaveBox.ReadOnly = true;
             this.PathChiaveBox.Size = new System.Drawing.Size(591, 27);
             this.PathChiaveBox.TabIndex = 0;
-            this.PathChiaveBox.TextChanged += new System.EventHandler(this.PathChiaveBox_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 20);
+            this.label1.Size = new System.Drawing.Size(167, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "PathFileKeyChain chiave";
             // 
@@ -154,7 +152,6 @@
             this.listaFileDaDecifrare.Name = "listaFileDaDecifrare";
             this.listaFileDaDecifrare.Size = new System.Drawing.Size(638, 244);
             this.listaFileDaDecifrare.TabIndex = 10;
-            this.listaFileDaDecifrare.SelectedIndexChanged += new System.EventHandler(this.listaFileDaDecifrare_SelectedIndexChanged);
             // 
             // DecifraFileView
             // 

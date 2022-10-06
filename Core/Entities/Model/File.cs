@@ -43,8 +43,7 @@
         {
             get
             {
-                _codice ??= new CodiceVerifica(this.CalcolaMD5());
-                return _codice;
+                return _codice ??= new CodiceVerifica(this.CalcolaMD5());
             }
         }
 
