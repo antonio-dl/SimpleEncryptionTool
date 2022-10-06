@@ -20,9 +20,9 @@ namespace UNIBO.SET.Services.Decifratori
                 throw new FileNotFoundException($"File {fc.Path} non esistente!");
             }
 
-            while (fd.Exists)
+            if (fd.Exists)
             {
-                fd = GeneraNuovoNomeFileDecifrato(fd);
+                fd = MyGeneraNuovoNomeFileDecifrato(fd);
             }
 
             using var sourceStream = fc.Open();
@@ -83,5 +83,30 @@ namespace UNIBO.SET.Services.Decifratori
             newPath += nomeCut;
             return new FileDecifrato(newPath);
         }
+
+        private FileDecifrato MyGeneraNuovoNomeFileDecifrato(FileDecifrato fd)
+        {
+            int n = 1;
+            string nome = fd.Name;
+            int pos = nome.LastIndexOf(".");
+            string nomeCut = nome.Substring(0, pos); // prova.txt --> . in posizione 5 ma nomeCut arriva fino a 4
+            string formato = nome.Substring(pos); // prova.txt --> . in posizione 5, quindi inizia dalla posizione 5 fino alla fine
+            // prendendo ad esempio un file di nome prova.txt --> nomeCut = prova <-> formato = .txt --> mandare le due variabili in output lo conferma
+
+            FileDecifrato result;
+            do
+            {
+                string newNome = nomeCut + "(" + n + ")";
+                n++;
+                newNome += formato;
+                string newPath = fd.Path;
+                newPath = newPath.Substring(0, newPath.LastIndexOf(nome));
+                newPath += newNome;
+                result = new FileDecifrato(newPath);
+            }
+            while (result.Exists);
+            return result;
+        }
+
     }
 }
