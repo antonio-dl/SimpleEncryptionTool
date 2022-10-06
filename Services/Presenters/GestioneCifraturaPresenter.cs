@@ -3,6 +3,7 @@ using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Cifratori;
+using UNIBO.SET.Services.Shared;
 
 namespace UNIBO.SET.Services.Presenters
 {
@@ -90,17 +91,7 @@ namespace UNIBO.SET.Services.Presenters
 
         private FileKeyChain RecuperaFileKeyChain(string pathToKeyChain)
         {
-            if (System.IO.File.Exists(pathToKeyChain))
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileInfo f = new FileInfo(pathToKeyChain);
-                using Stream stream = f.OpenRead();
-                return (FileKeyChain)bf.Deserialize(stream);
-            } else
-            {
-
-                return new FileKeyChain(pathToKeyChain);
-            }
+            return Helper.RecuperaFileKeyChain(pathToKeyChain);
             
         }
     }

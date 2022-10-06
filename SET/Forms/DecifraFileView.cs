@@ -20,12 +20,7 @@ namespace UNIBO.SET.GUI.Forms
         private void DecifraFileView_Load(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
-            string[] nomiUsb = new string[tutteUsb.Length];
-            for (int i = 0; i < tutteUsb.Length; i++)
-            {
-                nomiUsb[i] = tutteUsb[i].Name;
-            }
-            ListaUsbBox.DataSource = nomiUsb;
+            ListaUsbBox.DataSource = tutteUsb;
 
             listaFileDaDecifrare.Items.Clear();
             PathChiaveBox.Clear();
@@ -42,7 +37,7 @@ namespace UNIBO.SET.GUI.Forms
 
             if (ListaUsbBox.SelectedItem is not null)
             {
-                nomeUsb = (string) ListaUsbBox.SelectedItem;
+                nomeUsb = ListaUsbBox.SelectedItem.ToString();
                 usb = new USB(nomeUsb);
                 _presenter.SelezionaUSB(usb);
                 
@@ -71,19 +66,19 @@ namespace UNIBO.SET.GUI.Forms
         private void Scan_Click(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
-            string[] nomiUsb = new string[tutteUsb.Length];
-            for (int i = 0; i < tutteUsb.Length; i++)
-            {
-                nomiUsb[i] = tutteUsb[i].Name;
-            }
-            ListaUsbBox.DataSource = nomiUsb;
+            ListaUsbBox.DataSource = tutteUsb;
 
             ListaUsbBox_SelectedIndexChanged(sender, e);
         }
 
         private void Decifra_Click(object sender, EventArgs e)
         {
-            
+            //this.listaFileDaDecifrare.Items;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

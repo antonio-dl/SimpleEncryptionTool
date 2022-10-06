@@ -67,6 +67,7 @@ namespace UNIBO.SET.Services.Decifratori
                 int lastNum = int.Parse(numeri);
                 lastNum++;
                 nomeCut += lastNum;
+                
             }
 
             nomeCut += formato;
@@ -75,5 +76,6 @@ namespace UNIBO.SET.Services.Decifratori
             newPath += nomeCut;
             return new FileDecifrato(newPath);
         }
+
     }
 }
