@@ -80,5 +80,10 @@ namespace UNIBO.SET.GUI.Forms
         {
 
         }
+
+        private void OttieniFDBottone_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

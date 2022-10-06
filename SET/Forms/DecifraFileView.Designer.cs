@@ -37,6 +37,7 @@
             this.ListaUsbBox = new System.Windows.Forms.ComboBox();
             this.Decifra = new CustomControls.RJControls.RJButton2();
             this.listaFileDaDecifrare = new System.Windows.Forms.ListBox();
+            this.OttieniFDBottone = new CustomControls.RJControls.RJButton2();
             this.SuspendLayout();
             // 
             // PathChiaveBox
@@ -51,9 +52,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 20);
+            this.label1.Size = new System.Drawing.Size(85, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Path KeyChain";
+            this.label1.Text = "Path Chiave";
             // 
             // label2
             // 
@@ -154,12 +155,32 @@
             this.listaFileDaDecifrare.Size = new System.Drawing.Size(638, 244);
             this.listaFileDaDecifrare.TabIndex = 10;
             // 
+            // OttieniFDBottone
+            // 
+            this.OttieniFDBottone.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.OttieniFDBottone.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.OttieniFDBottone.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.OttieniFDBottone.BorderRadius = 15;
+            this.OttieniFDBottone.BorderSize = 0;
+            this.OttieniFDBottone.FlatAppearance.BorderSize = 0;
+            this.OttieniFDBottone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OttieniFDBottone.ForeColor = System.Drawing.Color.White;
+            this.OttieniFDBottone.Location = new System.Drawing.Point(33, 148);
+            this.OttieniFDBottone.Name = "OttieniFDBottone";
+            this.OttieniFDBottone.Size = new System.Drawing.Size(165, 35);
+            this.OttieniFDBottone.TabIndex = 11;
+            this.OttieniFDBottone.Text = "Ottieni file decifrabili";
+            this.OttieniFDBottone.TextColor = System.Drawing.Color.White;
+            this.OttieniFDBottone.UseVisualStyleBackColor = false;
+            this.OttieniFDBottone.Click += new System.EventHandler(this.OttieniFDBottone_Click);
+            // 
             // DecifraFileView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(802, 467);
+            this.Controls.Add(this.OttieniFDBottone);
             this.Controls.Add(this.listaFileDaDecifrare);
             this.Controls.Add(this.Decifra);
             this.Controls.Add(this.ListaUsbBox);
@@ -188,5 +209,6 @@
         private ComboBox ListaUsbBox;
         private CustomControls.RJControls.RJButton2 Decifra;
         private ListBox listaFileDaDecifrare;
+        private CustomControls.RJControls.RJButton2 OttieniFDBottone;
     }
 }
