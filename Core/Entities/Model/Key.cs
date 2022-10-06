@@ -32,6 +32,8 @@ namespace UNIBO.SET.Model
 
         public abstract bool DeleteKey(Key key);
 
+        public abstract Key SelectKey(string pathOriginale);
+
     }
     [Serializable]
     public class FileKeyChain : KeyChain
@@ -64,6 +66,11 @@ namespace UNIBO.SET.Model
         public override string ToString()
         {
             return this.PathFileKeyChain;
+        }
+
+        public override Key SelectKey(string pathOriginale)
+        {
+            return _keylist.Single(k => k.SourceFilePath == pathOriginale);
         }
     }
 }

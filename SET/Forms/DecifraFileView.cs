@@ -1,4 +1,5 @@
-﻿using UNIBO.SET.Model;
+﻿using System.Runtime.CompilerServices;
+using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 
 namespace UNIBO.SET.GUI.Forms
@@ -40,8 +41,8 @@ namespace UNIBO.SET.GUI.Forms
                 nomeUsb = ListaUsbBox.SelectedItem.ToString();
                 usb = new USB(nomeUsb);
                 _presenter.SelezionaUSB(usb);
-                
-                if((keyChain = _presenter.ScansionaUSB()) is not null)
+
+                if ((keyChain = _presenter.ScansionaUSB()) is not null)
                 {
                     _presenter.SelezionaKeyChain(keyChain);
                     PathChiaveBox.Text = _presenter.SelectedKeyChain.ToString();
@@ -55,7 +56,7 @@ namespace UNIBO.SET.GUI.Forms
             if (pathPicker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string pathSelezionato = pathPicker.FileName;
-                if(!pathSelezionato.Equals(""))
+                if (!pathSelezionato.Equals(""))
                 {
                     PathChiaveBox.Clear();
                     PathChiaveBox.Text = pathSelezionato;
@@ -73,7 +74,20 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Decifra_Click(object sender, EventArgs e)
         {
-            //this.listaFileDaDecifrare.Items;
+            var listaPathDaDecifrare = listaFileDaDecifrare.Items.Cast<string>();
+
+            foreach (string path in listaPathDaDecifrare)
+            {
+                Key key = _presenter.SelectedKeyChain.SelectKey(path);
+                FileDecifrato fd = _presenter.Decifra(key);
+
+                _presenter.SelectedKeyChain.DeleteKey(key);
+
+            }
+
+            _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
+
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -83,7 +97,20 @@ namespace UNIBO.SET.GUI.Forms
 
         private void OttieniFDBottone_Click(object sender, EventArgs e)
         {
+            KeyChain keychain = _presenter.SelectedKeyChain;
+            if (keychain is null)
+            {
+                ///MessageBox.Show(); //logica per errore
+                return;
+            }
 
+            this.listaFileDaDecifrare.Items.Clear();
+            foreach (Key key in keychain.GetAllKey())
+            {
+                if (System.IO.File.Exists(key.TargetFilePath))
+                    this.listaFileDaDecifrare.Items.Add(key.TargetFilePath);
+
+            }
         }
     }
 }

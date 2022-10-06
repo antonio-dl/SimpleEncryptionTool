@@ -165,7 +165,7 @@
             this.OttieniFDBottone.FlatAppearance.BorderSize = 0;
             this.OttieniFDBottone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OttieniFDBottone.ForeColor = System.Drawing.Color.White;
-            this.OttieniFDBottone.Location = new System.Drawing.Point(33, 148);
+            this.OttieniFDBottone.Location = new System.Drawing.Point(33, 138);
             this.OttieniFDBottone.Name = "OttieniFDBottone";
             this.OttieniFDBottone.Size = new System.Drawing.Size(165, 35);
             this.OttieniFDBottone.TabIndex = 11;

@@ -92,5 +92,15 @@ namespace UNIBO.SET.Services.Shared
             return new FileDecifrato(newPath);
         }
         */
+
+        public static void SalvaFileKeyChain(FileKeyChain fkc)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(fkc.PathFileKeyChain));
+
+            BinaryFormatter bf = new BinaryFormatter();
+            FileInfo f = new FileInfo(fkc.PathFileKeyChain);
+            using Stream stream = f.OpenWrite();
+            bf.Serialize(stream, fkc);
+        }
     }
 }

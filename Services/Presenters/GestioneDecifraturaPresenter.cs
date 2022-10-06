@@ -8,13 +8,9 @@ namespace UNIBO.SET.Services.Presenters
 {
     public class GestioneDecifraturaPresenter : IGestioneDecifratura
     {
+        private readonly IDictionary<string, IDecifratore> _decifratoriDictonary;
         private readonly ILogger _logger;
         private IDecifratore? _decifratore;
-
-        public USB? SelectedUSB { get; private set; }
-        public KeyChain? SelectedKeyChain { get; private set; }
-
-        private readonly IDictionary<string, IDecifratore> _decifratoriDictonary;
 
         public GestioneDecifraturaPresenter(ILogger logger, IDictionary<string, IDecifratore> decifratoriDictonary)
         {
@@ -22,6 +18,8 @@ namespace UNIBO.SET.Services.Presenters
             _decifratoriDictonary = decifratoriDictonary;
         }
 
+        public FileKeyChain? SelectedKeyChain { get; private set; }
+        public USB? SelectedUSB { get; private set; }
         public FileDecifrato Decifra(Key key)
         {
             if (_decifratore is not null && _decifratore.Algoritmo != key.Algoritmo) // Caching del decifratore
@@ -80,7 +78,12 @@ namespace UNIBO.SET.Services.Presenters
             _logger.WriteLog(type, this.GetType().Name, messaggio);
         }
 
-        public KeyChain ScansionaUSB()
+        public void SalvaKeyChain(FileKeyChain? selectedKeyChain)
+        {
+            Helper.SalvaFileKeyChain(selectedKeyChain);
+        }
+
+        public FileKeyChain ScansionaUSB()
         {
             if (this.SelectedUSB.HasKeyChain())
             {
@@ -91,7 +94,7 @@ namespace UNIBO.SET.Services.Presenters
                 return null;
         }
 
-        public void SelezionaKeyChain(KeyChain chain)
+        public void SelezionaKeyChain(FileKeyChain chain)
         {
             this.SelectedKeyChain = chain;
             this.LogIt(EntryType.Info, $"Selezionata KeyChain nel path {chain}");

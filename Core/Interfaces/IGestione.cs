@@ -51,9 +51,9 @@ namespace UNIBO.SET.Interfaces
 
     public interface IGestioneDecifratura : IUSBSelectorController
     {
-        public KeyChain ScansionaUSB();
+        public FileKeyChain ScansionaUSB();
 
-        public void SelezionaKeyChain(KeyChain chain);
+        public void SelezionaKeyChain(FileKeyChain chain);
 
         public FileDecifrato Decifra(Key key);
 
