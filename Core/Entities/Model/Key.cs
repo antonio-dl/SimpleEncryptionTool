@@ -32,7 +32,7 @@ namespace UNIBO.SET.Model
 
         public abstract bool DeleteKey(Key key);
 
-        public abstract Key SelectKey(string pathOriginale);
+        public abstract Key SelectKey(string pathFileCifrato);
 
     }
     [Serializable]
@@ -68,9 +68,9 @@ namespace UNIBO.SET.Model
             return this.PathFileKeyChain;
         }
 
-        public override Key SelectKey(string pathOriginale)
+        public override Key SelectKey(string pathFileCifrato)
         {
-            return _keylist.Single(k => k.SourceFilePath == pathOriginale);
+            return _keylist.Single(k => k.TargetFilePath == pathFileCifrato);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace UNIBO.SET.GUI.Forms
         {
             string nomeUsb;
             USB usb;
-            KeyChain? keyChain;
+            FileKeyChain? keyChain;
 
             if (ListaUsbBox.SelectedItem is not null)
             {
