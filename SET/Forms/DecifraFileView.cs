@@ -109,7 +109,7 @@ namespace UNIBO.SET.GUI.Forms
             }
 
             _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
-            this.listaFileDaDecifrare.Items.Clear();
+
         }
 
         private void label2_Click(object sender, EventArgs e)
