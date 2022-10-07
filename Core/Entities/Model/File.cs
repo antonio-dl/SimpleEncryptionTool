@@ -10,19 +10,16 @@
             Codice = codice;
         }
 
-        public override bool Equals(object? obj)
-        {
-            return base.Equals(obj as CodiceVerifica);
-        }
-
-        public bool Equals(CodiceVerifica cv)
-        {
-            return cv is not null && this.Codice.Equals(cv.Codice);
-        }
 
         public override int GetHashCode()
         {
             return HashCode.Combine(Codice);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is CodiceVerifica verifica &&
+                   Codice == verifica.Codice;
         }
     }
 

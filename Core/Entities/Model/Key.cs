@@ -3,7 +3,7 @@
 namespace UNIBO.SET.Model
 {
     [Serializable]
-    public record Key
+    public class Key
     {
         public string Algoritmo { get; }
         public string TargetFilePath { get; }
@@ -20,6 +20,19 @@ namespace UNIBO.SET.Model
             Password = password ?? throw new ArgumentNullException(nameof(password));
             Algoritmo = algoritmo ?? throw new ArgumentNullException(nameof(algoritmo));
             CodiceVerifica = codiceVerifica ?? throw new ArgumentNullException(nameof(codiceVerifica));
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Key key &&
+                   TargetFilePath == key.TargetFilePath &&
+                   SourceFilePath == key.SourceFilePath &&
+                   UltimaModifica == key.UltimaModifica;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(TargetFilePath, SourceFilePath, CodiceVerifica, Password, UltimaModifica);
         }
     }
     [Serializable]
@@ -50,7 +63,7 @@ namespace UNIBO.SET.Model
 
         public override void AddKey(Key key)
         {
-            if (this._keylist.Contains(key))
+            if (this._keylist.Any(k => k.SourceFilePath == key.SourceFilePath))
                 DeleteKey(key);
             this._keylist.Add(key);
         }
