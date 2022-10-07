@@ -43,7 +43,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(687, 274);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // LogBox
             // 
@@ -82,7 +81,6 @@
             this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Tipo di operazione";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // LogView
             // 
