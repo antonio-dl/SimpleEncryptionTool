@@ -6,7 +6,7 @@ namespace UNIBO.SET.Services.Decifratori
 {
     public class DecifratoreAESecb : IDecifratore
     {
-        public string Algoritmo => "AES-EBC";
+        public string Algoritmo => "AES-ECB";
 
         public FileDecifrato Decifra(Key key)
         {
