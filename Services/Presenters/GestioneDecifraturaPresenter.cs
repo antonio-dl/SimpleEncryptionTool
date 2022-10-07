@@ -1,4 +1,5 @@
-﻿using UNIBO.SET.Interfaces;
+﻿using System.Security.Cryptography;
+using UNIBO.SET.Interfaces;
 using UNIBO.SET.Model;
 using UNIBO.SET.ModelLog;
 using UNIBO.SET.Services.Decifratori;
@@ -52,6 +53,11 @@ namespace UNIBO.SET.Services.Presenters
             catch (IOException e)
             {
                 this.LogIt(EntryType.Errore, $"Errore IO nel file {key.TargetFilePath}");
+                throw e;
+            }
+            catch (CryptographicException e)
+            {
+                this.LogIt(EntryType.Errore, $"Errore di crittografia in {key.TargetFilePath}: il file è stato alterato!");
                 throw e;
             }
         }

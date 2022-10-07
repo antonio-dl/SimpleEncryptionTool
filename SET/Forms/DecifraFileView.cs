@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 
@@ -78,15 +79,36 @@ namespace UNIBO.SET.GUI.Forms
 
             foreach (string path in listaPathDaDecifrare)
             {
-                Key key = _presenter.SelectedKeyChain.SelectKey(path);
-                FileDecifrato fd = _presenter.Decifra(key);
-
-                _presenter.SelectedKeyChain.DeleteKey(key);
+                try
+                {
+                    Key key = _presenter.SelectedKeyChain.SelectKey(path);
+                    FileDecifrato fd = _presenter.Decifra(key);
+                    _presenter.SelectedKeyChain.DeleteKey(key);
+                }
+                catch(KeyNotFoundException)
+                {
+                    MessageBox.Show($"La chiave del file {path} non è presente nel dispositivo USB in uso!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+                catch(FileNotFoundException)
+                {
+                    MessageBox.Show($"Apertura del file {path} non possibile: il percorso non è corretto!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+                catch(IOException)
+                {
+                    MessageBox.Show($"Problemi di IO del file {path} !", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+                catch(CryptographicException)
+                {
+                    MessageBox.Show($"Il file {path} è stato alterato, non è possibile decifrarlo!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
 
             }
 
             _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
-
 
         }
 
