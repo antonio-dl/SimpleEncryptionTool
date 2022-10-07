@@ -13,17 +13,10 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
 
         private void LogView_Load(object sender, EventArgs e)
         {
-            var logFiles = _presenter.GetAllLogs();
+            var logFiles = _presenter.GetAllLogs().OrderByDescending(l=>l.ToString()).ToList();
             this.LogBox.DataSource = logFiles;
             this.LogBox.SelectedIndex = 0;
 
