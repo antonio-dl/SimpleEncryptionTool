@@ -36,11 +36,10 @@ namespace UNIBO.SET.Services.Presenters
                     throw e;
                 }
             }
-            FileDecifrato fd = null;
             try
             {
                 this.LogIt(EntryType.Operazione, $"Decifrazione del file {key.TargetFilePath} in {key.SourceFilePath}");
-                fd = _decifratore.Decifra(key);
+                FileDecifrato fd = _decifratore.Decifra(key);
                 if (fd.Path != key.SourceFilePath) // Sovrascittura evitata!
                     LogIt(EntryType.Avvertimento, $"Il file {key.SourceFilePath} è stato rinominato in {fd.Path} per evitare conflitti di nomi");
                 return fd;
@@ -58,8 +57,6 @@ namespace UNIBO.SET.Services.Presenters
             catch (CryptographicException e)
             {
                 this.LogIt(EntryType.Errore, $"Errore di crittografia in {key.TargetFilePath}: il file è stato alterato!");
-                if (fd is not null)
-                    System.IO.File.Delete(fd.Path);
                 throw e;
             }
         }
