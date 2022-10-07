@@ -25,7 +25,7 @@ namespace UNIBO.SET.Model
     [Serializable]
     public abstract class KeyChain
     {
-        protected IList<Key> _keylist ;
+        protected IList<Key> _keylist;
 
         public abstract void AddKey(Key key);
         public abstract IList<Key> GetAllKey();
@@ -50,6 +50,8 @@ namespace UNIBO.SET.Model
 
         public override void AddKey(Key key)
         {
+            if (this._keylist.Contains(key))
+                DeleteKey(key);
             this._keylist.Add(key);
         }
 
