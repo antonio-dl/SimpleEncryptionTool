@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.IO;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
@@ -76,6 +77,9 @@ namespace UNIBO.SET.GUI.Forms
         private void Decifra_Click(object sender, EventArgs e)
         {
             var listaPathDaDecifrare = listaFileDaDecifrare.Items.Cast<string>();
+            int fdSuccesso = 0;
+            int fdFalliti = 0;
+            string[] falliti;
 
             foreach (string path in listaPathDaDecifrare)
             {
@@ -87,29 +91,30 @@ namespace UNIBO.SET.GUI.Forms
                 }
                 catch(KeyNotFoundException)
                 {
-                    MessageBox.Show($"La chiave del file {path} non è presente nel dispositivo USB in uso!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fdFalliti++;
                     continue;
                 }
                 catch(FileNotFoundException)
                 {
-                    MessageBox.Show($"Apertura del file {path} non possibile: il percorso non è corretto!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fdFalliti++;
                     continue;
                 }
                 catch(IOException)
                 {
-                    MessageBox.Show($"Problemi di IO del file {path} !", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fdFalliti++;
                     continue;
                 }
                 catch(CryptographicException)
                 {
-                    MessageBox.Show($"Il file {path} è stato alterato, non è possibile decifrarlo!", "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    fdFalliti++;
                     continue;
                 }
-
+                fdSuccesso++;
             }
 
             _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
             this.listaFileDaDecifrare.Items.Clear();
+            MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file.", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void label2_Click(object sender, EventArgs e)
