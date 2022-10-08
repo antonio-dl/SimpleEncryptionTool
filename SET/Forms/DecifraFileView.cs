@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Text;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
 
@@ -75,7 +76,8 @@ namespace UNIBO.SET.GUI.Forms
             var listaPathDaDecifrare = listaFileDaDecifrare.Items.Cast<string>();
             int fdSuccesso = 0;
             int fdFalliti = 0;
-            string[] falliti;
+            int totFile = listaFileDaDecifrare.Items.Count;
+            string[] falliti = new string[totFile];
 
             foreach (string path in listaPathDaDecifrare)
             {
@@ -87,21 +89,25 @@ namespace UNIBO.SET.GUI.Forms
                 }
                 catch(KeyNotFoundException)
                 {
+                    falliti[fdFalliti] = path;
                     fdFalliti++;
                     continue;
                 }
                 catch(FileNotFoundException)
                 {
+                    falliti[fdFalliti] = path;
                     fdFalliti++;
                     continue;
                 }
                 catch(IOException)
                 {
+                    falliti[fdFalliti] = path;
                     fdFalliti++;
                     continue;
                 }
                 catch(CryptographicException)
                 {
+                    falliti[fdFalliti] = path;
                     fdFalliti++;
                     continue;
                 }
@@ -110,7 +116,19 @@ namespace UNIBO.SET.GUI.Forms
 
             _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
             this.listaFileDaDecifrare.Items.Clear();
-            MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file.", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file su {totFile}.\n" +
+                $"I seguenti {fdFalliti} file hanno avuto problemi:\n" +
+                $"{this.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private string elencaFileFalliti(string[] lista)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in lista)
+            {
+                sb.AppendLine(s);
+            }
+            return sb.ToString();
         }
 
         private void OttieniFDBottone_Click(object sender, EventArgs e)
