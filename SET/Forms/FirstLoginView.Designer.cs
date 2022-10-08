@@ -57,7 +57,6 @@
             this.label2.Size = new System.Drawing.Size(385, 28);
             this.label2.TabIndex = 2;
             this.label2.Text = "Crea una password per creare l\'account";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Password
             // 
@@ -66,7 +65,6 @@
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(170, 27);
             this.Password.TabIndex = 9;
-            this.Password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // label3
             // 
@@ -84,7 +82,6 @@
             this.ripetiPass.PasswordChar = '*';
             this.ripetiPass.Size = new System.Drawing.Size(170, 27);
             this.ripetiPass.TabIndex = 11;
-            this.ripetiPass.TextChanged += new System.EventHandler(this.ripetiPass_TextChanged);
             // 
             // label4
             // 
@@ -130,7 +127,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FirstLoginView";
             this.Text = "FirstLoginView";
-            this.Load += new System.EventHandler(this.FirstLoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

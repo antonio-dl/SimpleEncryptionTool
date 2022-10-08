@@ -90,7 +90,6 @@
             this.label2.Size = new System.Drawing.Size(119, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Antonio De Luca";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -119,7 +118,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(820, 139);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // groupBox1
             // 
@@ -240,7 +238,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(820, 514);
             this.panel4.TabIndex = 2;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // HomeSET
             // 
@@ -257,7 +254,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeSET";
             this.Text = "Home";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

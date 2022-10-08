@@ -18,12 +18,6 @@ namespace UNIBO.SET.GUI.Forms
             nuovaPw2.PasswordChar = '\u25CF';
         }
 
-
-        private void CambioCredenzialiView_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Annulla_Click(object sender, EventArgs e)
         {
             this.Close();
