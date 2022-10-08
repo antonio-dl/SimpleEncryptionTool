@@ -12,14 +12,6 @@ namespace UNIBO.SET.GUI.Forms
             ripetiPass.PasswordChar = '\u25CF';
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void FirstLoginView_Load(object sender, EventArgs e)
-        {
-        }
-
         private void Registrati_Click(object sender, EventArgs e)
         {
             if (Password.Text.Length < 5 && ripetiPass.Text.Length < 5)
@@ -44,14 +36,6 @@ namespace UNIBO.SET.GUI.Forms
                 LoginView login = new LoginView();
                 login.ShowDialog();
             }
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ripetiPass_TextChanged(object sender, EventArgs e)
-        {
         }
     }
 }

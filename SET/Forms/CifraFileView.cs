@@ -122,11 +122,6 @@ namespace UNIBO.SET.GUI.Forms
             this.SelezionaUsb_SelectedIndexChanged(sender, e);
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Aggiorna_Click(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();

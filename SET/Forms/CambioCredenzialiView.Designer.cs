@@ -141,7 +141,6 @@
             this.Name = "CambioCredenzialiView";
             this.Text = "CambioCredenzialiView";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.CambioCredenzialiView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
