@@ -32,7 +32,15 @@ namespace UNIBO.SET.Services.Decifratori
             using var decryptor = aes.CreateDecryptor(key.Password, null);
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
 
-            decryptoStream.CopyTo(targetStream);
+            try
+            {
+                decryptoStream.CopyTo(targetStream);
+            }
+            catch (CryptographicException e)
+            {
+                fd.Delete();
+                throw new CryptographicException("Errore nella decifrazione del file", e);
+            }
 
             return fd;
         }
