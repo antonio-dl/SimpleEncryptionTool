@@ -72,7 +72,6 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "sET-1.0";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -116,7 +115,6 @@
             this.Controls.Add(this.label1);
             this.Name = "ProgettazioneDeployment";
             this.Text = "ProgettazioneDeployment";
-            this.Load += new System.EventHandler(this.ProgettazioneDeployment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

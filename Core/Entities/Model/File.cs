@@ -45,7 +45,7 @@
         }
 
         public override string ToString() => this.Path;
-        
+
         public new string Name { get => _file.Name; }
 
         public string CalcolaMD5()
@@ -99,6 +99,12 @@
         public FileStream Create()
         {
             return this._file.Open(FileMode.Create, FileAccess.Write);
+        }
+
+        public void Delete()
+        {
+            this._file.Delete();
+            return;
         }
     }
 }

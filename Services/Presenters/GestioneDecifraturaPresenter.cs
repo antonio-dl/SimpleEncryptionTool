@@ -57,6 +57,7 @@ namespace UNIBO.SET.Services.Presenters
             catch (CryptographicException e)
             {
                 this.LogIt(EntryType.Errore, $"Errore di crittografia in {key.TargetFilePath}: il file è stato alterato!");
+
                 throw e;
             }
         }

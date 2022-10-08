@@ -16,10 +16,6 @@ namespace UNIBO.SET.GUI.Forms
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
         private void DecifraFileView_Load(object sender, EventArgs e)
         {
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
@@ -115,11 +111,6 @@ namespace UNIBO.SET.GUI.Forms
             _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
             this.listaFileDaDecifrare.Items.Clear();
             MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file.", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void OttieniFDBottone_Click(object sender, EventArgs e)

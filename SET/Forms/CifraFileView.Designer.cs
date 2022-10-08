@@ -146,7 +146,6 @@
             this.listaFileDaCifrare.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listaFileDaCifrare.Size = new System.Drawing.Size(680, 264);
             this.listaFileDaCifrare.TabIndex = 7;
-            this.listaFileDaCifrare.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Aggiorna
             // 

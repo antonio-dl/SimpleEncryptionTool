@@ -65,7 +65,6 @@
             this.label2.Size = new System.Drawing.Size(87, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Lista di USB";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -75,7 +74,6 @@
             this.label3.Size = new System.Drawing.Size(165, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Lista di file da decifrare";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // SelezionaPathBottone
             // 

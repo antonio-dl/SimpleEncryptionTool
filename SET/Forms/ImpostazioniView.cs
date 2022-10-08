@@ -46,11 +46,6 @@ namespace UNIBO.SET.GUI.Forms
             }
         }
 
-        private void SelezioneCifraturaBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ImpostazioniView_Load(object sender, EventArgs e)
         {
             var impost = _presenter.OttieniImpostazioneSingola("cifratore");

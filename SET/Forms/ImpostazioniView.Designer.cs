@@ -51,7 +51,6 @@
             this.SelezioneCifraturaBox.Name = "SelezioneCifraturaBox";
             this.SelezioneCifraturaBox.Size = new System.Drawing.Size(286, 28);
             this.SelezioneCifraturaBox.TabIndex = 1;
-            this.SelezioneCifraturaBox.SelectedIndexChanged += new System.EventHandler(this.SelezioneCifraturaBox_SelectedIndexChanged);
             // 
             // CambioCredenziali
             // 

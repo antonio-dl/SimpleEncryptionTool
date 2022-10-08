@@ -64,10 +64,6 @@ namespace UNIBO.SET.GUI
             currentButton = null;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (activeForm != null)
@@ -75,10 +71,6 @@ namespace UNIBO.SET.GUI
                 activeForm.Close();
             }
             Reset();
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
         }
 
         private void CifraRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -99,14 +91,6 @@ namespace UNIBO.SET.GUI
         private void LogRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.LogView(_init.GestioneLogPresenter), sender);
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
         }
     }
 }

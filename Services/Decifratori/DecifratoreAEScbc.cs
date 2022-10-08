@@ -35,13 +35,19 @@ namespace UNIBO.SET.Services.Decifratori
             }
             catch (IOException e)
             {
+                fd.Delete();
                 throw new IVReadException($"Impossibile leggere vettore iniziale IV dal file {fc.Path}", e);
             }
             using var decryptor = aes.CreateDecryptor(key.Password, IV);
             using var decryptoStream = new CryptoStream(sourceStream, decryptor, CryptoStreamMode.Read);
-
-            decryptoStream.CopyTo(targetStream);
-
+            try
+            {
+                decryptoStream.CopyTo(targetStream);
+            }
+            catch (CryptographicException e){
+                fd.Delete();
+                throw new CryptographicException("Errore nella decifrazione del file", e);
+            }
             return fd;
         }
 
