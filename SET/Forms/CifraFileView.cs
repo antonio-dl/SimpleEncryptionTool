@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Diagnostics;
+using System.Text;
 using System.Windows.Forms;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
+using UNIBO.SET.Services.Shared;
 using File = UNIBO.SET.Model.File;
 
 
@@ -62,6 +64,10 @@ namespace UNIBO.SET.GUI.Forms
             string fileSingolo;
             File f;
             USB? usb = _presenter.SelectedUSB;
+            int fcSuccesso = 0;
+            int fcFalliti = 0;
+            int totFile = fileDaCifrare.Length;
+            string[] falliti = new string[totFile];
 
             if (usb is not null)
             {
@@ -73,23 +79,24 @@ namespace UNIBO.SET.GUI.Forms
                         f = new File(fileSingolo);
                         Key key = _presenter.Cifra(f);
                         _presenter.SalvaKey(key);
-                    } catch (FileNotFoundException ex)
+                    } catch (FileNotFoundException)
                     {
-                        MessageBox.Show(ex.Message, "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        falliti[fcFalliti] = fileDaCifrare[i];
+                        fcFalliti++;
+                        continue;
 
-                    } catch (SalveKeyException ex)
+                    } catch (SalveKeyException)
                     {
-                        MessageBox.Show(ex.Message, "Errore!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        falliti[fcFalliti] = fileDaCifrare[i];
+                        fcFalliti++;
+                        continue;
                     }
-
-                    /*
-                    Non ho capito/manca proprio:
-                    - metodi per creare materialmente il path di cartelle di un FileKeyChain sulla chiavetta USB nel caso ancora non ne avesse uno
-                    - metodi per aggiungere e/o rimuovere Key da una KeyChain contenuta da un FileKeyChain (dal Model)
-                    - metodi nel CifraFilePresenter che permettano di salvare nell'USB (dal Model) una Key dentro a KeyChain contenuta da un FileKeyChain dopo aver cifrato un file
-                    */
+                    fcSuccesso++;
                 }
                 listaFileDaCifrare.Items.Clear();
+                MessageBox.Show($"Sono stati cifrati con successo {fcSuccesso} file su {totFile}.\n" +
+                $"I seguenti {fcFalliti} file hanno avuto problemi:\n" +
+                $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

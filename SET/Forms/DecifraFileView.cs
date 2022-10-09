@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UNIBO.SET.Model;
 using UNIBO.SET.Services.Presenters;
+using UNIBO.SET.Services.Shared;
 
 namespace UNIBO.SET.GUI.Forms
 {
@@ -117,17 +118,7 @@ namespace UNIBO.SET.GUI.Forms
             this.listaFileDaDecifrare.Items.Clear();
             MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file su {totFile}.\n" +
                 $"I seguenti {fdFalliti} file hanno avuto problemi:\n" +
-                $"{this.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private string elencaFileFalliti(string[] lista)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (string s in lista)
-            {
-                sb.AppendLine(s);
-            }
-            return sb.ToString();
+                $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void OttieniFDBottone_Click(object sender, EventArgs e)

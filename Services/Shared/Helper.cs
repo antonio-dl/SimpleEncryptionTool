@@ -8,11 +8,10 @@ using UNIBO.SET.Model;
 
 namespace UNIBO.SET.Services.Shared
 {
-    internal static class Helper
+    public static class Helper
     {
-        internal static FileKeyChain RecuperaFileKeyChain(string pathToKeyChain)
+        public static FileKeyChain RecuperaFileKeyChain(string pathToKeyChain)
         {
-
             if (System.IO.File.Exists(pathToKeyChain))
             {
                 BinaryFormatter bf = new BinaryFormatter();
@@ -26,8 +25,7 @@ namespace UNIBO.SET.Services.Shared
             }
         }
 
-
-        internal static FileDecifrato GeneraNuovoNomeFileDecifrato(FileDecifrato fd)
+        public static FileDecifrato GeneraNuovoNomeFileDecifrato(FileDecifrato fd)
         {
             int n = 1;
             string nome = fd.Name;
@@ -49,6 +47,27 @@ namespace UNIBO.SET.Services.Shared
             }
             while (result.Exists);
             return result;
+        }
+
+        public static string elencaFileFalliti(string[] lista)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (lista.Length <= 20)
+            {
+                foreach (string s in lista)
+                {
+                    sb.AppendLine(s);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    sb.AppendLine(lista[i]);
+                }
+                sb.AppendLine($"E altri {lista.Length - 20}");
+            }
+            return sb.ToString();
         }
 
         /*
