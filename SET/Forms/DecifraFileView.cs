@@ -79,46 +79,51 @@ namespace UNIBO.SET.GUI.Forms
             int totFile = listaFileDaDecifrare.Items.Count;
             string[] falliti = new string[totFile];
 
-            foreach (string path in listaPathDaDecifrare)
+            if (listaFileDaDecifrare.Items.Count > 0)
             {
-                try
+                foreach (string path in listaPathDaDecifrare)
                 {
-                    Key key = _presenter.SelectedKeyChain.SelectKey(path);
-                    FileDecifrato fd = _presenter.Decifra(key);
-                    _presenter.SelectedKeyChain.DeleteKey(key);
+                    try
+                    {
+                        Key key = _presenter.SelectedKeyChain.SelectKey(path);
+                        FileDecifrato fd = _presenter.Decifra(key);
+                        _presenter.SelectedKeyChain.DeleteKey(key);
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        falliti[fdFalliti] = path;
+                        fdFalliti++;
+                        continue;
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        falliti[fdFalliti] = path;
+                        fdFalliti++;
+                        continue;
+                    }
+                    catch (IOException)
+                    {
+                        falliti[fdFalliti] = path;
+                        fdFalliti++;
+                        continue;
+                    }
+                    catch (CryptographicException)
+                    {
+                        falliti[fdFalliti] = path;
+                        fdFalliti++;
+                        continue;
+                    }
+                    fdSuccesso++;
                 }
-                catch(KeyNotFoundException)
-                {
-                    falliti[fdFalliti] = path;
-                    fdFalliti++;
-                    continue;
-                }
-                catch(FileNotFoundException)
-                {
-                    falliti[fdFalliti] = path;
-                    fdFalliti++;
-                    continue;
-                }
-                catch(IOException)
-                {
-                    falliti[fdFalliti] = path;
-                    fdFalliti++;
-                    continue;
-                }
-                catch(CryptographicException)
-                {
-                    falliti[fdFalliti] = path;
-                    fdFalliti++;
-                    continue;
-                }
-                fdSuccesso++;
-            }
 
-            _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
-            this.listaFileDaDecifrare.Items.Clear();
-            MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file su {totFile}.\n" +
-                $"I seguenti {fdFalliti} file hanno avuto problemi:\n" +
-                $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _presenter.SalvaKeyChain(_presenter.SelectedKeyChain);
+                this.listaFileDaDecifrare.Items.Clear();
+                MessageBox.Show($"Sono stati decifrati con successo {fdSuccesso} file su {totFile}.\n" +
+                    $"I seguenti {fdFalliti} file hanno avuto problemi:\n" +
+                    $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show($"Non sono selezionati file da decifrare!", "Avviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void OttieniFDBottone_Click(object sender, EventArgs e)

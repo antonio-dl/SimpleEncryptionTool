@@ -71,33 +71,42 @@ namespace UNIBO.SET.GUI.Forms
 
             if (usb is not null)
             {
-                for (int i = 0; i < fileDaCifrare.Length; i++)
+                if (fileDaCifrare.Length > 0)
                 {
-                    try
+                    for (int i = 0; i < fileDaCifrare.Length; i++)
                     {
-                        fileSingolo = fileDaCifrare[i].Trim();
-                        f = new File(fileSingolo);
-                        Key key = _presenter.Cifra(f);
-                        _presenter.SalvaKey(key);
-                    } catch (FileNotFoundException)
-                    {
-                        falliti[fcFalliti] = fileDaCifrare[i];
-                        fcFalliti++;
-                        continue;
+                        try
+                        {
+                            fileSingolo = fileDaCifrare[i].Trim();
+                            f = new File(fileSingolo);
+                            Key key = _presenter.Cifra(f);
+                            _presenter.SalvaKey(key);
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            falliti[fcFalliti] = fileDaCifrare[i];
+                            fcFalliti++;
+                            continue;
 
-                    } catch (SalveKeyException)
-                    {
-                        falliti[fcFalliti] = fileDaCifrare[i];
-                        fcFalliti++;
-                        continue;
+                        }
+                        catch (SalveKeyException)
+                        {
+                            falliti[fcFalliti] = fileDaCifrare[i];
+                            fcFalliti++;
+                            continue;
+                        }
+                        fcSuccesso++;
                     }
-                    fcSuccesso++;
+                    listaFileDaCifrare.Items.Clear();
+                    MessageBox.Show($"Sono stati cifrati con successo {fcSuccesso} file su {totFile}.\n" +
+                    $"I seguenti {fcFalliti} file hanno avuto problemi:\n" +
+                    $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                listaFileDaCifrare.Items.Clear();
-                MessageBox.Show($"Sono stati cifrati con successo {fcSuccesso} file su {totFile}.\n" +
-                $"I seguenti {fcFalliti} file hanno avuto problemi:\n" +
-                $"{Helper.elencaFileFalliti(falliti)}", "Operazione terminata!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show($"Non sono selezionati file da cifrare!", "Avviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else
+                MessageBox.Show($"Nessuna USB selezionata!", "Avviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void SelezionaUsb_SelectedIndexChanged(object sender, EventArgs e)
