@@ -18,7 +18,8 @@ namespace UNIBO.SET.GUI.Forms
         {
             var logFiles = _presenter.GetAllLogs().OrderByDescending(l=>l.ToString()).ToList();
             this.LogBox.DataSource = logFiles;
-            this.LogBox.SelectedIndex = 0;
+            if(this.LogBox.SelectedIndex != -1)
+                this.LogBox.SelectedIndex = 0;
 
             List<object> list = new List<object>();
             list.Add("Tutto");

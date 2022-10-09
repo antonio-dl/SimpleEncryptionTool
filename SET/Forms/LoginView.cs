@@ -23,11 +23,11 @@ namespace UNIBO.SET.GUI.Forms
             Password.PasswordChar = '\u25CF';
 
 
-            // Per velocizzare il debug
+            /*Per velocizzare il debug
             this.Hide();
             HomeSET home = new HomeSET(init);
             home.ShowDialog();
-            this.Close();
+            this.Close();*/
         }
 
         private static Credenziali LoadCredenziali() // TODO: Test della serializzazione e deserializzazione
