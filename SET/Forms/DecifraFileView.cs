@@ -25,7 +25,7 @@ namespace UNIBO.SET.GUI.Forms
             listaFileDaDecifrare.Items.Clear();
             PathChiaveBox.Clear();
 
-            ListaUsbBox_SelectedIndexChanged(sender, e);
+            //ListaUsbBox_SelectedIndexChanged(sender, e);
         }
 
 
@@ -67,7 +67,7 @@ namespace UNIBO.SET.GUI.Forms
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
             ListaUsbBox.DataSource = tutteUsb;
 
-            ListaUsbBox_SelectedIndexChanged(sender, e);
+            //ListaUsbBox_SelectedIndexChanged(sender, e);
         }
 
         private void Decifra_Click(object sender, EventArgs e)
