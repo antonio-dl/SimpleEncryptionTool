@@ -38,6 +38,8 @@ namespace UNIBO.SET.Services.Decifratori
             }
             catch (CryptographicException e)
             {
+                targetStream.Flush();
+                targetStream.Close();
                 fd.Delete();
                 throw new CryptographicException("Errore nella decifrazione del file", e);
             }
