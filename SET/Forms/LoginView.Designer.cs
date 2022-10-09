@@ -62,6 +62,7 @@
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(170, 27);
             this.Password.TabIndex = 7;
+            this.Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Password_KeyDown);
             // 
             // label3
             // 
