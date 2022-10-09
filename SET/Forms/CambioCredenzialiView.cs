@@ -20,7 +20,7 @@ namespace UNIBO.SET.GUI.Forms
 
         private void Annulla_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void Conferma_Click(object sender, EventArgs e)

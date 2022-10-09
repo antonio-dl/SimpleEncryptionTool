@@ -31,7 +31,7 @@ namespace UNIBO.SET.ModelLog
                 Entry entry = parseLine(line);
                 result.Add(entry);
             }
-
+            logReader.Close();
             return result.ToArray();
         }
 
@@ -49,7 +49,8 @@ namespace UNIBO.SET.ModelLog
 
         public override Entry[] GetEntries()
         {
-            return ReadEntries(new StreamReader(PathFile));
+            using var sr = new StreamReader(PathFile);
+            return ReadEntries(sr);
         }
 
         public override Entry[] GetEntries(EntryType filteredType)

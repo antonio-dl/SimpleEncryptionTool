@@ -43,7 +43,6 @@ namespace UNIBO.SET.GUI.Forms
 
                 if ((keyChain = _presenter.ScansionaUSB()) is not null)
                 {
-                    _presenter.SelezionaKeyChain(keyChain);
                     PathChiaveBox.Text = _presenter.SelectedKeyChain.ToString();
                 }
             }
