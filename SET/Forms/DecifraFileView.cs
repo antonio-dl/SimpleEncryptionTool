@@ -20,11 +20,11 @@ namespace UNIBO.SET.GUI.Forms
 
         private void DecifraFileView_Load(object sender, EventArgs e)
         {
+            PathChiaveBox.Clear();
+            listaFileDaDecifrare.Items.Clear();
+            
             var tutteUsb = _presenter.ElencaDispositiviEsterni();
             ListaUsbBox.DataSource = tutteUsb;
-
-            listaFileDaDecifrare.Items.Clear();
-            PathChiaveBox.Clear();
 
             //ListaUsbBox_SelectedIndexChanged(sender, e);
         }
