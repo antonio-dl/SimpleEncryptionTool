@@ -35,6 +35,8 @@ namespace UNIBO.SET.Services.Decifratori
             }
             catch (IOException e)
             {
+                targetStream.Flush();
+                targetStream.Close();
                 fd.Delete();
                 throw new IVReadException($"Impossibile leggere vettore iniziale IV dal file {fc.Path}", e);
             }
