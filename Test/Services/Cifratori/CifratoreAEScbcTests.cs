@@ -35,5 +35,34 @@ namespace UNIBO.SET.Services.Cifratori.Tests
         {
             System.IO.File.WriteAllText(pathfile, content);
         }
+
+
+        [TestMethod()]
+
+        public void BenchmarkCifratore()
+        {
+            var cifratore = new CifratoreAEScbc();
+            var output = System.IO.File.AppendText(@"C:\Users\jackg\Desktop\benchmark\risultato.txt");
+            var fileList = Directory.EnumerateFiles(@"C:\Users\jackg\Desktop\benchmark\TestFile").ToList();
+            foreach (var file in fileList)
+            {
+                output.Write(Path.GetFileName(file)+"; ");
+            }
+            output.Write("\n");
+
+            for (int i=0; i<100; i++)
+            {
+                foreach (var file in fileList)
+                {
+                    var timeInizio = DateTime.Now;
+                    Key key = cifratore.CifraFile(new File(file));
+                    var differenza = (DateTime.Now - timeInizio).TotalMilliseconds;
+                    output.Write(differenza+"; ");
+                    System.IO.File.Delete(key.TargetFilePath);
+                }
+                output.Write("\n");
+            }
+            output.Close();
+        }
     }
 }
